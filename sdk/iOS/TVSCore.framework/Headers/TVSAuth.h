@@ -242,6 +242,13 @@ typedef NS_ENUM(NSInteger,TVSAuthResult) {
 
 @optional
 /*
+ * @brief QQ验票实现
+ * @param handler 结果回调
+ */
+-(void)TVSAuthQQTokenVerifyWithHandler:(void(^)(TVSAuthResult))handler;
+
+@optional
+/*
  * @brief 注销账号实现
  */
 -(void)TVSAuthLogout;

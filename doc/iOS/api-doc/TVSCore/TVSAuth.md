@@ -188,6 +188,22 @@
 
   无；
 
+##### `-(void)TVSAuthQQTokenVerifyWithHandler:(void(^)(TVSAuthResult))handler;`
+
+  **描述**:
+
+  QQ 验票实现；
+
+  **参数**:
+
+  | 名称 | 类型 | 描述 |
+  | ------ | ------ | ------ |
+  | handler | void(^)(TVSAuthResult) | 结果回调 |
+
+  **返回**:
+
+  无；
+
 ##### `-(void)TVSAuthLogout;`
 
   **描述**:

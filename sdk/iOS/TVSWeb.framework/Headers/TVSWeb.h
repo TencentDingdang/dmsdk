@@ -125,35 +125,28 @@ typedef NS_ENUM(NSInteger,TVSWebPageType) {
  * @brief Web 页面 QQ 登录回调
  * @param result QQ登录结果
  */
--(void)TVSWebQQLoginResult:(BOOL)result;
+-(void)TVSWebQQLoginResult:(TVSAuthResult)result;
 
 @optional
 /*
  * @brief Web 页面微信登录回调
  * @param result 微信登录结果
  */
--(void)TVSWebWXLoginResult:(BOOL)result;
+-(void)TVSWebWXLoginResult:(TVSAuthResult)result;
 
 @optional
 /*
  * @brief Web 页面QQ验票回调
  * @param result QQ验票结果
  */
--(void)TVSWebVerifyQQTokenResult:(BOOL)result;
+-(void)TVSWebVerifyQQTokenResult:(TVSAuthResult)result;
 
 @optional
 /*
  * @brief Web 页面微信刷票回调
  * @param result 微信刷票结果
  */
--(void)TVSWebRefreshWXTokenResult:(BOOL)result;
-
-@optional
-/*
- * @brief Web 页面微信支付回调
- * @param result 微信支付结果
- */
--(void)TVSWebWXPayResult:(BOOL)result;
+-(void)TVSWebRefreshWXTokenResult:(TVSAuthResult)result;
 
 @optional
 /*
@@ -224,6 +217,11 @@ typedef NS_ENUM(NSInteger,TVSWebPageType) {
  * @warning LinkPlay 设备打开个人中心页面需要检查绑定
  */
 @property(nonatomic,assign) BOOL autoCheckDeviceBind;
+
+/*
+ * @brief 是否显示网页调试工具
+ */
+@property(nonatomic,assign) BOOL showDebugTool;
 
 /*
  * @brief 实例化

@@ -256,4 +256,12 @@ typedef NS_ENUM(NSInteger,TVSDeviceBindType) {
  */
 -(void)queryAccountWithDevice:(TVSDeviceInfo*)device handler:(void(^)(TVSAccountInfo*))handler;
 
+/**
+ * @brief 更新设备信息
+ * @param deviceInfo 设备信息
+ * @param businessDict 业务数据
+ * @param handler 回调
+ */
+-(void)updateDeviceInfo:(TVSDeviceInfo*)deviceInfo businessDict:(NSDictionary*)businessDict handler:(void(^)(BOOL))handler;
+
 @end

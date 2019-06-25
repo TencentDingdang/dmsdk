@@ -128,7 +128,7 @@
 
 ### TVSWebBusinessDelegate Web 页面业务回调协议
 
-##### `-(void)TVSWebQQLoginResult:(BOOL)result;`
+##### `-(void)TVSWebQQLoginResult:(TVSAuthResult)result;`
 
   **描述**:
 
@@ -138,13 +138,13 @@
 
   | 名称 | 类型 | 描述 |
   | ------ | ------ | ------ |
-  | result | BOOL | QQ 登录结果 |
+  | result | TVSAuthResult | QQ 登录结果 |
 
   **返回**:
 
   无;
 
-##### `-(void)TVSWebWXLoginResult:(BOOL)result;`
+##### `-(void)TVSWebWXLoginResult:(TVSAuthResult)result;`
 
   **描述**:
 
@@ -154,13 +154,13 @@
 
   | 名称 | 类型 | 描述 |
   | ------ | ------ | ------ |
-  | result | BOOL | 微信登录结果 |
+  | result | TVSAuthResult | 微信登录结果 |
 
   **返回**:
 
   无;
 
-##### `-(void)TVSWebVerifyQQTokenResult:(BOOL)result;`
+##### `-(void)TVSWebVerifyQQTokenResult:(TVSAuthResult)result;`
 
   **描述**:
 
@@ -170,13 +170,13 @@
 
   | 名称 | 类型 | 描述 |
   | ------ | ------ | ------ |
-  | result | BOOL | QQ 验票是否成功 |
+  | result | TVSAuthResult | QQ 验票是否成功 |
 
   **返回**:
 
   无;
 
-##### `-(void)TVSWebRefreshWXTokenResult:(BOOL)result;`
+##### `-(void)TVSWebRefreshWXTokenResult:(TVSAuthResult)result;`
 
   **描述**:
 
@@ -186,23 +186,7 @@
 
   | 名称 | 类型 | 描述 |
   | ------ | ------ | ------ |
-  | result | BOOL | 微信刷票是否成功 |
-
-  **返回**:
-
-  无;
-
-##### `-(void)TVSWebWXPayResult:(BOOL)result;`
-
-  **描述**:
-
-  Web 页面微信支付回调；
-
-  **参数**:
-
-  | 名称 | 类型 | 描述 |
-  | ------ | ------ | ------ |
-  | result | BOOL | 微信支付结果 |
+  | result | TVSAuthResult | 微信刷票是否成功 |
 
   **返回**:
 
@@ -266,6 +250,7 @@
   | authDelegate | TVSAuthDelegate | 账号授权协议 | 如果不使用 SDK 里面的 TVSAuthManager 授权，而是自己调用微信/QQ SDK，则必须实现此协议！ |
   | device | TVSDeviceInfo* | 设备信息 | QQ 音乐会员等页面需要此参数，其中 deviceBindType、deviceType、deviceOEM、productId、DSN 几个字段为必填! |
   | autoCheckDeviceBind | BOOL | 是否自动检查设备绑定 | LinkPlay 设备打开个人中心需要检查绑定 |
+  | showDebugTool | BOOL | 是否展示网页调试工具 |  |
 
 #### 方法
 

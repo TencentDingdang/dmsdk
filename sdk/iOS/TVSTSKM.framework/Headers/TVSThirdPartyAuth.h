@@ -46,5 +46,6 @@
  */
 -(void)unbindWithAccountInfo:(TVSAccountInfo*)accountInfo handler:(void(^)(BOOL))handler;
 
+-(void)dingdangBindWithAppAccountInfo:(TVSAccountInfo*)accountInfo handler:(void(^)(BOOL))handler;
 
 @end
