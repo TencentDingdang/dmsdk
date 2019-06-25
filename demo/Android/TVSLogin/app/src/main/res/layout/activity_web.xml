@@ -49,11 +49,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="ContentDescription" />
 
+    <CheckBox
+        android:id="@+id/cacheCheckBox"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:text="离线时加载缓存"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintTop_toBottomOf="@id/urlEditText"
+        app:layout_constraintEnd_toStartOf="@id/debugCheckBox"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/debugCheckBox"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:text="打开测试开关"
+        app:layout_constraintTop_toBottomOf="@id/urlEditText"
+        app:layout_constraintStart_toEndOf="@id/cacheCheckBox"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <com.tencent.ai.tvs.web.TVSWebView
         android:id="@+id/tvsWebView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/progressBar"
+        app:layout_constraintTop_toBottomOf="@id/cacheCheckBox"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent "/>

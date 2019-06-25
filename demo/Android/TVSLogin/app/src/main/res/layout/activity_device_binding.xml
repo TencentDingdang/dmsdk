@@ -18,7 +18,7 @@
             android:id="@+id/productIDEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ProductID" />
+            android:hint="DemoConstant中填入PRODUCT_ID为平台信息，格式为appkey:apptoken" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -34,7 +34,7 @@
             android:id="@+id/dsnEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="DSN" />
+            android:hint="DemoConstant中填入DSN为设备唯一识别码" />
 
     </android.support.design.widget.TextInputLayout>
 

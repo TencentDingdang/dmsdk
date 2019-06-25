@@ -2,7 +2,9 @@ package com.tencent.ai.tvs.dmsdk.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.tencent.ai.dobbydemo.R;
 import com.tencent.ai.tvs.LoginProxy;
@@ -24,11 +26,32 @@ public class DeviceBindingActivity extends ModuleActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_binding);
 
-
         mProductIDEditText = findViewById(R.id.productIDEditText);
+        mProductIDEditText.setText(DemoConstant.PRODUCT_ID);
         mDSNEditText = findViewById(R.id.dsnEditText);
-        findViewById(R.id.bindButton).setOnClickListener(v -> LoginProxy.getInstance().bindPushDevice(getDevice(), new SimpleTVSCallback("绑定")));
-        findViewById(R.id.unbindButton).setOnClickListener(v -> LoginProxy.getInstance().unbindPushDevice(getDevice(), new SimpleTVSCallback("解绑")));
+        mDSNEditText.setText(DemoConstant.DSN);
+        findViewById(R.id.bindButton).setOnClickListener(v -> {
+            if (TextUtils.isEmpty(mProductIDEditText.getText().toString()) && TextUtils.isEmpty(DemoConstant.PRODUCT_ID)) {
+                ToastUtil.productId(this);
+                return;
+            }
+            if (TextUtils.isEmpty(mDSNEditText.getText().toString()) && TextUtils.isEmpty(DemoConstant.DSN)) {
+                ToastUtil.dsn(this);
+                return;
+            }
+            LoginProxy.getInstance().bindPushDevice(getDevice(), new SimpleTVSCallback("绑定"));
+        });
+        findViewById(R.id.unbindButton).setOnClickListener(v -> {
+            if (TextUtils.isEmpty(mProductIDEditText.getText().toString()) && TextUtils.isEmpty(DemoConstant.PRODUCT_ID)) {
+                ToastUtil.productId(this);
+                return;
+            }
+            if (TextUtils.isEmpty(mDSNEditText.getText().toString()) && TextUtils.isEmpty(DemoConstant.DSN)) {
+                ToastUtil.dsn(this);
+                return;
+            }
+            LoginProxy.getInstance().unbindPushDevice(getDevice(), new SimpleTVSCallback("解绑"));
+        });
         findViewById(R.id.queryDeviceButton).setOnClickListener(v -> LoginProxy.getInstance().getDeviceInfoListByAccount(TVSDeviceBindType.TVS_SPEAKER, new SimpleTVSCallback1<ArrayList<TVSDevice>>("帐号查设备") {
             @Override
             protected String loggableResult(ArrayList<TVSDevice> result) {
@@ -40,27 +63,50 @@ public class DeviceBindingActivity extends ModuleActivity {
             }
         }));
 
-        findViewById(R.id.queryDeviceGuidButton).setOnClickListener(v -> LoginProxy.getInstance().getDeviceInfoListByDSN(TVSDeviceBindType.TVS_SPEAKER, DemoConstant.PRODUCT_ID, DemoConstant.DSN, new SimpleTVSCallback1<ArrayList<TVSDevice>>("帐号查设备") {
-            @Override
-            protected String loggableResult(ArrayList<TVSDevice> result) {
-                StringBuilder lines = new StringBuilder();
-                for (TVSDevice device : result) {
-                    mQueriedDevice = new TVSDevice();
-                    mQueriedDevice.productID = device.productID;
-                    mQueriedDevice.dsn = device.dsn;
-                    mQueriedDevice.guid = device.guid;
-                    lines.append("Device: GUID = ").append(device.guid).append("\n");
+        findViewById(R.id.queryDeviceGuidButton).setOnClickListener(v -> {
+            if (TextUtils.isEmpty(mProductIDEditText.getText().toString()) && TextUtils.isEmpty(DemoConstant.PRODUCT_ID)) {
+                ToastUtil.productId(this);
+                return;
+            }
+            if (TextUtils.isEmpty(mDSNEditText.getText().toString()) && TextUtils.isEmpty(DemoConstant.DSN)) {
+                ToastUtil.dsn(this);
+                return;
+            }
+            LoginProxy.getInstance().getDeviceInfoListByDSN(TVSDeviceBindType.TVS_SPEAKER,
+                    TextUtils.isEmpty(mProductIDEditText.getText().toString()) ? DemoConstant.PRODUCT_ID : mProductIDEditText.getText().toString(),
+                        TextUtils.isEmpty(mDSNEditText.getText().toString()) ? DemoConstant.DSN : mDSNEditText.getText().toString(),
+                            new SimpleTVSCallback1<ArrayList<TVSDevice>>("帐号查设备") {
+                @Override
+                protected String loggableResult(ArrayList<TVSDevice> result) {
+                    StringBuilder lines = new StringBuilder();
+                    for (TVSDevice device : result) {
+                        mQueriedDevice = new TVSDevice();
+                        mQueriedDevice.productID = device.productID;
+                        mQueriedDevice.dsn = device.dsn;
+                        mQueriedDevice.guid = device.guid;
+                        lines.append("Device: GUID = ").append(device.guid).append("\n");
+                    }
+                    return lines.toString();
                 }
-                return lines.toString();
-            }
-        }));
+            });
+        });
 
-        findViewById(R.id.queryAccountButton).setOnClickListener(v -> LoginProxy.getInstance().getBoundAccount(getDevice(), new SimpleTVSCallback1<TVSAccountInfo>("设备查帐号", false) {
-            @Override
-            protected String loggableResult(TVSAccountInfo result) {
-                return "OpenID = " + result.getOpenID();
+        findViewById(R.id.queryAccountButton).setOnClickListener(v -> {
+            if (TextUtils.isEmpty(mProductIDEditText.getText().toString()) && TextUtils.isEmpty(DemoConstant.PRODUCT_ID)) {
+                ToastUtil.productId(this);
+                return;
             }
-        }));
+            if (TextUtils.isEmpty(mDSNEditText.getText().toString()) && TextUtils.isEmpty(DemoConstant.DSN)) {
+                ToastUtil.dsn(this);
+                return;
+            }
+            LoginProxy.getInstance().getBoundAccount(getDevice(), new SimpleTVSCallback1<TVSAccountInfo>("设备查帐号", false) {
+                @Override
+                protected String loggableResult(TVSAccountInfo result) {
+                    return "OpenID = " + result.getOpenID();
+                }
+            });
+        });
         findViewById(R.id.toCloudDDWebButton).setOnClickListener(v -> {
             Intent intent = new Intent(this, WebActivity.class);
             intent.putExtra("devInfo", mQueriedDevice);
@@ -70,7 +116,13 @@ public class DeviceBindingActivity extends ModuleActivity {
 
             startActivity(intent);
         });
-        findViewById(R.id.toCloudDDNativeButton).setOnClickListener(v -> { TVSThirdPartyAuth.requestCloudDDAuth(DeviceBindingActivity.this, mQueriedDevice, "com.tencent.ai.tvs.dmsdk.demo.DeviceBindingActivity", ""); });
+        findViewById(R.id.toCloudDDNativeButton).setOnClickListener(v -> {
+            if (mQueriedDevice != null) {
+                TVSThirdPartyAuth.requestCloudDDAuth(DeviceBindingActivity.this, mQueriedDevice, "com.tencent.ai.tvs.dmsdk.demo.DeviceBindingActivity", "");
+            } else {
+                Toast.makeText(this, "请先点击“DSN查GUID”初始化设备信息", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private TVSDevice getDevice() {

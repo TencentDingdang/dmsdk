@@ -69,7 +69,7 @@ public abstract class ModuleActivity extends AppCompatActivity {
         final String mAction;
         private final boolean mAutoJump;
 
-        protected SimpleTVSCallback(String action) {
+        public SimpleTVSCallback(String action) {
             this(action, true);
         }
 

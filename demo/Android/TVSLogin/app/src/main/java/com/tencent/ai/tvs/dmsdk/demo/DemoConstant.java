@@ -5,4 +5,5 @@ public class DemoConstant {
     public static final String APP_ID_QQ_OPEN = "101470979";
     public static final String PRODUCT_ID = "";
     public static final String DSN = "";
+    public static final String TVSTOKEN = "";
 }

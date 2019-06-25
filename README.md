@@ -8,11 +8,27 @@
 
 ## 更新日志：
 
-[Android](#Android) (Latest: v2.1.2)
+[Android](#Android) (Latest: v2.1.3)
 
 [iOS](#iOS) (Latest: v2.1.0)
 
 **v1.0 到 v2.0.0+ API 变更较大，请阅读升级指南([Android 版][5] | [iOS 版][4])。**
+
+### Android
+
+各版本可以直接通过GitHub Tag切换。
+
+#### v2.1.3
+
+**从该版本开始，DMSDK不再提供AAR文件，您只需参考接入指南直接从Maven Central或JCenter获取依赖。**
+
+*   Core模块优化为不强制依赖微信和QQ登录的SDK，需要微信和QQ登录时需要额外配置，参考迁移指南；
+*   Core模块修复若干QQ登录失败的问题；
+*   Web模块修复若干录音相关的问题；
+*   Web模块新增离线缓存加载控制；
+*   Web模块新增调试开关；
+*   TSKM模块API变更：reqQueryThirdPartAcctBindOp改为reqQueryThirdPartyAcctBindOp；
+*   若干其他优化与问题修复。
 
 #### v2.1.2
 

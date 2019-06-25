@@ -6,11 +6,13 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tencent.ai.dobbydemo.R;
 import com.tencent.ai.tvs.LoginProxy;
@@ -64,6 +66,10 @@ public class MainActivity extends AppCompatActivity {
         mAdapter.addModuleEntry(getString(R.string.module_account), () -> startActivity(new Intent(this, AccountActivity.class)));
         mAdapter.addModuleEntry(getString(R.string.module_device_binding), () -> startActivity(new Intent(this, DeviceBindingActivity.class)));
         mAdapter.addModuleEntry(getString(R.string.module_web), () -> {
+            if (TextUtils.isEmpty(DemoConstant.PRODUCT_ID) || TextUtils.isEmpty(DemoConstant.DSN)) {
+                Toast.makeText(this, "请在DemoConstant类中填写ProductID和DSN", Toast.LENGTH_SHORT).show();
+                return;
+            }
             Intent intent = new Intent(this, WebActivity.class);
             TVSDevice device = new TVSDevice();
             device.productID = DemoConstant.PRODUCT_ID;

@@ -14,18 +14,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 
 import com.tencent.ai.dobbydemo.BuildConfig;
 import com.tencent.ai.dobbydemo.R;
-import com.tencent.ai.tvs.ConstantValues;
-import com.tencent.ai.tvs.LoginProxy;
 import com.tencent.ai.tvs.core.common.TVSDevice;
-import com.tencent.ai.tvs.env.ELoginEnv;
 import com.tencent.ai.tvs.env.ELoginPlatform;
 import com.tencent.ai.tvs.env.EUserAttrType;
+import com.tencent.ai.tvs.tskm.TVSThirdPartyAuth;
 import com.tencent.ai.tvs.ui.AndroidBug5497Workaround;
 import com.tencent.ai.tvs.web.TVSWebController;
 import com.tencent.ai.tvs.web.TVSWebView;
@@ -75,28 +74,28 @@ public class WebActivity extends ModuleActivity {
         mWebViewController.setUIEventListener(new DemoUIEventListener());
         mWebViewController.setBusinessEventListener(new DemoBusinessEventListener());
         mWebViewController.loadURL(mURLEditText.getText().toString());
+
+        CheckBox cacheCheckBox = findViewById(R.id.cacheCheckBox);
+        cacheCheckBox.setChecked(mWebViewController.isLoadCacheOnDisconnected());
+        cacheCheckBox.setOnCheckedChangeListener((buttonView, isChecked) ->
+                mWebViewController.setLoadCacheOnDisconnected(isChecked)
+        );
+        CheckBox debugCheckBox = findViewById(R.id.debugCheckBox);
+        debugCheckBox.setChecked(mWebViewController.isEnableDebugFlag());
+        debugCheckBox.setOnCheckedChangeListener((buttonView, isChecked) ->
+                mWebViewController.setEnableDebugFlag(isChecked)
+        );
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         Log.v(LOG_TAG, "onNewIntent authResult = " + intent.getStringExtra("authResult"));
-        if (LoginProxy.getInstance().getEnv() == ELoginEnv.FORMAL) {
-            mWebViewController.loadURL(ConstantValues.VALID_USERCENTER_URL + ConstantValues.TSKAUTHMGR_URL);
-        }
-        else if (LoginProxy.getInstance().getEnv() == ELoginEnv.EX) {
-            mWebViewController.loadURL(ConstantValues.VALID_USERCENTER_EXENV_URL + ConstantValues.TSKAUTHMGR_URL);
-        }
-        else if (LoginProxy.getInstance().getEnv() == ELoginEnv.TEST) {
-            mWebViewController.loadURL(ConstantValues.VALID_USERCENTER_TESTENV_URL + ConstantValues.TSKAUTHMGR_URL);
-        }
+        mWebViewController.loadURL(TVSThirdPartyAuth.getTargetUrl());
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (LoginProxy.getInstance().handleQQOpenIntent(requestCode, resultCode, data)) {
-            return;
-        }
         if(requestCode == ACTIVITY_RESULT_CODE_FILECHOOSER) {
             mWebViewController.onPickFileResult(resultCode, data);
         }
@@ -164,8 +163,8 @@ public class WebActivity extends ModuleActivity {
             case R.id.iotMenuItem:
                 mWebViewController.toPresetURL(EUserAttrType.IOT);
                 return true;
-            case R.id.tskAuthMgrItem:
-                mWebViewController.toPresetURL(EUserAttrType.TSKAUTHMGR);
+            case R.id.musicCtrlItem:
+                mWebViewController.toPresetURL(EUserAttrType.MUSIC_CTRL);
                 return true;
         }
         return super.onContextItemSelected(item);
@@ -222,12 +221,14 @@ public class WebActivity extends ModuleActivity {
 
         @Override
         public void onLoadStarted(String url) {
+            Log.i(LOG_TAG, "onLoadStarted: url = " + url);
             mURLEditText.setText(url);
             mProgressBar.setAlpha(1);
         }
 
         @Override
         public void onLoadFinished(String url) {
+            Log.i(LOG_TAG, "onLoadFinished: url = " + url);
             ObjectAnimator animator = ObjectAnimator.ofFloat(mProgressBar, "alpha", 0);
             animator.setDuration(500);
             animator.start();
@@ -235,6 +236,7 @@ public class WebActivity extends ModuleActivity {
 
         @Override
         public void onLoadError() {
+            Log.w(LOG_TAG, "onLoadError");
         }
     }
 

@@ -34,6 +34,8 @@ public class ThirdPartBindOpActivity extends ModuleActivity {
         mThirdDevice.dsn = dsn;
         mThirdDevice.guid = "";
 
+        findViewById(R.id.thirdPartyUnbindButton).setOnClickListener(v -> mTskm.reqThirdPartyAcctBindOp(false, null, null, new SimpleTVSCallback("云叮当授权解绑")));
+
         findViewById(R.id.thirdPartyQueryGuidButton).setOnClickListener(v-> LoginProxy.getInstance().getDeviceInfoListByDSN(TVSDeviceBindType.TVS_SPEAKER, productId, dsn, new SimpleTVSCallback1<ArrayList<TVSDevice>>("帐号查设备GUID") {
             @Override
             protected String loggableResult(ArrayList<TVSDevice> result) {
@@ -50,7 +52,7 @@ public class ThirdPartBindOpActivity extends ModuleActivity {
         }));
 
         // 返回onError(int code) code值为TVSThirdPartyAuth.THIRDPARTY_ERR_NOBINDING为未绑定
-        findViewById(R.id.thirdPartyQueryButton).setOnClickListener(v -> mTskm.reqQueryThirdPartAcctBindOp(mThirdDevice, new SimpleTVSCallback1<TVSAccountInfo>("云叮当授权查询") {
+        findViewById(R.id.thirdPartyQueryButton).setOnClickListener(v -> mTskm.reqQueryThirdPartyAcctBindOp(mThirdDevice, new SimpleTVSCallback1<TVSAccountInfo>("云叮当授权查询") {
             @Override
             protected String loggableResult(TVSAccountInfo result) {
                 StringBuilder lines = new StringBuilder();

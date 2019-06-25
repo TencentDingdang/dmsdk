@@ -2,117 +2,120 @@
 
 以下流程（从注册AppID到Manifest配置）适用于新接入本SDK，如果您需要从原有的SDK迁移到新版本，请参阅[版本更新日志](版本更新日志.md)，其中有针对每个版本的API变更和就版本迁移指南。**新版本会带来更多特性、修复缺陷，请尽量保持使用最新的SDK版本。**
 
-## 1. 注册AppId
-
-在[微信开放平台](https://open.weixin.qq.com/)和[QQ互联平台](https://connect.qq.com/index.html)注册AppId。
-
-## 2. gradle配置
+## 1. 配置Gradle脚本
 
 打开工程app目录下的build.gradle。
 
-### 2.1 defaultConfig
-
-确保defaultConfig下的applicationId为微信开放平台下注册的包名。
-
-### 2.2 signingConfigs
-
-确保signingConfigs目录下storeFile.file参数路径正确，keyAlias、keyPassword、storePassword均与微信开放平台下签名参数一致。
-
-### 2.3 dependencies
-
-配置dependencies：
+配置依赖：
 
 ```groovy
 dependencies {
     // ...
-    def tvsVer = '2.1.2'
-    // 核心模块，必须
-    implementation (name: "tvscore-${tvsVer}-release", ext: 'aar')
-    // 核心模块依赖微信登录
-    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
-    // DMSDK各模块均依赖OK HTTP
-    implementation 'com.squareup.okhttp3:okhttp:3.8.1'
+    def tvsVer = '2.1.3'
+    // 核心模块，被其他组件依赖
+    implementation "com.tencent.yunxiaowei.dmsdk:core:$tvsVer"
     // AI Speech模块，可选
-    implementation (name: "tvsaispeech-${tvsVer}-release", ext: 'aar')
+    implementation "com.tencent.yunxiaowei.dmsdk:aispeech:$tvsVer"
     // QQ音乐会员模块，可选
-    implementation (name: "tvsmember-${tvsVer}-release", ext: 'aar')
+    implementation "com.tencent.yunxiaowei.dmsdk:member:$tvsVer"
     // 二维码业务模块，可选
-    implementation (name: "tvsqrcode-${tvsVer}-release", ext: 'aar')
+    implementation "com.tencent.yunxiaowei.dmsdk:qrcode:$tvsVer"
     // 音箱配置模块，可选
-    implementation (name: "tvsspeaker-${tvsVer}-release", ext: 'aar')
+    implementation "com.tencent.yunxiaowei.dmsdk:speaker:$tvsVer"
     // TSKM技能服务模块，可选
-    implementation (name: "tvstskm-${tvsVer}-release", ext: 'aar')
+    implementation "com.tencent.yunxiaowei.dmsdk:tskm:$tvsVer"
     // HTML5 WebView模块，可选
-    implementation (name: "tvsweb-${tvsVer}-release", ext: 'aar')
-    // HTML5 WebView模块依赖appcompat
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation "com.tencent.yunxiaowei.dmsdk:web:$tvsVer"
+    // 微信登录，如果需要微信登录功能则必须
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.4.0'
+    // QQ登录，如果需要QQ登录功能则必须
+    implementation files('libs/open_sdk_r6052_lite.jar')
 }
 ```
-
-### 2.4 flatDir
-
-配置flatDir。
-
-```groovy
-android {
-    repositories {
-        flatDir {
-            dirs 'libs'
-        }
-    }
-    // ...
-}
-```
-
-### 2.5 minSdkVersion
 
 确保minSdkVersion大于等于15。
 
-### 2.6 引用关系配置
+DMSDK已经通过ConsumerProguard自动支持ProGuard配置，不需要您为DMSDK额外配置ProGuard文件。
 
-如有别的module需要引用这个aar所在的module，需要在另一个module的gradle里配置如下
+## 2. 接入登录
 
-```groovy
-android {
-    repositories {
-        flatDir {
-            dirs project(':[aarmodulename]').file('libs')
-        }
+如果需要使用DMSDK的微信登录和QQ登录功能，则需要进行以下的配置。
+
+### 2.1. 准备App ID
+
+在[微信开放平台](https://open.weixin.qq.com/)和[QQ互联平台](https://connect.qq.com/index.html)注册AppId。注意确保申请时填写的包名和应用包名一致、并确保signingConfigs目录下storeFile.file参数路径正确，keyAlias、keyPassword、storePassword均与微信开放平台下签名参数一致。
+
+### 2.2. 配置项目
+
+打开工程AndroidManifest.xml。
+
+如果要接入微信，需要在application标签下添加以下内容：
+
+```xml
+<activity
+    android:name="com.tencent.ai.tvs.WXEntryActivity"
+    android:exported="true"
+    android:launchMode="singleTask" />
+<activity-alias
+    android:name="${applicationId}.wxapi.WXEntryActivity"
+    android:exported="true"
+    android:launchMode="singleTask"
+    android:targetActivity="com.tencent.ai.tvs.WXEntryActivity" />
+```
+
+`com.tencent.ai.tvs.WXEntryActivity`是DMSDK提供的WXEntryActivity默认实现。
+
+如果需要自定义该Activity的实现，则需要在onReq和onResp中调用DMSDK的相关接口，如下所示：
+
+```java
+@Override
+public void onReq(BaseReq baseReq) {
+    if (!LoginProxy.getInstance().onReq(baseReq)) {
+        // 在此处添加您的自定义实现
+        Toast.makeText(this, "DMSDK didn't handle onReq", Toast.LENGTH_SHORT).show();
+    }
+}
+
+@Override
+public void onResp(BaseResp baseResp) {
+    if (!LoginProxy.getInstance().onResp(baseResp)) {
+        // 在此处添加您的自定义实现，如响应微信分享回调
+        Toast.makeText(this, "DMSDK didn't handle onResp", Toast.LENGTH_SHORT).show();
     }
 }
 ```
 
-### 2.7 向AndroidManifest.xml注入QQ互联App ID
+详细请参考demo工程中提供的示例WXEntryActivity类。
 
-修改您的应用模块的build.gradle：
+如果要接入QQ登录，则需要在Manifest中的application标签下添加以下内容：
 
-```groovy
-android {
-    defaultConfig {
-        manifestPlaceholders = [
-                qqOpenAppId: "您的QQ互联AppID"
-        ]
-        // Code...
-    }
-    // Code...
-}
+```xml
+<activity
+    android:name="com.tencent.tauth.AuthActivity"
+    android:launchMode="singleTask"
+    android:noHistory="true">
+    <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <!-- 注意：此处您需要按照QQ互联的文档配置您申请的QQ登录API -->
+        <data android:scheme="tencent101470979" />
+    </intent-filter>
+</activity>
+<activity
+    android:name="com.tencent.connect.common.AssistActivity"
+    android:configChanges="orientation|keyboardHidden"
+    android:screenOrientation="behind"
+    android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 ```
 
-## 3. aar配置
+注意需要将示例中的AppID改为自己在QQ互联平台注册的AppID。
 
-根据需要将aar文件放入app\libs目录下。
+以上接入流程基于微信和QQ的登录SDK的官方接入文档，详细请参考对应的文档。
 
-## 4. Manifest配置
+## 3. Application配置
 
-打开工程AndroidManifest.xml
-
-### 4.1 包名
-
-确保package名称与微信开放平台下注册的包名一致。
-
-### 4.2 Application配置
-
-将application的name改为自定义的Application类，然后在其中的onCreate中加入如下初始化代码：
+将Manifest中的application的name改为自定义的Application类，然后在其中的onCreate中加入如下初始化代码：
 
 ```java
 public class YourApplication extends Application {
@@ -127,7 +130,7 @@ public class YourApplication extends Application {
 }
 ```
 
-## 5. Q&A
+## 4. Q&A
 
 1. 必须接入手机SDK吗？
 
@@ -156,15 +159,15 @@ public class YourApplication extends Application {
    3. BLE
 
 
-## 6. 附言：Android厂商APP设备管理接入
+## 5. 附言：Android厂商APP设备管理接入
 
-### 6.1 开发指南
+### 5.1 开发指南
 
-#### 6.1.1 设备绑定逻辑图
+#### 5.1.1 设备绑定逻辑图
 
 ![](image/devicebind.png)
 
-#### 6.1.2 厂商APP接入设备管理系统配置步骤
+#### 5.1.2 厂商APP接入设备管理系统配置步骤
 
 1. aar配置
 
@@ -186,16 +189,16 @@ public class YourApplication extends Application {
 
    2. 让应用的Application类继承`com.tencent.ai.tvsdevice.DeviceApplication`，添加android:exported=”true”属性。
 
-### 6.2 名词解释
+### 5.2 名词解释
 
-#### 6.2.1 UPnP
+#### 5.2.1 UPnP
 
 通用即插即用 （UPnP） 是一种用于 PC 机和智能设备（或仪器）的常见对等网络连接的体系结构，尤其是在家庭中。UPnP 以 Internet 标准和技术（例如 TCP/IP、HTTP 和 XML）为基础，使这样的设备彼此可自动连接和协同工作，从而使网络（尤其是家庭网络）对更多的人成为可能。
 
-#### 6.2.2 ProductId
+#### 5.2.2 ProductId
 
 产品系列Id，通常在Bot平台生成时即已指定，由AppKey和AppAccessToken组成。
 
-#### 6.2.3 DSN
+#### 5.2.3 DSN
 
 设备序列号，保证唯一性。

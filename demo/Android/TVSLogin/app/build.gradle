@@ -1,11 +1,6 @@
 apply plugin: 'com.android.application'
 
 android {
-    repositories {
-        flatDir {
-            dirs 'libs'
-        }
-    }
     compileSdkVersion 28
     defaultConfig {
 //        applicationId "com.tencent.ai.tvs.dmsdk.demo"
@@ -14,13 +9,19 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        manifestPlaceholders = [
-                qqOpenAppId: "101470979"
-        ]
+    }
+    flavorDimensions 'login'
+    productFlavors {
+        weixinQq {
+        }
+        thirdParty {
+        }
     }
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         release {
             signingConfig signingConfigs.debug
@@ -43,28 +44,25 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // 微信登录
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.4.0'
+    // QQ登录
+    implementation files('libs/open_sdk_r6052_lite.jar')
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'com.android.support:design:28.0.0'
-    def tvsVer = '2.1.2'
+    def tvsVer = '2.1.3'
     // 核心模块，必须
-    implementation (name: "tvscore-${tvsVer}-release", ext: 'aar')
-    // 核心模块依赖微信登录
-    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
-    // DMSDK各模块均依赖OK HTTP
-    implementation 'com.squareup.okhttp3:okhttp:3.8.1'
+    implementation "com.tencent.yunxiaowei.dmsdk:core:$tvsVer"
     // AI Speech模块，可选
-    implementation (name: "tvsaispeech-${tvsVer}-release", ext: 'aar')
+    implementation "com.tencent.yunxiaowei.dmsdk:aispeech:$tvsVer"
     // QQ音乐会员模块，可选
-    implementation (name: "tvsmember-${tvsVer}-release", ext: 'aar')
+    implementation "com.tencent.yunxiaowei.dmsdk:member:$tvsVer"
     // 二维码业务模块，可选
-    implementation (name: "tvsqrcode-${tvsVer}-release", ext: 'aar')
+    implementation "com.tencent.yunxiaowei.dmsdk:qrcode:$tvsVer"
     // 音箱配置模块，可选
-    implementation (name: "tvsspeaker-${tvsVer}-release", ext: 'aar')
+    implementation "com.tencent.yunxiaowei.dmsdk:speaker:$tvsVer"
     // TSKM技能服务模块，可选
-    implementation (name: "tvstskm-${tvsVer}-release", ext: 'aar')
+    implementation "com.tencent.yunxiaowei.dmsdk:tskm:$tvsVer"
     // HTML5 WebView模块，可选
-    implementation (name: "tvsweb-${tvsVer}-release", ext: 'aar')
-    // HTML5 WebView模块依赖appcompat
-    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation "com.tencent.yunxiaowei.dmsdk:web:$tvsVer"
 }

@@ -1,6 +1,7 @@
 package com.tencent.ai.tvs.dmsdk.demo;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -32,6 +33,10 @@ public class AISpeechActivity extends ModuleActivity {
         mVolumeEditText = findViewById(R.id.volumeEditText);
 
         findViewById(R.id.getBotButton).setOnClickListener(v -> {
+            if (TextUtils.isEmpty(mProductIDEditText.getText().toString())) {
+                ToastUtil.productId(this);
+                return;
+            }
             TVSAISpeech.getBotAISpeechOption(mProductIDEditText.getText().toString(), new SimpleTVSCallback1<ArrayList<TVSAISpeechItem>>("查询Bot AI Speech", false) {
                 @Override
                 protected String loggableResult(ArrayList<TVSAISpeechItem> result) {
@@ -54,6 +59,14 @@ public class AISpeechActivity extends ModuleActivity {
             });
         });
         findViewById(R.id.getDeviceButton).setOnClickListener(v -> {
+            if (TextUtils.isEmpty(mProductIDEditText.getText().toString())) {
+                ToastUtil.productId(this);
+                return;
+            }
+            if (TextUtils.isEmpty(mDSNEditText.getText().toString())) {
+                ToastUtil.dsn(this);
+                return;
+            }
             TVSAISpeech.getDeviceAISpeech(mProductIDEditText.getText().toString(), mDSNEditText.getText().toString(), new SimpleTVSCallback1<TVSAISpeechItem>("查询设备AI Speech", true) {
                 @Override
                 protected String loggableResult(TVSAISpeechItem result) {
@@ -68,6 +81,14 @@ public class AISpeechActivity extends ModuleActivity {
             });
         });
         findViewById(R.id.setDeviceButton).setOnClickListener(v -> {
+            if (TextUtils.isEmpty(mProductIDEditText.getText().toString())) {
+                ToastUtil.productId(this);
+                return;
+            }
+            if (TextUtils.isEmpty(mDSNEditText.getText().toString())) {
+                ToastUtil.dsn(this);
+                return;
+            }
             TVSTTSConfig tc = new TVSTTSConfig();
             try {
                 tc.speed = Integer.parseInt(mSpeedEditText.getText().toString());

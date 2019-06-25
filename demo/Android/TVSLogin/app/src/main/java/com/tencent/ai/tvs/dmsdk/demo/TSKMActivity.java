@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
@@ -71,6 +72,14 @@ public class TSKMActivity extends AppCompatActivity {
                 Toast.makeText(this, R.string.login_required, Toast.LENGTH_SHORT).show();
                 intent = new Intent(this, AccountActivity.class);
             } else {
+                if (TextUtils.isEmpty(mProductIDEditText.getText().toString())) {
+                    ToastUtil.productId(this);
+                    return;
+                }
+                if (TextUtils.isEmpty(mDSNEditText.getText().toString())) {
+                    ToastUtil.dsn(this);
+                    return;
+                }
                 intent.putExtra(EXTRA_PRODUCT_ID, mProductIDEditText.getText().toString());
                 intent.putExtra(EXTRA_DSN, mDSNEditText.getText().toString());
             }
