@@ -1,3 +1,5 @@
+# TVSSpeech
+
 ## 语音设置 <TVSSpeech/TVSSpeech.h>
 
 ### TVSAISpeechItem 音色配置类
@@ -45,10 +47,10 @@
 
   **参数**：
 
-  | 名称 | 类型 | 描述 | 是否必填 |
-  | ------ | ------ | ------ | ------ |
-  | productId | NSString* | 设备 productId | 是 |
-  | handler | void(^)(NSArray<TVSAISpeechItem*>*) | 回调，返回配置列表 | 是 |
+| 名称 | 类型 | 描述 | 是否必填 |
+| ------ | ------ | ------ | ------ |
+| productId | NSString* | 设备 productId | 是 |
+| handler | void(^)(NSArray<TVSAISpeechItem*>*) | 回调，返回配置列表 | 是 |
 
   **返回**：
 
@@ -63,11 +65,11 @@
 
   **参数**：
 
-  | 名称 | 类型 | 描述 | 是否必填 |
-  | ------ | ------ | ------ | ------ |
-  | productId | NSString* | 设备 productId | 是 |
-  | dsn | NSString* | 设备序列号 | 是 |
-  | handler | void(^)(TVSAISpeechItem*) | 回调，返回音色配置 | 是 |
+| 名称 | 类型 | 描述 | 是否必填 |
+| ------ | ------ | ------ | ------ |
+| productId | NSString* | 设备 productId | 是 |
+| dsn | NSString* | 设备序列号 | 是 |
+| handler | void(^)(TVSAISpeechItem*) | 回调，返回音色配置 | 是 |
 
   **返回**：
 
@@ -81,12 +83,12 @@
 
   **参数**：
 
-  | 名称 | 类型 | 描述 | 是否必填 |
-  | ------ | ------ | ------ | ------ |
-  | speechID |  NSString* | 音色 id | 是 |
-  | productId | NSString* | 设备 productId | 是 |
-  | dsn | NSString* | 设备序列号 | 是 |
-  | handler | void(^)(BOOL) | 回调，返回是否设置成功 | 是 |
+| 名称 | 类型 | 描述 | 是否必填 |
+| ------ | ------ | ------ | ------ |
+| speechID |  NSString* | 音色 id | 是 |
+| productId | NSString* | 设备 productId | 是 |
+| dsn | NSString* | 设备序列号 | 是 |
+| handler | void(^)(BOOL) | 回调，返回是否设置成功 | 是 |
 
   **返回**：
 

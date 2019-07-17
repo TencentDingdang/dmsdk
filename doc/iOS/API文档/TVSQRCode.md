@@ -1,3 +1,5 @@
+# TVSQRCode
+
 ## TVSQRCode <TVSQRCode/TVSQRCode.h>
 
 ### TVSQRCodeBusinessType 扫码业务类型枚举
@@ -40,7 +42,7 @@
 #### 方法
 
 ##### `+(void)queryQRScanResult:(NSString*)result handler:(void(^)(NSDictionary*))handler;`
-  
+
   **描述**:
 
   通过二维码扫描结果，查询相关信息；
@@ -48,10 +50,10 @@
 
   **参数**:
 
-  | 名称 | 类型 | 描述 | 是否必填 |
-  | ------ | ------ | ------ | ------ |
-  | result | NSString* | 二维码扫描结果 | 是 |
-  | handler | void(^)(NSDictionary*) | 回调，NSDictionary* 参数为查询到的信息字典 | 是 |
+| 名称 | 类型 | 描述 | 是否必填 |
+| ------ | ------ | ------ | ------ |
+| result | NSString* | 二维码扫描结果 | 是 |
+| handler | void(^)(NSDictionary*) | 回调，NSDictionary* 参数为查询到的信息字典 | 是 |
 
   **返回**:
 
@@ -65,9 +67,9 @@
 
   **参数**:
 
-  | 名称 | 类型 | 描述 | 是否必填 |
-  | ------ | ------ | ------ | ------ |
-  | result | NSString* | 二维码扫描结果 | 是 |
+| 名称 | 类型 | 描述 | 是否必填 |
+| ------ | ------ | ------ | ------ |
+| result | NSString* | 二维码扫描结果 | 是 |
 
   **返回**:
 
@@ -81,11 +83,11 @@
 
   **参数**:
 
-  | 名称 | 类型 | 描述 | 是否必填 |
-  | ------ | ------ | ------ | ------ |
-  | businessType | TVSQRCodeBusinessType | 二维码业务类型 | 是 |
-  | productId | NSString* | 设备 productId | 是 |
-  | dsn | NSString* | 设备序列号 | 是 |
+| 名称 | 类型 | 描述 | 是否必填 |
+| ------ | ------ | ------ | ------ |
+| businessType | TVSQRCodeBusinessType | 二维码业务类型 | 是 |
+| productId | NSString* | 设备 productId | 是 |
+| dsn | NSString* | 设备序列号 | 是 |
 
   **返回**:
 
@@ -99,9 +101,9 @@
 
   **参数**:
 
-  | 名称 | 类型 | 描述 | 是否必填 |
-  | ------ | ------ | ------ | ------ |
-  | handler | void(^)(TVSQRCodeInfo*) | 回调，TVSQRCodeInfo* 即为二维码信息 | 是 |
+| 名称 | 类型 | 描述 | 是否必填 |
+| ------ | ------ | ------ | ------ |
+| handler | void(^)(TVSQRCodeInfo*) | 回调，TVSQRCodeInfo* 即为二维码信息 | 是 |
 
   **返回**:
 
@@ -115,10 +117,10 @@
 
   **参数**:
 
-  | 名称 | 类型 | 描述 | 是否必填 |
-  | ------ | ------ | ------ | ------ |
-  | status | TVSQRCodeStatus | 二维码状态 | 是 |
-  | handler | void(^)(BOOL) | 回调，BOOL 表示是否设置成功 | 是 |
+| 名称 | 类型 | 描述 | 是否必填 |
+| ------ | ------ | ------ | ------ |
+| status | TVSQRCodeStatus | 二维码状态 | 是 |
+| handler | void(^)(BOOL) | 回调，BOOL 表示是否设置成功 | 是 |
 
   **返回**:
 

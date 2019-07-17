@@ -1,3 +1,5 @@
+# TVSWeb
+
 ## Web 页面 <TVSWeb/TVSWeb.h>
 
 ### TVSWebPageType Web 页面类型枚举
@@ -38,9 +40,9 @@
 
   **参数**:
 
-  | 名称 | 类型 | 描述 |
-  | ------ | ------ | ------ |
-  | progress | double | 页面加载进度 |
+| 名称 | 类型 | 描述 |
+| ------ | ------ | ------ |
+| progress | double | 页面加载进度 |
 
   **返回**:
 
@@ -68,9 +70,9 @@
 
   **参数**:
 
-  | 名称 | 类型 | 描述 |
-  | ------ | ------ | ------ |
-  | error | NSError* | 错误 |
+| 名称 | 类型 | 描述 |
+| ------ | ------ | ------ |
+| error | NSError* | 错误 |
 
   **返回**:
 
@@ -84,9 +86,9 @@
 
   **参数**:
 
-  | 名称 | 类型 | 描述 |
-  | ------ | ------ | ------ |
-  | title | NSString* | 网页标题 |
+| 名称 | 类型 | 描述 |
+| ------ | ------ | ------ |
+| title | NSString* | 网页标题 |
 
   **返回**:
 
@@ -101,9 +103,9 @@
 
   **参数**:
 
-  | 名称 | 类型 | 描述 |
-  | ------ | ------ | ------ |
-  | scheme | NSString* | scheme |
+| 名称 | 类型 | 描述 |
+| ------ | ------ | ------ |
+| scheme | NSString* | scheme |
 
   **返回**:
 
@@ -118,9 +120,9 @@
 
   **参数**:
 
-  | 名称 | 类型 | 描述 |
-  | ------ | ------ | ------ |
-  | url | NSString* | 网页链接 |
+| 名称 | 类型 | 描述 |
+| ------ | ------ | ------ |
+| url | NSString* | 网页链接 |
 
   **返回**:
 
@@ -136,9 +138,9 @@
 
   **参数**:
 
-  | 名称 | 类型 | 描述 |
-  | ------ | ------ | ------ |
-  | result | TVSAuthResult | QQ 登录结果 |
+| 名称 | 类型 | 描述 |
+| ------ | ------ | ------ |
+| result | TVSAuthResult | QQ 登录结果 |
 
   **返回**:
 
@@ -152,9 +154,9 @@
 
   **参数**:
 
-  | 名称 | 类型 | 描述 |
-  | ------ | ------ | ------ |
-  | result | TVSAuthResult | 微信登录结果 |
+| 名称 | 类型 | 描述 |
+| ------ | ------ | ------ |
+| result | TVSAuthResult | 微信登录结果 |
 
   **返回**:
 
@@ -168,9 +170,9 @@
 
   **参数**:
 
-  | 名称 | 类型 | 描述 |
-  | ------ | ------ | ------ |
-  | result | TVSAuthResult | QQ 验票是否成功 |
+| 名称 | 类型 | 描述 |
+| ------ | ------ | ------ |
+| result | TVSAuthResult | QQ 验票是否成功 |
 
   **返回**:
 
@@ -184,9 +186,9 @@
 
   **参数**:
 
-  | 名称 | 类型 | 描述 |
-  | ------ | ------ | ------ |
-  | result | TVSAuthResult | 微信刷票是否成功 |
+| 名称 | 类型 | 描述 |
+| ------ | ------ | ------ |
+| result | TVSAuthResult | 微信刷票是否成功 |
 
   **返回**:
 
@@ -214,9 +216,9 @@
 
   **参数**:
 
-  | 名称 | 类型 | 描述 |
-  | ------ | ------ | ------ |
-  | data | NSDictionary* | 透传的参数字典 |
+| 名称 | 类型 | 描述 |
+| ------ | ------ | ------ |
+| data | NSDictionary* | 透传的参数字典 |
 
   **返回**:
 
@@ -230,10 +232,10 @@
 
   **参数**:
 
-  | 名称 | 类型 | 描述 |
-  | ------ | ------ | ------ |
-  | msg | NSDictionary* | JS 消息名 |
-  | data | id | JS 消息数据 |
+| 名称 | 类型 | 描述 |
+| ------ | ------ | ------ |
+| msg | NSDictionary* | JS 消息名 |
+| data | id | JS 消息数据 |
 
   **返回**:
 
@@ -243,14 +245,14 @@
 
 #### 成员
 
-  | 名称 | 类型 | 描述 | 备注 |
-  | ------ | ------ | ------ | ------ |
-  | webUniversalDelegate | TVSWebUniversalDelegate | Web 页面通用回调 |  |
-  | webBusinessDelegate | TVSWebBusinessDelegate | Web 页面业务回调 |  |
-  | authDelegate | TVSAuthDelegate | 账号授权协议 | 如果不使用 SDK 里面的 TVSAuthManager 授权，而是自己调用微信/QQ SDK，则必须实现此协议！ |
-  | device | TVSDeviceInfo* | 设备信息 | QQ 音乐会员等页面需要此参数，其中 deviceBindType、deviceType、deviceOEM、productId、DSN 几个字段为必填! |
-  | autoCheckDeviceBind | BOOL | 是否自动检查设备绑定 | LinkPlay 设备打开个人中心需要检查绑定 |
-  | showDebugTool | BOOL | 是否展示网页调试工具 |  |
+| 名称 | 类型 | 描述 | 备注 |
+| ------ | ------ | ------ | ------ |
+| webUniversalDelegate | TVSWebUniversalDelegate | Web 页面通用回调 |  |
+| webBusinessDelegate | TVSWebBusinessDelegate | Web 页面业务回调 |  |
+| authDelegate | TVSAuthDelegate | 账号授权协议 | 如果不使用 SDK 里面的 TVSAuthManager 授权，而是自己调用微信/QQ SDK，则必须实现此协议！ |
+| device | TVSDeviceInfo* | 设备信息 | QQ 音乐会员等页面需要此参数，其中 deviceBindType、deviceType、deviceOEM、productId、DSN 几个字段为必填! |
+| autoCheckDeviceBind | BOOL | 是否自动检查设备绑定 | LinkPlay 设备打开个人中心需要检查绑定 |
+| showDebugTool | BOOL | 是否展示网页调试工具 |  |
 
 #### 方法
 
@@ -262,9 +264,9 @@
 
   **参数**：
 
-  | 名称 | 类型 | 描述 | 是否必填 |
-  | ------ | ------ | ------ | ------ |
-  | frame | CGRect | 组件位置和大小 | 是 |
+| 名称 | 类型 | 描述 | 是否必填 |
+| ------ | ------ | ------ | ------ |
+| frame | CGRect | 组件位置和大小 | 是 |
 
   **返回**：
 
@@ -278,9 +280,9 @@
 
   **参数**：
 
-  | 名称 | 类型 | 描述 | 是否必填 |
-  | ------ | ------ | ------ | ------ |
-  | pageType | TVSWebPageType | H5 页面类型 | 是 |
+| 名称 | 类型 | 描述 | 是否必填 |
+| ------ | ------ | ------ | ------ |
+| pageType | TVSWebPageType | H5 页面类型 | 是 |
 
   **返回**：
 
@@ -294,9 +296,9 @@
 
   **参数**：
 
-  | 名称 | 类型 | 描述 | 是否必填 |
-  | ------ | ------ | ------ | ------ |
-  | url | NSString* | Web 页面链接 | 是 |
+| 名称 | 类型 | 描述 | 是否必填 |
+| ------ | ------ | ------ | ------ |
+| url | NSString* | Web 页面链接 | 是 |
 
   **返回**：
 
@@ -408,10 +410,10 @@
 
   **参数**：
 
-  | 名称 | 类型 | 描述 | 是否必填 |
-  | ------ | ------ | ------ | ------ |
-  | code | NSString* | JS 代码 | 是 |
-  | handler | void(^)(BOOL) | 回调，BOOL 表示是否执行成功 | 是 |
+| 名称 | 类型 | 描述 | 是否必填 |
+| ------ | ------ | ------ | ------ |
+| code | NSString* | JS 代码 | 是 |
+| handler | void(^)(BOOL) | 回调，BOOL 表示是否执行成功 | 是 |
 
   **返回**：
 
