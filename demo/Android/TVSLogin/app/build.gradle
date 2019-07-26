@@ -13,8 +13,10 @@ android {
     flavorDimensions 'login'
     productFlavors {
         weixinQq {
+            buildConfigField("boolean", "IS_THIRD_PARTY", "false")
         }
         thirdParty {
+            buildConfigField("boolean", "IS_THIRD_PARTY", "true")
         }
     }
     buildTypes {
@@ -45,12 +47,15 @@ android {
 
 dependencies {
     // 微信登录
-    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.4.0'
+    weixinQqImplementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.4.0'
     // QQ登录
-    implementation files('libs/open_sdk_r6052_lite.jar')
+    weixinQqImplementation files('libs/open_sdk_r6052_lite.jar')
+    weixinQqImplementation 'com.android.support:support-fragment:28.0.0'
+    // Support libraries
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'com.android.support:design:28.0.0'
-    def tvsVer = '2.1.3'
+    // DMSDK
+    def tvsVer = '2.1.4'
     // 核心模块，必须
     implementation "com.tencent.yunxiaowei.dmsdk:core:$tvsVer"
     // AI Speech模块，可选

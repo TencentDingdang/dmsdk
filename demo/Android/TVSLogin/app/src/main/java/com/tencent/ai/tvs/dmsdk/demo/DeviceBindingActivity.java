@@ -2,7 +2,9 @@ package com.tencent.ai.tvs.dmsdk.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -27,7 +29,19 @@ public class DeviceBindingActivity extends ModuleActivity {
         setContentView(R.layout.activity_device_binding);
 
         mProductIDEditText = findViewById(R.id.productIDEditText);
-        mProductIDEditText.setText(DemoConstant.PRODUCT_ID);
+        mProductIDEditText.setText(ThirdPartyManager.getProductId());
+        mProductIDEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                ThirdPartyManager.setProductId(s.toString());
+            }
+        });
         mDSNEditText = findViewById(R.id.dsnEditText);
         mDSNEditText.setText(DemoConstant.DSN);
         findViewById(R.id.bindButton).setOnClickListener(v -> {

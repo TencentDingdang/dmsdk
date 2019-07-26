@@ -169,10 +169,10 @@ typedef NS_ENUM(NSInteger,TVSAuthResult) {
 +(NSString*)clientIdWithProductId:(NSString*)productId dsn:(NSString*)dsn openId:(NSString*)openId accessToken:(NSString*)accessToken refreshToken:(NSString*)refreshToken;
 
 /*
- * @brief 通过账号 ID 生成账号信息（仅适用于自己实现账号登录，且没有token的场景！！）
- * @param accountId 账号唯一 ID，比如手机号
+ * @brief 通过账号 ID 生成账号信息（仅适用于自己实现账号登录的场景！！）
+ * @param appId 传 productId 的前半部分（即appKey）
  */
--(instancetype)initWithAccountId:(NSString*)accountId;
+-(instancetype)initWithAppId:(NSString*)appId accountId:(NSString *)accountId;
 
 @end
 
@@ -326,6 +326,12 @@ typedef NS_ENUM(NSInteger,TVSAuthResult) {
  * @return 是否存在
  */
 -(BOOL)isQQTokenExist;
+
+/*
+ * @brief 是否第三方登录
+ * @return 是否
+ */
+-(BOOL)isVisitorTokenExist;
 
 /*
  * @brief 检测微信是否安装，版本是否支持

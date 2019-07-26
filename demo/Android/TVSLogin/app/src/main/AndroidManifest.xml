@@ -27,6 +27,8 @@
             android:label="@string/module_account" />
         <activity
             android:name="com.tencent.ai.tvs.dmsdk.demo.DeviceBindingActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
             android:label="@string/module_device_binding" />
         <activity
             android:name="com.tencent.ai.tvs.dmsdk.demo.WebActivity"
