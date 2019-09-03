@@ -610,7 +610,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ffb54fb08efe11e8a377658d0db82adb:cdc9a089b0b94747ae60d97f01310589" borderStyle="roundedRect" placeholder="请输入 ProductId.." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="t6p-Jz-paV">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0123456789abcdef0123456789abcdef:0123456789abcdef0123456789abcdef" borderStyle="roundedRect" placeholder="请输入 ProductId.." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="t6p-Jz-paV">
                                 <rect key="frame" x="15" y="125" width="384" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="30" id="9eJ-NP-IMi"/>
@@ -630,7 +630,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1g:3g:b4:7f:f8:d9:d0:k8" borderStyle="roundedRect" placeholder="请输入 DSN.." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fXW-al-GWX">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0123456789" borderStyle="roundedRect" placeholder="请输入 DSN.." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fXW-al-GWX">
                                 <rect key="frame" x="15" y="192" width="384" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="i9C-RI-GE4"/>
