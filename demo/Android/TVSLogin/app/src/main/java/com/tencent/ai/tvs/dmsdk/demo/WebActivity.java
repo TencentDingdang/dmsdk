@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.KeyEvent;
@@ -19,13 +18,14 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 
+import androidx.appcompat.app.ActionBar;
+
 import com.tencent.ai.dobbydemo.BuildConfig;
 import com.tencent.ai.dobbydemo.R;
 import com.tencent.ai.tvs.core.common.TVSDevice;
 import com.tencent.ai.tvs.env.ELoginPlatform;
 import com.tencent.ai.tvs.env.EUserAttrType;
 import com.tencent.ai.tvs.tskm.TVSThirdPartyAuth;
-import com.tencent.ai.tvs.ui.AndroidBug5497Workaround;
 import com.tencent.ai.tvs.web.TVSWebController;
 import com.tencent.ai.tvs.web.TVSWebView;
 
@@ -61,8 +61,6 @@ public class WebActivity extends ModuleActivity {
             WebView.setWebContentsDebuggingEnabled(true);
         }
 
-        AndroidBug5497Workaround.assistActivity(this);
-
         mWebViewController = ((TVSWebView) findViewById(R.id.tvsWebView)).getController();
         Intent intent = getIntent();
         TVSDevice tvsDevice = (TVSDevice) intent.getSerializableExtra("devInfo");
@@ -96,6 +94,7 @@ public class WebActivity extends ModuleActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == ACTIVITY_RESULT_CODE_FILECHOOSER) {
             mWebViewController.onPickFileResult(resultCode, data);
         }
@@ -261,6 +260,7 @@ public class WebActivity extends ModuleActivity {
 
         @Override
         public void onTokenRefreshResult(ELoginPlatform platform, int errorCode) {
+            Log.i(LOG_TAG, "onTokenRefreshResult: platform = " + platform + ", errorCode = " + errorCode);
         }
     }
 }

@@ -21,6 +21,7 @@ public class LogView extends ScrollView {
     public LogView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mLogTextView = new TextView(context);
+        mLogTextView.setTextIsSelectable(true);
         addView(mLogTextView, new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
         log = "";
     }

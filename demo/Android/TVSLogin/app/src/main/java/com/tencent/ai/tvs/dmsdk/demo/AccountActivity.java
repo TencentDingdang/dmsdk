@@ -1,19 +1,11 @@
 package com.tencent.ai.tvs.dmsdk.demo;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.tencent.ai.dobbydemo.R;
 import com.tencent.ai.tvs.LoginProxy;
@@ -22,8 +14,6 @@ import com.tencent.ai.tvs.core.account.UserInfoManager;
 import com.tencent.ai.tvs.env.ELoginPlatform;
 
 public class AccountActivity extends ModuleActivity {
-    private ClipboardManager mClipboardManager;
-    private EditText mAccountIdEditText;
     private TextView mWXTextView;
     private Button mWXLoginButton;
     private Button mWXRefreshButton;
@@ -33,21 +23,6 @@ public class AccountActivity extends ModuleActivity {
     private Button mAccountInfoButton;
     private Button mUserInfoButton;
     private Button mLogoutButton;
-    private TextView mClientIdTextView;
-    private TextWatcher mUpdateClientIdWatcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-            updateClientId();
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,36 +31,9 @@ public class AccountActivity extends ModuleActivity {
 
         LoginProxy api = LoginProxy.getInstance();
 
-        mClipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        String productID = "mProductId";
+        String dsn ="mDSN";
 
-        RadioButton dmsdkRadioButton = findViewById(R.id.dmsdkRadioButton);
-        RadioButton thirdPartyRadioButton = findViewById(R.id.thirdPartyRadioButton);
-        dmsdkRadioButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                changeMode(false);
-            }
-        });
-        thirdPartyRadioButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                changeMode(true);
-            }
-        });
-        mAccountIdEditText = findViewById(R.id.accountIdEditText);
-        mAccountIdEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (ThirdPartyManager.isThirdParty()) {
-                    ThirdPartyManager.setThirdPartyAccountId(s.toString());
-                }
-                mUpdateClientIdWatcher.afterTextChanged(s);
-            }
-        });
         mWXTextView = findViewById(R.id.wxTitleTextView);
         mWXLoginButton = findViewById(R.id.wxLoginButton);
         mWXLoginButton.setOnClickListener(v -> api.tvsLogin(ELoginPlatform.WX, null, new SimpleTVSCallback("微信登录")));
@@ -99,14 +47,14 @@ public class AccountActivity extends ModuleActivity {
         mAccountInfoButton = findViewById(R.id.accountInfoButton);
         mAccountInfoButton.setOnClickListener(v -> {
             AccountInfoManager m = AccountInfoManager.getInstance();
-            logSection("获取账户信息(第三方账号方案不适用)");
+            logSection("获取账户信息");
             logLine("appID = " + m.getAppID());
             logLine("openID = " + m.getOpenID());
             logLine("tvsID = " + m.getTvsID());
             logLine("accessToken = " + m.getAccessToken());
             logLine("refreshToken = " + m.getRefreshToken());
             logLine("userID = " + m.getUserId());
-            logLine("clientID = " + m.getClientId(DemoConstant.PRODUCT_ID, DemoConstant.DSN));
+            logLine("clientID = " + m.getClientId(productID, dsn));
         });
         mUserInfoButton = findViewById(R.id.userInfoButton);
         mUserInfoButton.setOnClickListener(v -> {
@@ -124,31 +72,12 @@ public class AccountActivity extends ModuleActivity {
             logSection("退出登录");
             logLine("Success");
         });
-        mClientIdTextView = findViewById(R.id.clientIdTextView);
-        mClientIdTextView.setOnClickListener(v -> {
-            updateClientId();
-            ClipData clipData = ClipData.newPlainText("Client ID", mClientIdTextView.getText());
-            mClipboardManager.setPrimaryClip(clipData);
-            Toast.makeText(this, "Client ID copied to clipboard", Toast.LENGTH_SHORT).show();
-        });
         CheckBox logoutBeforeReloginCheckBox = findViewById(R.id.logoutBeforeReloginCheckBox);
         logoutBeforeReloginCheckBox.setChecked(LoginProxy.getInstance().isLogoutBeforeRelogin());
         logoutBeforeReloginCheckBox.setOnClickListener(view -> LoginProxy.getInstance().setLogoutBeforeRelogin(logoutBeforeReloginCheckBox.isChecked()));
 
         // Init login state
         reloadState();
-
-        dmsdkRadioButton.setChecked(!ThirdPartyManager.isThirdParty());
-        thirdPartyRadioButton.setChecked(ThirdPartyManager.isThirdParty());
-        dmsdkRadioButton.setEnabled(false);
-        thirdPartyRadioButton.setEnabled(false);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        // Refresh after login and come back to this page
-        updateClientId();
     }
 
     @Override
@@ -170,20 +99,6 @@ public class AccountActivity extends ModuleActivity {
         mAccountInfoButton.setEnabled(platform != null);
         mUserInfoButton.setEnabled(platform != null);
         mLogoutButton.setEnabled(platform != null);
-    }
-
-    private void changeMode(boolean isThirdParty) {
-        mAccountIdEditText.setEnabled(isThirdParty);
-        String accountId = isThirdParty ? ThirdPartyManager.getThirdPartyAccountId() : AccountInfoManager.getInstance().getOpenID();
-        mAccountIdEditText.setText(accountId == null ? "" : accountId);
-        updateClientId();
-    }
-
-    private void updateClientId() {
-        String clientId = ThirdPartyManager.isThirdParty()
-                ? AccountInfoManager.getClientIdForThirdParty(mAccountIdEditText.getText().toString(), "", "", DemoConstant.PRODUCT_ID, DemoConstant.DSN)
-                : AccountInfoManager.getInstance().getClientId(DemoConstant.PRODUCT_ID, DemoConstant.DSN);
-        mClientIdTextView.setText(clientId);
     }
 
     private class SimpleTVSCallback extends ModuleActivity.SimpleTVSCallback {

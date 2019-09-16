@@ -1,61 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.tencent.ai.tvs.dmsdk.demo.AccountActivity">
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <RadioButton
-            android:id="@+id/dmsdkRadioButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="DMSDK账号体系" />
-
-        <RadioButton
-            android:id="@+id/thirdPartyRadioButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="第三方账号体系" />
-
-    </RadioGroup>
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/accountIdLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/radioGroup"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/accountIdEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Account ID" />
-
-    </android.support.design.widget.TextInputLayout>
-
     <TextView
         style="@style/TextAppearance.AppCompat.Body2"
         android:id="@+id/wxTitleTextView"
-        android:layout_width="48dp"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:gravity="center_vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/wxLoginButton"
-        app:layout_constraintBottom_toBottomOf="@id/wxLoginButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:text="微信" />
 
     <Button
@@ -63,8 +22,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="登录"
-        app:layout_constraintTop_toBottomOf="@id/accountIdLayout"
-        app:layout_constraintStart_toEndOf="@id/wxTitleTextView"
+        app:layout_constraintTop_toBottomOf="@id/wxTitleTextView"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/wxRefreshButton" />
 
     <Button
@@ -72,20 +31,19 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="刷新Token"
-        app:layout_constraintTop_toTopOf="@id/wxLoginButton"
-        app:layout_constraintBottom_toBottomOf="@id/wxLoginButton"
+        app:layout_constraintTop_toBottomOf="@id/wxTitleTextView"
         app:layout_constraintStart_toEndOf="@id/wxLoginButton"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         style="@style/TextAppearance.AppCompat.Body2"
         android:id="@+id/qqTitleTextView"
-        android:layout_width="48dp"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:gravity="center_vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/qqLoginButton"
-        app:layout_constraintBottom_toBottomOf="@id/qqLoginButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/wxLoginButton"
         android:text="QQ" />
 
     <Button
@@ -93,8 +51,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="登录"
-        app:layout_constraintTop_toBottomOf="@id/wxLoginButton"
-        app:layout_constraintStart_toEndOf="@id/qqTitleTextView"
+        app:layout_constraintTop_toBottomOf="@id/qqTitleTextView"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/qqRefreshButton" />
 
     <Button
@@ -102,8 +60,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="验证Token"
-        app:layout_constraintTop_toTopOf="@id/qqLoginButton"
-        app:layout_constraintBottom_toBottomOf="@id/qqLoginButton"
+        app:layout_constraintTop_toBottomOf="@id/qqTitleTextView"
         app:layout_constraintStart_toEndOf="@id/qqLoginButton"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -145,35 +102,12 @@
         app:layout_constraintStart_toEndOf="@id/userInfoButton"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
-        style="@style/TextAppearance.AppCompat.Body2"
-        android:id="@+id/clientIdTitleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Client ID (点击复制)"
-        app:layout_constraintTop_toBottomOf="@id/accountInfoButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/clientIdTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        android:background="?attr/selectableItemBackground"
-        android:clickable="true"
-        android:focusable="true"
-        app:layout_constraintTop_toBottomOf="@id/clientIdTitleTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:text="some:client:id" />
-
     <CheckBox
         android:id="@+id/logoutBeforeReloginCheckBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="登录前退出登录"
-        app:layout_constraintTop_toBottomOf="@id/clientIdTextView"
+        app:layout_constraintTop_toBottomOf="@id/accountInfoButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -186,4 +120,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

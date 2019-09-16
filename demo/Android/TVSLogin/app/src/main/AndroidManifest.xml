@@ -25,11 +25,13 @@
         <activity
             android:name="com.tencent.ai.tvs.dmsdk.demo.AccountActivity"
             android:label="@string/module_account" />
+        <!-- Export and SingleTask so CloudDingDang can return result -->
         <activity
             android:name="com.tencent.ai.tvs.dmsdk.demo.DeviceBindingActivity"
             android:exported="true"
             android:launchMode="singleTask"
             android:label="@string/module_device_binding" />
+        <!-- Export and SingleTask so CloudDingDang can return result -->
         <activity
             android:name="com.tencent.ai.tvs.dmsdk.demo.WebActivity"
             android:launchMode="singleTask"
@@ -49,6 +51,41 @@
         <activity
             android:name="com.tencent.ai.tvs.dmsdk.demo.AISpeechActivity"
             android:label="@string/module_ai_speech" />
+        <!-- Start: 微信登录接入 -->
+        <!-- 要接入微信登录，需要添加下面的两个标签；如果您需要自定义WxEntryActivity，则不需要添加
+             下面的标签，而是按照微信的接入文档添加自定义的WxEntryActivity，但要使用DMSDK的微信登录
+             的话需要参考文档调用相应的API。 -->
+        <activity
+            android:name="com.tencent.ai.tvs.WXEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTask" />
+        <activity-alias
+            android:name="${applicationId}.wxapi.WXEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:targetActivity="com.tencent.ai.tvs.WXEntryActivity" />
+        <!-- End: 微信登录接入 -->
+
+        <!-- Start: QQOpen登录接入 -->
+        <!-- 要接入QQ登录，需要添加下面的两个标签；详见QQ登录文档。 -->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- 注意：此处您需要按照QQ互联的文档配置您申请的QQ登录API -->
+                <data android:scheme="tencent101470979" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="behind"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- End: QQOpen登录接入 -->
     </application>
 
 </manifest>

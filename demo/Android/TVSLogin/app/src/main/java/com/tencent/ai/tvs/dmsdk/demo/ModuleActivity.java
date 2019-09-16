@@ -2,11 +2,12 @@ package com.tencent.ai.tvs.dmsdk.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.tencent.ai.dobbydemo.R;
 import com.tencent.ai.tvs.core.common.ErrCode;

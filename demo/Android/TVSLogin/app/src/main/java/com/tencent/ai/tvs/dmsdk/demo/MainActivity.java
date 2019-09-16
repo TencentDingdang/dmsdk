@@ -2,11 +2,9 @@ package com.tencent.ai.tvs.dmsdk.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +12,12 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.textfield.TextInputEditText;
 import com.tencent.ai.dobbydemo.R;
 import com.tencent.ai.tvs.LoginProxy;
 import com.tencent.ai.tvs.core.common.TVSDevice;
@@ -23,6 +27,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private ModuleListAdapter mAdapter;
+    private TextInputEditText mProductIdEditText;
+    private TextInputEditText mDsnEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +56,33 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
+        mProductIdEditText = findViewById(R.id.productIDEditText);
+        mProductIdEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                DemoConstant.PRODUCT_ID = editable.toString();
+            }
+        });
+        mDsnEditText = findViewById(R.id.dsnEditText);
+        mDsnEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                DemoConstant.DSN = editable.toString();
+            }
+        });
+
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(mAdapter);
@@ -60,6 +93,13 @@ public class MainActivity extends AppCompatActivity {
         if (LoginProxy.getInstance().isTokenExist()) {
             LoginProxy.getInstance().tvsTokenVerify(null);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mProductIdEditText.setText(DemoConstant.PRODUCT_ID);
+        mDsnEditText.setText(DemoConstant.DSN);
     }
 
     private void initModuleList() {
