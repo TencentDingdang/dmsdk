@@ -8,13 +8,25 @@
 
 ## 更新日志：
 
-[Android](#Android) (Latest: v2.1.4)
+[Android](#Android) (Latest: v2.2.0)
 
 [iOS](#iOS) (Latest: v2.1.2)
 
 **v1.0 到 v2.0.0+ API 变更较大，请阅读升级指南([Android 版][5] | [iOS 版][4])。**
 
 ### Android
+
+#### v2.2.0
+
+*   各模块提高网络请求稳定性
+*   各模块移除无用资源，减小体积
+*   Core模块修复LoadedApk被混淆导致在三星S9上崩溃的问题
+*   原Web模块修复debug开关实现错误问题
+*   原Web模块修复部分预设页面体验环境域名错误的问题
+*   原Web模块修复WebView潜在的内存泄漏问题
+*   原Web模块增加QQ验票的JS接口，并修复Cookie未设置问题
+*   原Web模块支持离线UI模版
+*   原Web模块独立为WebView SDK
 
 #### v2.1.4
 
