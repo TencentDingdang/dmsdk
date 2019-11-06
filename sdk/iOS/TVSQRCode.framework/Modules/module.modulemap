@@ -1,6 +1,0 @@
-framework module TVSQRCode {
-  umbrella header "TVSQRCode.h"
-
-  export *
-  module * { export * }
-}

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6xC-Lj-aAE">
-    <device id="retina6_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6xC-Lj-aAE">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -198,7 +196,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Z29-Qn-CY5"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                             </textField>
@@ -216,7 +213,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="6lw-tZ-WBa"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                             </textField>
@@ -617,7 +613,6 @@
                                     <constraint firstAttribute="height" constant="30" id="Ysp-4C-XRv"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="jMv-Vj-2ms"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                             </textField>
@@ -635,7 +630,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="i9C-RI-GE4"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                             </textField>
@@ -693,7 +687,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Uvz-T0-ddC"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                                     </textField>
@@ -767,7 +760,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="fwh-It-Ahc"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                             </textField>
@@ -785,7 +777,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="vAU-sg-5MM"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                             </textField>
@@ -1120,7 +1111,6 @@
                                     <constraint firstAttribute="height" constant="30" id="kXk-fV-nDF"/>
                                     <constraint firstAttribute="width" constant="150" id="zzt-sM-bo3"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                             </textField>
@@ -1139,7 +1129,6 @@
                                     <constraint firstAttribute="width" constant="150" id="f2Q-JR-gPg"/>
                                     <constraint firstAttribute="height" constant="30" id="uWU-v8-sFh"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                             </textField>
@@ -1294,7 +1283,6 @@
                                     <constraint firstAttribute="height" constant="30" id="Gpi-BB-SHK"/>
                                     <constraint firstAttribute="width" constant="100" id="Yb4-Wa-rGa"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
@@ -1304,7 +1292,6 @@
                                     <constraint firstAttribute="height" constant="30" id="cHs-1i-F7i"/>
                                     <constraint firstAttribute="width" constant="100" id="rZu-EM-da7"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
@@ -1322,7 +1309,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Hkk-qK-DBm"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                             </textField>
@@ -1340,7 +1326,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="pNa-1Q-oAh"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                             </textField>
@@ -1412,7 +1397,6 @@
                                     <constraint firstAttribute="height" constant="30" id="3eY-Os-MG0"/>
                                     <constraint firstAttribute="width" constant="100" id="i5R-iT-o5o"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
@@ -1634,7 +1618,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="SfI-Nr-em3"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                             </textField>
@@ -1652,10 +1635,45 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="xbi-Hl-PTS"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                             </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kGT-fF-R59">
+                                <rect key="frame" x="0.0" y="456" width="414" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qnI-K1-Tme">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="nwk-FL-ftS"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="QQ音乐账号授权"/>
+                                        <connections>
+                                            <action selector="onClickQQMusicAuthButton:" destination="fWA-9F-mDO" eventType="touchUpInside" id="BS5-T3-TVn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fT8-0I-DCD">
+                                        <rect key="frame" x="379" y="9" width="20" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="YNH-Ms-asy"/>
+                                            <constraint firstAttribute="width" constant="20" id="sKf-uF-Gsy"/>
+                                        </constraints>
+                                        <state key="normal" image="btn_next"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="qnI-K1-Tme" firstAttribute="top" secondItem="kGT-fF-R59" secondAttribute="top" id="0lV-lc-UbR"/>
+                                    <constraint firstItem="qnI-K1-Tme" firstAttribute="leading" secondItem="kGT-fF-R59" secondAttribute="leading" id="4tV-Xe-MFC"/>
+                                    <constraint firstAttribute="trailing" secondItem="fT8-0I-DCD" secondAttribute="trailing" constant="15" id="96p-gB-6Xv"/>
+                                    <constraint firstAttribute="height" constant="40" id="Azl-sR-lIf"/>
+                                    <constraint firstItem="fT8-0I-DCD" firstAttribute="top" secondItem="kGT-fF-R59" secondAttribute="top" constant="9" id="JRc-Ti-adl"/>
+                                    <constraint firstAttribute="trailing" secondItem="qnI-K1-Tme" secondAttribute="trailing" id="KeY-MU-PJA"/>
+                                    <constraint firstAttribute="bottom" secondItem="qnI-K1-Tme" secondAttribute="bottom" id="veq-0c-Arr"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
@@ -1672,9 +1690,12 @@
                             <constraint firstItem="EaE-2n-j6x" firstAttribute="top" secondItem="Xno-OT-LcL" secondAttribute="bottom" constant="5" id="Dxl-r9-Ln4"/>
                             <constraint firstItem="vVb-3w-elY" firstAttribute="top" secondItem="HVC-DJ-aFo" secondAttribute="bottom" constant="5" id="G9H-V9-X2y"/>
                             <constraint firstItem="iR0-3s-NWe" firstAttribute="top" secondItem="txu-yz-VcJ" secondAttribute="bottom" constant="15" id="MUn-af-9Ar"/>
+                            <constraint firstAttribute="trailing" secondItem="kGT-fF-R59" secondAttribute="trailing" id="Oxe-Js-IwS"/>
+                            <constraint firstItem="kGT-fF-R59" firstAttribute="leading" secondItem="34I-xH-vcx" secondAttribute="leading" id="WGf-BM-mQ3"/>
                             <constraint firstItem="SZm-Bb-FsH" firstAttribute="leading" secondItem="34I-xH-vcx" secondAttribute="leading" id="bPa-FV-kc4"/>
                             <constraint firstAttribute="trailing" secondItem="txu-yz-VcJ" secondAttribute="trailing" id="bvD-Tb-AHy"/>
                             <constraint firstItem="HVC-DJ-aFo" firstAttribute="top" secondItem="EaE-2n-j6x" secondAttribute="bottom" constant="15" id="es0-IM-Qdb"/>
+                            <constraint firstItem="kGT-fF-R59" firstAttribute="top" secondItem="SZm-Bb-FsH" secondAttribute="bottom" constant="8" symbolic="YES" id="hMt-CW-kiH"/>
                             <constraint firstItem="HVC-DJ-aFo" firstAttribute="leading" secondItem="34I-xH-vcx" secondAttribute="leading" constant="15" id="k7r-sX-OiU"/>
                             <constraint firstItem="Xno-OT-LcL" firstAttribute="leading" secondItem="34I-xH-vcx" secondAttribute="leading" constant="15" id="q1R-ei-GTg"/>
                             <constraint firstItem="HUY-0M-rtq" firstAttribute="leading" secondItem="34I-xH-vcx" secondAttribute="leading" id="q7O-rN-XnR"/>

@@ -49,7 +49,11 @@ typedef NS_ENUM(NSInteger,TVSWebPageType) {
     /*
      * @brief 用户反馈页面
      */
-    TVSWebPageTypeFeedback
+    TVSWebPageTypeFeedback,
+    /*
+     * @brief QQ音乐账号授权页面
+     */
+    TVSWebPageTypeCPAuthQQMusic
 };
 
 

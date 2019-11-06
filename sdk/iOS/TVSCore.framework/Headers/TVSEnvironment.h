@@ -34,6 +34,28 @@ typedef NS_ENUM(NSInteger,TVSServerEnv) {
     TVSServerEnvDev
 };
 
+/*
+ * @class TVSNetworkConfig
+ * @brief TVS 网络配置
+ */
+@interface TVSNetworkConfig : NSObject
+
+/*
+ * @brief 后台环境
+ */
+@property(nonatomic,assign) TVSServerEnv serverEnv;
+
+/*
+ * @brief 请求超时时间
+ */
+@property(nonatomic,assign) NSTimeInterval reqTimeout;
+
+/*
+ * @brief 是否使用 IPList 方案
+ */
+@property(nonatomic,assign) BOOL useIPList;
+
+@end
 
 /*
  * @class TVSEnvironment
@@ -43,14 +65,9 @@ typedef NS_ENUM(NSInteger,TVSServerEnv) {
 @interface TVSEnvironment : NSObject
 
 /*
- * @brief 后台环境
+ * @brief 网络配置
  */
-@property(nonatomic,assign) TVSServerEnv serverEnv;
-
-/*
- * @brief 后台请求超时时间
- */
-@property(nonatomic,assign) NSTimeInterval serverReqTimeout;
+@property(nonatomic,strong,readonly) TVSNetworkConfig* netConfig;
 
 /*
  * @brief 获得 TVS 环境类单例对象

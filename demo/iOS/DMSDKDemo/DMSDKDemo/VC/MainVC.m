@@ -10,6 +10,7 @@
 #import "AuthVC.h"
 #import <TVSCore/TVSEnvironment.h>
 #import <TVSCore/TVSAuth.h>
+#import <TVSTSKM/TVSThirdPartyAuth.h>
 
 @interface MainVC ()<UIPickerViewDataSource, UIPickerViewDelegate>
 
@@ -25,7 +26,7 @@
     // 读取 SDK 版本号
     self.title = [NSString stringWithFormat:@"DMSDK(v%@)", [TVSEnvironment shared].sdkVersion];
     // 读取后台环境配置
-    [_pickerView selectRow:[TVSEnvironment shared].serverEnv inComponent:0 animated:NO];
+    [_pickerView selectRow:[TVSEnvironment shared].netConfig.serverEnv inComponent:0 animated:NO];
 }
 
 /*
@@ -74,7 +75,7 @@
 
 // 由于不同环境账号信息不互通，切换环境后需要重新登录
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    if ([TVSEnvironment shared].serverEnv == row) return;
+    if ([TVSEnvironment shared].netConfig.serverEnv == row) return;
     
     if ([TVSAuthManager shared].isQQTokenExist || [TVSAuthManager shared].isWXTokenExist) {
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"不同环境下账号信息不互通，切换后需要重新登录。确定要切换么？" preferredStyle:UIAlertControllerStyleAlert];
@@ -82,16 +83,29 @@
             // 注销
             [[TVSAuthManager shared]logout];
             // 保存后台环境配置
-            [[TVSEnvironment shared]setServerEnv:row];
+            [TVSEnvironment shared].netConfig.serverEnv = row;
             
             AuthVC* vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"AuthVC"];
             vc.fromAlert = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }]];
         [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-            [pickerView selectRow:[TVSEnvironment shared].serverEnv inComponent:0 animated:YES];
+            [pickerView selectRow:[TVSEnvironment shared].netConfig.serverEnv inComponent:0 animated:YES];
         }]];
         [self presentViewController:alert animated:YES completion:nil];
+    }
+}
+
+- (IBAction)onClickBtnLaunchQQMusic:(id)sender {
+    id<TVSCPAuthAgent> agent = [[TVSCPAuthAgentManager shared]getAgentOfCP:TVSCPQQMusic];
+    if (agent != nil) {
+        [agent requestCPCredentialWithHandler:^(BOOL authSuccess, NSInteger errorCode, NSString * displayMessage, TVSCPCredential * credential) {
+            if (authSuccess) {
+                DDLogDebug(@"Auth successful OpenID:%@ OpenToken:%@", credential.openId, credential.openToken);
+            } else {
+                DDLogDebug(@"Auth failed errorCode:%ld displayMessage:%@", errorCode, displayMessage);
+            }
+        }];
     }
 }
 

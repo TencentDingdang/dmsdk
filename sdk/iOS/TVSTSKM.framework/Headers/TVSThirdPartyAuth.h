@@ -11,6 +11,58 @@
 #import <TVSCore/TVSDevice.h>
 #import <TVSTSKM/TVSTSKMProxy.h>
 
+typedef NS_ENUM(NSInteger,TVSCP) {
+    TVSCPUnknown,
+    TVSCPQQMusic
+};
+
+@interface TVSCPCredential : NSObject
+
+@property(nonatomic,readonly) TVSCP cp;
+
+@property(nonatomic,readonly) NSString* appId;
+
+@property(nonatomic,readonly) NSString* openId;
+
+@property(nonatomic,readonly) NSString* openToken;
+
+@property(nonatomic,readonly) NSInteger expireTime;
+
+-(instancetype)initWithCP:(TVSCP)cp andAppId:(NSString*)appId andOpenId:(NSString*)openId andOpenToken:(NSString*)openToken andExpireTime:(NSInteger)expireTime;
+
+@end
+
+typedef NS_ENUM(NSInteger,TVSCPError) {
+    TVSCPErrorNotSupported = 1,
+    TVSCPErrorNotInstalled,
+    TVSCPErrorConnectingToAppFailure,
+    TVSCPErrorUserCancellation,
+    TVSCPErrorRequestingAuthFailure,
+    TVSCPErrorBindingFailure
+};
+
+@protocol TVSCPAuthAgent <NSObject>
+
+-(NSString *)getAppId;
+
+-(BOOL)checkCPInstalled;
+
+-(void)requestCPCredentialWithHandler:(void(^)(BOOL,NSInteger,NSString *,TVSCPCredential *))handler;
+
+-(void)jumpToAppStore;
+
+@end
+
+@interface TVSCPAuthAgentManager : NSObject
+
++(instancetype)shared;
+
+-(id<TVSCPAuthAgent>)getAgentOfCP:(TVSCP)cp;
+
+-(void)setAgent:(id<TVSCPAuthAgent>)agent ofCP:(TVSCP)cp;
+
+@end
+
 /*
  * @class TVSThirdPartyAuth
  * @brief TVS 第三方授权

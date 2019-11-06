@@ -1,0 +1,6 @@
+framework module TVSMember {
+  umbrella header "TVSMember.h"
+
+  export *
+  module * { export * }
+}

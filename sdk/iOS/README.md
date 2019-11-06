@@ -4,8 +4,6 @@
 
 * **TVSMember.framework**: 会员状态查询，根据需要可选；
 
-* **TVSQRCode.framework**: 无屏设备扫码绑定，根据需要可选；
-
 * **TVSSpeech.framework**: 音色 TTS 配置，根据需要可选； 
 
 * **TVSTSKM.framework**: 技能服务访问，根据需要可选；

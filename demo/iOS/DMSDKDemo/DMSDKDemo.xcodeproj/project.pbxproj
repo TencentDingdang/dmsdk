@@ -7,11 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8051E00D2284235D0013E019 /* TVSSpeech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8051E0082284235D0013E019 /* TVSSpeech.framework */; };
-		8051E00E2284235D0013E019 /* TVSTSKM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8051E0092284235D0013E019 /* TVSTSKM.framework */; };
-		8051E00F2284235D0013E019 /* TVSWeb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8051E00A2284235D0013E019 /* TVSWeb.framework */; };
-		8051E0102284235D0013E019 /* TVSMember.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8051E00B2284235D0013E019 /* TVSMember.framework */; };
-		8051E0112284235D0013E019 /* TVSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8051E00C2284235D0013E019 /* TVSCore.framework */; };
 		80599B7C1FD82B7000901F7C /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80599B7B1FD82B7000901F7C /* libWeChatSDK.a */; };
 		80599B7E1FD82BEE00901F7C /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 80599B7D1FD82BEE00901F7C /* libsqlite3.tbd */; };
 		80599B821FD82C4200901F7C /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80599B811FD82C4200901F7C /* TencentOpenAPI.framework */; };
@@ -37,6 +32,13 @@
 		8081473E225B705C000C023D /* DeviceControlVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8081473D225B705C000C023D /* DeviceControlVC.m */; };
 		808E8EE82237545F00BEFFB0 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 80599B7F1FD82BFF00901F7C /* libz.tbd */; };
 		8AD8081F1F3DB0E80040C9CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AD8081E1F3DB0E80040C9CF /* main.m */; };
+		D894C1242372B63B00B24EB7 /* libQQMusicOpenSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D894C1232372B63B00B24EB7 /* libQQMusicOpenSDK.a */; };
+		D894C1282372B66E00B24EB7 /* QQMusicAuthAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = D894C1262372B66E00B24EB7 /* QQMusicAuthAgent.m */; };
+		D8F2450C2372B44400869906 /* TVSSpeech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F245072372B44400869906 /* TVSSpeech.framework */; };
+		D8F2450D2372B44400869906 /* TVSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F245082372B44400869906 /* TVSCore.framework */; };
+		D8F2450E2372B44400869906 /* TVSMember.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F245092372B44400869906 /* TVSMember.framework */; };
+		D8F2450F2372B44400869906 /* TVSTSKM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F2450A2372B44400869906 /* TVSTSKM.framework */; };
+		D8F245102372B44400869906 /* TVSWeb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F2450B2372B44400869906 /* TVSWeb.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,11 +55,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8051E0082284235D0013E019 /* TVSSpeech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TVSSpeech.framework; path = ../../../sdk/iOS/TVSSpeech.framework; sourceTree = "<group>"; };
-		8051E0092284235D0013E019 /* TVSTSKM.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TVSTSKM.framework; path = ../../../sdk/iOS/TVSTSKM.framework; sourceTree = "<group>"; };
-		8051E00A2284235D0013E019 /* TVSWeb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TVSWeb.framework; path = ../../../sdk/iOS/TVSWeb.framework; sourceTree = "<group>"; };
-		8051E00B2284235D0013E019 /* TVSMember.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TVSMember.framework; path = ../../../sdk/iOS/TVSMember.framework; sourceTree = "<group>"; };
-		8051E00C2284235D0013E019 /* TVSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TVSCore.framework; path = ../../../sdk/iOS/TVSCore.framework; sourceTree = "<group>"; };
 		80599B7B1FD82B7000901F7C /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = WeChat/libWeChatSDK.a; sourceTree = "<group>"; };
 		80599B7D1FD82BEE00901F7C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		80599B7F1FD82BFF00901F7C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -102,6 +99,15 @@
 		8AD8081A1F3DB0E80040C9CF /* DMSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DMSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AD8081E1F3DB0E80040C9CF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9469E77371DE60DE145348FE /* Pods-DMSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DMSDKDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-DMSDKDemo/Pods-DMSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
+		D894C1222372B55600B24EB7 /* DMSDKDemo.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMSDKDemo.pch; sourceTree = "<group>"; };
+		D894C1232372B63B00B24EB7 /* libQQMusicOpenSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libQQMusicOpenSDK.a; path = QQMusic/libQQMusicOpenSDK.a; sourceTree = "<group>"; };
+		D894C1262372B66E00B24EB7 /* QQMusicAuthAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQMusicAuthAgent.m; sourceTree = "<group>"; };
+		D894C1272372B66E00B24EB7 /* QQMusicAuthAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQMusicAuthAgent.h; sourceTree = "<group>"; };
+		D8F245072372B44400869906 /* TVSSpeech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TVSSpeech.framework; path = DMSDK/TVSSpeech.framework; sourceTree = "<group>"; };
+		D8F245082372B44400869906 /* TVSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TVSCore.framework; path = DMSDK/TVSCore.framework; sourceTree = "<group>"; };
+		D8F245092372B44400869906 /* TVSMember.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TVSMember.framework; path = DMSDK/TVSMember.framework; sourceTree = "<group>"; };
+		D8F2450A2372B44400869906 /* TVSTSKM.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TVSTSKM.framework; path = DMSDK/TVSTSKM.framework; sourceTree = "<group>"; };
+		D8F2450B2372B44400869906 /* TVSWeb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TVSWeb.framework; path = DMSDK/TVSWeb.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,18 +115,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8051E00D2284235D0013E019 /* TVSSpeech.framework in Frameworks */,
-				8051E00E2284235D0013E019 /* TVSTSKM.framework in Frameworks */,
-				8051E00F2284235D0013E019 /* TVSWeb.framework in Frameworks */,
-				8051E0102284235D0013E019 /* TVSMember.framework in Frameworks */,
-				8051E0112284235D0013E019 /* TVSCore.framework in Frameworks */,
 				80814731225B6D60000C023D /* libPods-DMSDKDemo.a in Frameworks */,
+				D8F2450F2372B44400869906 /* TVSTSKM.framework in Frameworks */,
+				D8F2450D2372B44400869906 /* TVSCore.framework in Frameworks */,
 				80599B821FD82C4200901F7C /* TencentOpenAPI.framework in Frameworks */,
 				80599B7C1FD82B7000901F7C /* libWeChatSDK.a in Frameworks */,
 				80599B7E1FD82BEE00901F7C /* libsqlite3.tbd in Frameworks */,
+				D8F2450C2372B44400869906 /* TVSSpeech.framework in Frameworks */,
+				D894C1242372B63B00B24EB7 /* libQQMusicOpenSDK.a in Frameworks */,
+				D8F2450E2372B44400869906 /* TVSMember.framework in Frameworks */,
 				808E8EE82237545F00BEFFB0 /* libz.tbd in Frameworks */,
 				80599B861FD82CBD00901F7C /* CoreTelephony.framework in Frameworks */,
 				80599B841FD82CA800901F7C /* SystemConfiguration.framework in Frameworks */,
+				D8F245102372B44400869906 /* TVSWeb.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,11 +227,12 @@
 		8A9738311F418BBD003BD45B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8051E00C2284235D0013E019 /* TVSCore.framework */,
-				8051E00B2284235D0013E019 /* TVSMember.framework */,
-				8051E0082284235D0013E019 /* TVSSpeech.framework */,
-				8051E0092284235D0013E019 /* TVSTSKM.framework */,
-				8051E00A2284235D0013E019 /* TVSWeb.framework */,
+				D894C1232372B63B00B24EB7 /* libQQMusicOpenSDK.a */,
+				D8F245082372B44400869906 /* TVSCore.framework */,
+				D8F245092372B44400869906 /* TVSMember.framework */,
+				D8F245072372B44400869906 /* TVSSpeech.framework */,
+				D8F2450A2372B44400869906 /* TVSTSKM.framework */,
+				D8F2450B2372B44400869906 /* TVSWeb.framework */,
 				80814730225B6D60000C023D /* libPods-DMSDKDemo.a */,
 				80FD905421FAB3AA004FFCA3 /* libstdc++.6.tbd */,
 				80599B851FD82CB600901F7C /* CoreTelephony.framework */,
@@ -240,6 +248,7 @@
 		8AD808111F3DB0E80040C9CF = {
 			isa = PBXGroup;
 			children = (
+				D894C1222372B55600B24EB7 /* DMSDKDemo.pch */,
 				8AD8081C1F3DB0E80040C9CF /* DMSDKDemo */,
 				8AD8081B1F3DB0E80040C9CF /* Products */,
 				8A9738311F418BBD003BD45B /* Frameworks */,
@@ -258,6 +267,7 @@
 		8AD8081C1F3DB0E80040C9CF /* DMSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
+				D894C1252372B66E00B24EB7 /* CPAuthAgents */,
 				80814717225B669A000C023D /* AppDelegate.h */,
 				80814716225B669A000C023D /* AppDelegate.m */,
 				80C39058220000B000698F7D /* VC */,
@@ -268,6 +278,15 @@
 				80814719225B669A000C023D /* Info.plist */,
 			);
 			path = DMSDKDemo;
+			sourceTree = "<group>";
+		};
+		D894C1252372B66E00B24EB7 /* CPAuthAgents */ = {
+			isa = PBXGroup;
+			children = (
+				D894C1262372B66E00B24EB7 /* QQMusicAuthAgent.m */,
+				D894C1272372B66E00B24EB7 /* QQMusicAuthAgent.h */,
+			);
+			path = CPAuthAgents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -385,6 +404,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8081472A225B6704000C023D /* MainVC.m in Sources */,
+				D894C1282372B66E00B24EB7 /* QQMusicAuthAgent.m in Sources */,
 				80814706225B6487000C023D /* WebVC.m in Sources */,
 				80814729225B6704000C023D /* BaseVC.m in Sources */,
 				80814735225B6F7B000C023D /* TSKMVC.m in Sources */,
@@ -541,17 +561,22 @@
 				DEVELOPMENT_TEAM = 88L2Q4487U;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/DMSDK",
 				);
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/WeChat";
+				GCC_PREFIX_HEADER = DMSDKDemo.pch;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WeChat",
+					"$(PROJECT_DIR)/QQMusic",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/DMSDKDemo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WeChat",
+					"$(PROJECT_DIR)/QQMusic",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -573,17 +598,22 @@
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/DMSDK",
 				);
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/WeChat";
+				GCC_PREFIX_HEADER = DMSDKDemo.pch;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WeChat",
+					"$(PROJECT_DIR)/QQMusic",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/DMSDKDemo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WeChat",
+					"$(PROJECT_DIR)/QQMusic",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",

@@ -48,6 +48,16 @@
 				<string>b0a46d90a9b911e89bb58743e4015c85</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>qqmusiccallback</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>qqmusic</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
@@ -67,6 +77,7 @@
 		<string>mqqopensdkapiV2</string>
 		<string>mqqopensdkapiV3</string>
 		<string>wtloginmqq</string>
+		<string>qqmusic</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

@@ -1,0 +1,15 @@
+//
+//  Prefix.pch
+//  DMSDKDemo
+//
+//  Created by Perqin Xie on 2019/9/6.
+//  Copyright © 2019 tencent. All rights reserved.
+//
+
+#ifndef Prefix_h
+#define Prefix_h
+
+#import <CocoaLumberjack/CocoaLumberjack.h>
+static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
+
+#endif /* Prefix_h */

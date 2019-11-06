@@ -1,0 +1,6 @@
+framework module TVSTSKM {
+  umbrella header "TVSTSKM.h"
+
+  export *
+  module * { export * }
+}

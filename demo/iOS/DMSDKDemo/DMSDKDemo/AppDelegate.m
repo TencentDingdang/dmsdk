@@ -9,6 +9,11 @@
 #import "AppDelegate.h"
 #import <TVSCore/TVSCore.h>
 #import "BrowserVC.h"
+#import "CPAuthAgents/QQMusicAuthAgent.h"
+
+#define QQ_MUSIC_SECRET_KEY @""
+#define QQ_MUSIC_APP_ID @""
+#define QQ_MUSIC_CALLBACK_URL @"qqmusic://"
 
 @implementation AppDelegate
 
@@ -16,6 +21,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[TVSEnvironment shared]enableLog];//开启日志
     [[TVSAuthManager shared]registerApp];//读取配置信息
+    // 在这里注入QQ音乐授权实现到DMSDK，注意参数中填入您申请的QQ音乐AppID、密钥和配置对应的回调URL
+    [[TVSCPAuthAgentManager shared]setAgent:[[QQMusicAuthAgent alloc]initWithAppId:QQ_MUSIC_APP_ID andSecretKey:QQ_MUSIC_SECRET_KEY andCallbackUrl:QQ_MUSIC_CALLBACK_URL] ofCP:TVSCPQQMusic];
     return YES;
 }
 
@@ -30,6 +37,7 @@
         bv.pageType = TVSWebPageTypeThirdPartyAuth;
         [(UINavigationController*)(self.window.rootViewController) pushViewController:bv animated:YES];
     }*/
+    if ([QQMusicOpenSDK handleOpenURL:url]) return YES;
     return NO;
 }
 
