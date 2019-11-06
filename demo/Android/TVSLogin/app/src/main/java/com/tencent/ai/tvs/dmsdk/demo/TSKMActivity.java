@@ -5,25 +5,28 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.tencent.ai.dobbydemo.R;
 import com.tencent.ai.tvs.LoginProxy;
 import com.tencent.ai.tvs.core.account.AccountInfoManager;
+import com.tencent.ai.tvs.core.common.TVSDevice;
 import com.tencent.ai.tvs.dmsdk.demo.tskm.AlarmActivity;
 import com.tencent.ai.tvs.dmsdk.demo.tskm.ChildModeActivity;
 import com.tencent.ai.tvs.dmsdk.demo.tskm.DeviceControlActivity;
 import com.tencent.ai.tvs.dmsdk.demo.tskm.ThirdPartBindOpActivity;
+import com.tencent.ai.tvs.tskm.TVSThirdPartyAuth;
+import com.tencent.ai.tvs.tskm.thirdpartyauth.ThirdPartyCp;
 
 public class TSKMActivity extends AppCompatActivity {
     public static final String EXTRA_PRODUCT_ID = "PRODUCT_ID";
@@ -31,7 +34,6 @@ public class TSKMActivity extends AppCompatActivity {
 
     private EditText mProductIDEditText;
     private EditText mDSNEditText;
-    private EditText mAccountIdEditText;
     private TextView mClientIdTextView;
     private String mClientId = "";
     private TextWatcher mUpdateClientIdWatcher = new TextWatcher() {
@@ -65,10 +67,19 @@ public class TSKMActivity extends AppCompatActivity {
             case R.id.thirdpartyBindOpButton:
                 intent = new Intent(this, ThirdPartBindOpActivity.class);
                 break;
+            case R.id.cpAuthQqMusicButton:
+                // Simply open the WebPage
+                intent = new Intent(this, WebActivity.class);
+                intent.putExtra(WebActivity.EXTRA_TARGET_PRESET_URL_PATH, TVSThirdPartyAuth.getPresetUrlPathByCp(ThirdPartyCp.QQ_MUSIC));
+                TVSDevice device = new TVSDevice();
+                device.productID = DemoConstant.PRODUCT_ID;
+                device.dsn = DemoConstant.DSN;
+                intent.putExtra(WebActivity.EXTRA_DEVICE_INFO, device);
+                break;
         }
         if (intent != null) {
             // Check login!
-            if (!ThirdPartyManager.isThirdParty() && !LoginProxy.getInstance().isTokenExist()) {
+            if (!LoginProxy.getInstance().isTokenExist()) {
                 Toast.makeText(this, R.string.login_required, Toast.LENGTH_SHORT).show();
                 intent = new Intent(this, AccountActivity.class);
             } else {
@@ -105,40 +116,12 @@ public class TSKMActivity extends AppCompatActivity {
         mDSNEditText = findViewById(R.id.dsnEditText);
         mDSNEditText.setText(DemoConstant.DSN);
         mDSNEditText.addTextChangedListener(mUpdateClientIdWatcher);
-        mAccountIdEditText = findViewById(R.id.accountIdEditText);
-        mAccountIdEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (ThirdPartyManager.isThirdParty()) {
-                    ThirdPartyManager.setThirdPartyAccountId(s.toString());
-                }
-                mUpdateClientIdWatcher.afterTextChanged(s);
-            }
-        });
-
-        RadioButton dmsdkRadioButton = findViewById(R.id.dmsdkRadioButton);
-        RadioButton thirdPartyRadioButton = findViewById(R.id.thirdPartyRadioButton);
-        dmsdkRadioButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                changeMode(false);
-            }
-        });
-        thirdPartyRadioButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                changeMode(true);
-            }
-        });
 
         findViewById(R.id.alarmButton).setOnClickListener(mOnClickListener);
         findViewById(R.id.childModeButton).setOnClickListener(mOnClickListener);
         findViewById(R.id.deviceControlButton).setOnClickListener(mOnClickListener);
         findViewById(R.id.thirdpartyBindOpButton).setOnClickListener(mOnClickListener);
+        findViewById(R.id.cpAuthQqMusicButton).setOnClickListener(mOnClickListener);
 
         findViewById(R.id.copyClientIdButton).setOnClickListener(v -> {
             updateClientId();
@@ -146,9 +129,6 @@ public class TSKMActivity extends AppCompatActivity {
             mClipboardManager.setPrimaryClip(clipData);
             Toast.makeText(this, "Client ID copied to clipboard", Toast.LENGTH_SHORT).show();
         });
-
-        dmsdkRadioButton.setChecked(!ThirdPartyManager.isThirdParty());
-        thirdPartyRadioButton.setChecked(ThirdPartyManager.isThirdParty());
     }
 
     @Override
@@ -167,20 +147,10 @@ public class TSKMActivity extends AppCompatActivity {
         updateClientId();
     }
 
-    private void changeMode(boolean isThirdParty) {
-        ThirdPartyManager.setThirdParty(isThirdParty);
-        mAccountIdEditText.setEnabled(isThirdParty);
-        String accountId = isThirdParty ? ThirdPartyManager.getThirdPartyAccountId() : AccountInfoManager.getInstance().getOpenID();
-        mAccountIdEditText.setText(accountId == null ? "" : accountId);
-        updateClientId();
-    }
-
     private void updateClientId() {
         String productId = mProductIDEditText.getText().toString();
         String dsn = mDSNEditText.getText().toString();
-        mClientId = ThirdPartyManager.isThirdParty()
-                ? AccountInfoManager.getClientIdForThirdParty(mAccountIdEditText.getText().toString(), "", "", productId, dsn)
-                : AccountInfoManager.getInstance().getClientId(productId, dsn);
+        mClientId = AccountInfoManager.getInstance().getClientId(productId, dsn);
         mClientIdTextView.setText("Client ID:" + mClientId);
     }
 }

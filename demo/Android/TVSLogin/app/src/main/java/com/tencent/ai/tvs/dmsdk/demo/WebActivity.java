@@ -33,6 +33,9 @@ import org.json.JSONObject;
 
 public class WebActivity extends ModuleActivity {
     private String LOG_TAG = "DMSDK_WebActivity";
+    public static final String EXTRA_TARGET_URL = "targetUrl";
+    public static final String EXTRA_TARGET_PRESET_URL_PATH = "targetPresetUrlPath";
+    public static final String EXTRA_DEVICE_INFO = "devInfo";
 
     public static final int ACTIVITY_RESULT_CODE_FILECHOOSER = 1000;
 
@@ -63,15 +66,19 @@ public class WebActivity extends ModuleActivity {
 
         mWebViewController = ((TVSWebView) findViewById(R.id.tvsWebView)).getController();
         Intent intent = getIntent();
-        TVSDevice tvsDevice = (TVSDevice) intent.getSerializableExtra("devInfo");
-        String targetUrl = intent.getStringExtra("targetUrl");
+        TVSDevice tvsDevice = (TVSDevice) intent.getSerializableExtra(EXTRA_DEVICE_INFO);
+        String targetPresetUrlPath = intent.getStringExtra(EXTRA_TARGET_PRESET_URL_PATH);
+        String targetUrl = intent.getStringExtra(EXTRA_TARGET_URL);
         String ddAuthRedirectUrl = intent.getStringExtra("ddAuthRedirectUrl");
-        mURLEditText.setText(targetUrl == null ? "http://dingdang.qq.com": targetUrl);
         mWebViewController.setDeviceInfo(tvsDevice);
         mWebViewController.setDDAuthRedirectUrl(ddAuthRedirectUrl);
         mWebViewController.setUIEventListener(new DemoUIEventListener());
         mWebViewController.setBusinessEventListener(new DemoBusinessEventListener());
-        mWebViewController.loadURL(mURLEditText.getText().toString());
+        if (targetPresetUrlPath != null) {
+            mWebViewController.loadPresetURLByPath(targetPresetUrlPath);
+        } else {
+            mWebViewController.loadURL(targetUrl != null ? targetUrl : "https://dingdang.qq.com");
+        }
 
         CheckBox cacheCheckBox = findViewById(R.id.cacheCheckBox);
         cacheCheckBox.setChecked(mWebViewController.isLoadCacheOnDisconnected());

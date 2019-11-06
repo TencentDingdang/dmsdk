@@ -8,13 +8,18 @@
 
 ## 更新日志：
 
-[Android](#Android) (Latest: v2.2.0)
+[Android](#Android) (Latest: v2.2.1)
 
 [iOS](#iOS) (Latest: v2.1.2)
 
 **v1.0 到 v2.0.0+ API 变更较大，请阅读升级指南([Android 版][5] | [iOS 版][4])。**
 
 ### Android
+
+#### v2.2.1
+
+*   新增QQ音乐拉起授权
+*   修改错误的“根据GUID查询设备信息”API命名
 
 #### v2.2.0
 

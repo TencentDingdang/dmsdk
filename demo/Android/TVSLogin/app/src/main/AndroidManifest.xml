@@ -86,6 +86,16 @@
             android:screenOrientation="behind"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <!-- End: QQOpen登录接入 -->
+        <activity android:name="com.tencent.yunxiaowei.dmsdk.cpaa.qqmusic.QQMusicAuthResultActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- 请填入您在QQ音乐申请的App ID！ -->
+                <data android:scheme="qqmusic" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

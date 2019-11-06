@@ -43,54 +43,13 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <RadioGroup
-            android:id="@+id/radioGroup"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/dsnLayout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <RadioButton
-                android:id="@+id/dmsdkRadioButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="DMSDK账号体系" />
-
-            <RadioButton
-                android:id="@+id/thirdPartyRadioButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="第三方账号体系" />
-
-        </RadioGroup>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/accountIdLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/radioGroup"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/accountIdEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Account ID" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
         <TextView
             android:id="@+id/clientIdTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:minHeight="48dp"
             android:text="Client ID:"
-            app:layout_constraintTop_toBottomOf="@id/accountIdLayout"
+            app:layout_constraintTop_toBottomOf="@id/dsnLayout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/copyClientIdButton" />
 
@@ -136,6 +95,15 @@
             android:layout_height="wrap_content"
             android:text="云叮当账号授权"
             app:layout_constraintTop_toBottomOf="@id/deviceControlButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/cpAuthQqMusicButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="QQ音乐CP账号授权"
+            app:layout_constraintTop_toBottomOf="@id/thirdpartyBindOpButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
