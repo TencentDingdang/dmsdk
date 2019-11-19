@@ -10,9 +10,7 @@
 
 [Android](#Android) (Latest: v2.2.1)
 
-[iOS](#iOS) (Latest: v2.2.0)
-
-**v1.0 到 v2.0.0+ API 变更较大，请阅读升级指南([Android 版][5] | [iOS 版][4])。**
+[iOS](#iOS) (Latest: v2.2.1)
 
 ### Android
 
@@ -107,6 +105,12 @@
 * 提供基本的账号授权、设备绑定、H5 等功能。 
 
 ### iOS
+
+#### v2.2.1
+
+- 兼容低版本XCode编译环境及x86_64和armv7架构运行环境
+- QQ音乐授权SDK registerAppID接口增加packageName参数
+- 修复Web模块cookies异常问题
 
 #### v2.2.0
 
