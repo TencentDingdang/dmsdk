@@ -22,14 +22,6 @@ extern NSString* const PUSH_ID_EXTRA_TVS_SPEAKER;
 
 
 
-typedef NS_ENUM(NSInteger, TVSPushEvent) {
-    TVSPushEventNone,
-    TVSPushEventDeviceRelationPermissionChanged,
-    TVSPushEventAlbumSwitchChanged,
-    TVSPushEventAlbumScanPreAddDeviceRelation
-};
-
-
 
 /*
  * @brief 设备绑定类型
@@ -54,6 +46,15 @@ typedef NS_ENUM(NSInteger,TVSDeviceBindType) {
      * @brief 云端 API 接入方案的音箱
      */
     TVSDeviceBindTypeTVSSpeaker
+};
+
+
+
+typedef NS_ENUM(NSInteger, TVSPushEvent) {
+    TVSPushEventNone,
+    TVSPushEventDeviceRelationPermissionChanged,
+    TVSPushEventAlbumSwitchChanged,
+    TVSPushEventAlbumScanPreAddDeviceRelation
 };
 
 

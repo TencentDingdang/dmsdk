@@ -28,7 +28,7 @@
         _appId = appId;
         _secretKey = secretKey;
         _callbackUrl = callbackUrl;
-        [QQMusicOpenSDK registerAppID:_appId SecretKey:_secretKey callbackUrl:_callbackUrl delegate:self];
+        [QQMusicOpenSDK registerAppID:_appId packageName:[[NSBundle mainBundle] bundleIdentifier] SecretKey:_secretKey callbackUrl:_callbackUrl delegate:self];
     }
     return self;
 }

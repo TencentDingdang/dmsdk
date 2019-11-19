@@ -100,4 +100,6 @@ typedef NS_ENUM(NSInteger,TVSCPError) {
 
 -(void)dingdangBindWithAppAccountInfo:(TVSAccountInfo*)accountInfo handler:(void(^)(BOOL))handler;
 
+-(void)bindCPAccountWithCredential:(TVSCPCredential*)credential handledBy:(void(^)(BOOL))handler;
+
 @end

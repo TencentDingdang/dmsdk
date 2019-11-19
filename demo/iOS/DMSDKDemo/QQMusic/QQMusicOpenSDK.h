@@ -65,11 +65,12 @@ typedef NS_ENUM(NSInteger, QQMusicLogLevel) {
  注册AppID
 
  @param appId QQ音乐分配的appId
+ @param packageName 第三方app bundleID
  @param secretKey QQ音乐分配的密钥
  @param callbackUrl QQ音乐授权后拉起App的scheme
  @param delegate SDK回调
  */
-+ (BOOL)registerAppID:(NSString*)appId SecretKey:(NSString*)secretKey callbackUrl:(NSString*)callbackUrl delegate:(id<QQMusicOpenSDKDelegate>)delegate;
++ (BOOL)registerAppID:(NSString*)appId packageName:(NSString *)packageName SecretKey:(NSString*)secretKey callbackUrl:(NSString*)callbackUrl delegate:(id<QQMusicOpenSDKDelegate>)delegate;
 
 
 /**
