@@ -1,0 +1,24 @@
+env:
+  global:
+    - secure: "cxFsYFIscFLx3cKs+8lG8ii87lru91TOlShldPEeuoIM06gIFO7NCJgCymgfeCQnyCCFbSleYFhbVQTMpI3sfOCIK3ggqjzmfbg+5wCBzxGakanvSUdRGW28OjRpzwAlkaORcVjHucTXJa1f6iOjoo7VuwSnuGR8uip0MuyZtSui1kdgzVhWg5iJz9qC4zKZAu6jGWQwL2VDXFGFfk4dYqkjdKEuKQiB/ydbHOupUrjszd2Nl4inDefXggYZKAHx//I/By5K6agEN00+sQmJTQ8zLLMXGEvp3HpVlTznWKEmSTn0OL4QCQqEbfHegYLYH3YIPiWu+YFN6XLUU2fN3FjqHp4CKJa6qm/7+qZ84OZgzyx++3Rf3r2RhSsADb6YntBPj5jpXKgoGW/ql3G510HR1d2GPnXOOBow/5Fc/ZlPMU0iE6r5/tOuMnd5H6O8/yUMEXQGF1OYCQaG1UxVNxZQHHjevERY0nz1Rmt0hD/CKnU/es4OOhrHp8PdKLmrezFrYLge8HzsVwijOBgxni4J2SLZf9c4MwkHXXHNW1azFzSlO7vToV8yBVkExhYkNVLd0mDdi/aohYiX+qPIy1HIbcMhcWHqc8jpIS/jfJDyGdQv1BOdSi1enABMpBQTGdEuTPDfgMTT/WWKQfQsIn9ka9g2c1+0wUTy/4dmS2g="
+
+language: android
+dist: trusty
+android:
+  components:
+    - tools
+    - platform-tools
+    - build-tools-28.0.3
+    - android-29
+
+script:
+  - cd demo/Android/TVSLogin
+  - ./gradlew :app:assembleDebug
+
+deploy:
+  provider: releases
+  api_key: $PERQIN_BOT_GITHUB_PAT
+  file: $TRAVIS_BUILD_DIR/demo/Android/TVSLogin/app/build/outputs/apk/debug/app-debug.apk
+  skip_cleanup: true
+  on:
+    tags: true
