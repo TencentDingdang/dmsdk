@@ -345,7 +345,7 @@ typedef NS_ENUM(NSInteger,TVSAuthResult) {
  * @warning 如果微信 token 不存在，则必须调用此方法，以获得 TVS 后台返回的相关账户信息
  * @param handler 回调，TVSAuthResult 值表示结果
  */
--(void)wxLoginWithHandler:(void(^)(TVSAuthResult))handler;
+-(void)wxLoginWithHandler:(nonnull void(^)(TVSAuthResult))handler;
 
 /*
  * @brief 微信登录(支持未安装微信的情况，会跳转 H5 短信登录)
@@ -353,28 +353,28 @@ typedef NS_ENUM(NSInteger,TVSAuthResult) {
  * @@param viewController 发起微信登录的界面
  * @param handler 回调，TVSAuthResult 值表示结果
  */
--(void)wxLoginWithViewController:(UIViewController*)vc handler:(void(^)(TVSAuthResult))handler;
+-(void)wxLoginWithViewController:(UIViewController*)vc handler:(nonnull void(^)(TVSAuthResult))handler;
 
 /*
  * @brief 刷新微信 Token
  * @warning 如果微信 token 存在，则必须调用此方法，以获得(更新) TVS 后台返回的相关账户信息
  * @param handler 回调，TVSAuthResult 值表示结果
  */
--(void)wxTokenRefreshWithHandler:(void(^)(TVSAuthResult))handler;
+-(void)wxTokenRefreshWithHandler:(nonnull void(^)(TVSAuthResult))handler;
 
 /*
  * @brief QQ 登录
  * @warning 如果 QQ token 不存在，则必须调用此方法，以获得 TVS 后台返回的相关账户信息
  * @param handler 回调，TVSAuthResult 值表示结果
  */
--(void)qqLoginWithHandler:(void(^)(TVSAuthResult))handler;
+-(void)qqLoginWithHandler:(nonnull void(^)(TVSAuthResult))handler;
 
 /*
  * @brief 验证 QQ Token
  * @warning 如果 QQ token 存在，则必须调用此方法，以获得(更新) TVS 后台返回的相关账户信息
  * @param handler 回调，TVSAuthResult 值表示结果
  */
--(void)qqTokenVerifyWithHandler:(void(^)(TVSAuthResult))handler;
+-(void)qqTokenVerifyWithHandler:(nonnull void(^)(TVSAuthResult))handler;
 
 /*
  * @brief 通过微信/QQ 账号信息直接到 TVS 后台授权（换取tvsId）
@@ -384,7 +384,7 @@ typedef NS_ENUM(NSInteger,TVSAuthResult) {
  * @param accountType 账号类型
  * @param handler 回调，BOOL 值表示是否成功，成功后即可通过 TVSAccountInfo 读取 tvsId
  */
--(void)tvsAuthWithOpenId:(NSString*)openId accessToken:(NSString*)accessToken accountType:(TVSAccountType)accountType handler:(void(^)(TVSAuthResult))handler;
+-(void)tvsAuthWithOpenId:(NSString*)openId accessToken:(NSString*)accessToken accountType:(TVSAccountType)accountType handler:(nonnull void(^)(TVSAuthResult))handler;
 
 /*
  * @brief 验证 QQ token
@@ -393,7 +393,7 @@ typedef NS_ENUM(NSInteger,TVSAuthResult) {
  * @param accessToken QQ/微信登录后返回的 accessToken
  * @param handler 回调，TVSAuthResult 值表示结果
  */
--(void)verifyQQTokenWithOpenId:(NSString*)openId accessToken:(NSString*)accessToken handler:(void(^)(TVSAuthResult))handler;
+-(void)verifyQQTokenWithOpenId:(NSString*)openId accessToken:(NSString*)accessToken handler:(nonnull void(^)(TVSAuthResult))handler;
 
 /*
  * @brief 注销登录
@@ -406,7 +406,7 @@ typedef NS_ENUM(NSInteger,TVSAuthResult) {
  * @param phoneNumber 手机号
  * @param handler 回调
  */
--(void)getCaptchaWithPhoneNumber:(NSString*)phoneNumber handler:(void(^)(BOOL))handler;
+-(void)getCaptchaWithPhoneNumber:(NSString*)phoneNumber handler:(nonnull void(^)(BOOL))handler __attribute__ ((deprecated("您应该不需要使用该接口，该接口会在下一个版本移除")));
 
 /*
  * @brief 绑定手机号
@@ -415,7 +415,7 @@ typedef NS_ENUM(NSInteger,TVSAuthResult) {
  * @param captcha 验证码
  * @param handler 回调，BOOL 值表示是否成功
  */
--(void)bindPhoneNumber:(NSString*)phoneNumber captcha:(NSString*)captcha handler:(void(^)(BOOL))handler;
+-(void)bindPhoneNumber:(NSString*)phoneNumber captcha:(NSString*)captcha handler:(nonnull void(^)(BOOL))handler __attribute__ ((deprecated("您应该不需要使用该接口，该接口会在下一个版本移除")));
 
 /*
  * @brief 保存用户信息到 TVS 后台(暂时只支持头像昵称)
@@ -423,13 +423,13 @@ typedef NS_ENUM(NSInteger,TVSAuthResult) {
  * @param userInfo 用户信息
  * @param handler 回调，BOOL 值表示是否成功
  */
--(void)syncUserInfo:(TVSUserInfo*)userInfo handler:(void(^)(BOOL))handler;
+-(void)syncUserInfo:(TVSUserInfo*)userInfo handler:(nonnull void(^)(BOOL))handler __attribute__ ((deprecated("您应该不需要使用该接口，该接口会在下一个版本移除")));
 
 /*
  * @brief 通过 openId 查询用户信息(暂时只支持头像昵称)
  * @param openId 用户 openId
  * @param handler 回调，用于接收返回的用户信息
  */
--(void)queryUserInfoWithOpenId:(NSString*)openId handler:(void(^)(TVSUserInfo*))handler;
+-(void)queryUserInfoWithOpenId:(NSString*)openId handler:(nonnull void(^)(TVSUserInfo*))handler __attribute__ ((deprecated("您应该不需要使用该接口，该接口会在下一个版本移除")));
 
 @end

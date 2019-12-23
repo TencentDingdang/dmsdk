@@ -63,7 +63,6 @@
 	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>dingdang</string>
 		<string>weixin</string>
 		<string>wechat</string>
 		<string>mqqapi</string>
