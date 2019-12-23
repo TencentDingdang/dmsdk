@@ -7,7 +7,7 @@
 //
 
 #import "ChildModeVC.h"
-#import <TVSTSKM/TVSChildMode.h>
+#import <TVSCore/TVSChildMode.h>
 
 @interface ChildModeVC ()
 

@@ -6,7 +6,7 @@
 //  Copyright © 2019年 tencent. All rights reserved.
 //
 
-#import <TVSTSKM/TVSThirdPartyAuth.h>
+#import <TVSCore/TVSThirdPartyAuth.h>
 #import <QQMusicOpenSDK.h>
 
 @interface QQMusicAuthAgent : NSObject <TVSCPAuthAgent,QQMusicOpenSDKDelegate>

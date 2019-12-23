@@ -10,7 +10,7 @@
 #import "AuthVC.h"
 #import <TVSCore/TVSEnvironment.h>
 #import <TVSCore/TVSAuth.h>
-#import <TVSTSKM/TVSThirdPartyAuth.h>
+#import <TVSCore/TVSThirdPartyAuth.h>
 
 @interface MainVC ()<UIPickerViewDataSource, UIPickerViewDelegate>
 
@@ -96,17 +96,21 @@
     }
 }
 
-- (IBAction)onClickBtnLaunchQQMusic:(id)sender {
-    id<TVSCPAuthAgent> agent = [[TVSCPAuthAgentManager shared]getAgentOfCP:TVSCPQQMusic];
-    if (agent != nil) {
-        [agent requestCPCredentialWithHandler:^(BOOL authSuccess, NSInteger errorCode, NSString * displayMessage, TVSCPCredential * credential) {
-            if (authSuccess) {
-                DDLogDebug(@"Auth successful OpenID:%@ OpenToken:%@", credential.openId, credential.openToken);
-            } else {
-                DDLogDebug(@"Auth failed errorCode:%ld displayMessage:%@", errorCode, displayMessage);
-            }
-        }];
-    }
+- (IBAction)onClickUploadLogButton:(id)sender {
+    [[TVSEnvironment shared]performLogReportWithHandler:^(BOOL successful, NSString * _Nullable reportId) {
+        if (!successful) {
+            UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"提示" message:[NSString stringWithFormat:@"上传日志失败"] preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+            [self presentViewController:alert animated:YES completion:nil];
+            return;
+        }
+        UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"提示" message:[NSString stringWithFormat:@"上传日志成功，点击按钮复制Report ID到剪切板"] preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"复制" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [UIPasteboard generalPasteboard].string = reportId;
+        }]];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }];
 }
 
 @end
