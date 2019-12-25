@@ -37,6 +37,7 @@
 		D8F2450C2372B44400869906 /* TVSSpeech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F245072372B44400869906 /* TVSSpeech.framework */; };
 		D8F2450D2372B44400869906 /* TVSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F245082372B44400869906 /* TVSCore.framework */; };
 		D8F2450E2372B44400869906 /* TVSMember.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F245092372B44400869906 /* TVSMember.framework */; };
+		D8F2450F2372B44400869906 /* TVSTSKM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F2450A2372B44400869906 /* TVSTSKM.framework */; };
 		D8F245102372B44400869906 /* TVSWeb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F2450B2372B44400869906 /* TVSWeb.framework */; };
 /* End PBXBuildFile section */
 
@@ -105,8 +106,8 @@
 		D8F245072372B44400869906 /* TVSSpeech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TVSSpeech.framework; path = DMSDK/TVSSpeech.framework; sourceTree = "<group>"; };
 		D8F245082372B44400869906 /* TVSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TVSCore.framework; path = DMSDK/TVSCore.framework; sourceTree = "<group>"; };
 		D8F245092372B44400869906 /* TVSMember.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TVSMember.framework; path = DMSDK/TVSMember.framework; sourceTree = "<group>"; };
+		D8F2450A2372B44400869906 /* TVSTSKM.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TVSTSKM.framework; path = DMSDK/TVSTSKM.framework; sourceTree = "<group>"; };
 		D8F2450B2372B44400869906 /* TVSWeb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TVSWeb.framework; path = DMSDK/TVSWeb.framework; sourceTree = "<group>"; };
-		D8F50B4523B0D932004B5CC1 /* DMSDKDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DMSDKDemo.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +116,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80814731225B6D60000C023D /* libPods-DMSDKDemo.a in Frameworks */,
+				D8F2450F2372B44400869906 /* TVSTSKM.framework in Frameworks */,
 				D8F2450D2372B44400869906 /* TVSCore.framework in Frameworks */,
 				80599B821FD82C4200901F7C /* TencentOpenAPI.framework in Frameworks */,
 				80599B7C1FD82B7000901F7C /* libWeChatSDK.a in Frameworks */,
@@ -229,6 +231,7 @@
 				D8F245082372B44400869906 /* TVSCore.framework */,
 				D8F245092372B44400869906 /* TVSMember.framework */,
 				D8F245072372B44400869906 /* TVSSpeech.framework */,
+				D8F2450A2372B44400869906 /* TVSTSKM.framework */,
 				D8F2450B2372B44400869906 /* TVSWeb.framework */,
 				80814730225B6D60000C023D /* libPods-DMSDKDemo.a */,
 				80FD905421FAB3AA004FFCA3 /* libstdc++.6.tbd */,
@@ -264,7 +267,6 @@
 		8AD8081C1F3DB0E80040C9CF /* DMSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
-				D8F50B4523B0D932004B5CC1 /* DMSDKDemo.entitlements */,
 				D894C1252372B66E00B24EB7 /* CPAuthAgents */,
 				80814717225B669A000C023D /* AppDelegate.h */,
 				80814716225B669A000C023D /* AppDelegate.m */,
@@ -555,8 +557,6 @@
 			baseConfigurationReference = 8280EAE70BEB3A47F85369CA /* Pods-DMSDKDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = DMSDKDemo/DMSDKDemo.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 88L2Q4487U;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -585,7 +585,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tencent.dingdang.dmsdk.demoxyz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = comtencentdingdangdmsdkdemoxyz_Development_SignProvision;
+				PROVISIONING_PROFILE_SPECIFIER = "com.tencent.dingdang.dmsdk.demoxyz Development";
 			};
 			name = Debug;
 		};
@@ -594,10 +594,8 @@
 			baseConfigurationReference = 9469E77371DE60DE145348FE /* Pods-DMSDKDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = DMSDKDemo/DMSDKDemo.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 88L2Q4487U;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -624,7 +622,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tencent.dingdang.dmsdk.demoxyz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = comtencentdingdangdmsdkdemoxyz_Development_SignProvision;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

@@ -206,7 +206,7 @@ typedef NS_ENUM(NSInteger, TVSPushEvent) {
  * @brief 获得 TVS 设备管理类单例对象
  * @return TVS 设备管理类实例
  */
-+(nonnull instancetype)shared;
++(instancetype)shared;
 
 /*
  * @brief 有屏音箱扫码预绑定
@@ -215,7 +215,7 @@ typedef NS_ENUM(NSInteger, TVSPushEvent) {
  * @param cancel 是否取消预绑定
  * @param handler 回调，BOOL 值表示是否成功
  */
--(void)preBindScreenDevice:(TVSDeviceInfo*)device cancel:(BOOL)cancel handler:(nonnull void(^)(BOOL))handler;
+-(void)preBindScreenDevice:(TVSDeviceInfo*)device cancel:(BOOL)cancel handler:(void(^)(BOOL))handler;
 
 /*
  * @brief 绑定设备
@@ -223,7 +223,7 @@ typedef NS_ENUM(NSInteger, TVSPushEvent) {
  * @param device 设备信息，其中 productId、dsn、bindType 必传!! 绑定 Speaker 设备时还必须传 pushIdExtra 字段（取值为 PUSH_ID_EXTRA_SDK_SPEAKER 或 PUSH_ID_EXTRA_TVS_SPEAKER 常量）！！
  * @param handler 回调，BOOL 值表示是否成功
  */
--(void)bindDevice:(TVSDeviceInfo*)device handler:(nonnull void(^)(BOOL))handler;
+-(void)bindDevice:(TVSDeviceInfo*)device handler:(void(^)(BOOL))handler;
 
 /*
  * @brief 解绑设备
@@ -231,7 +231,7 @@ typedef NS_ENUM(NSInteger, TVSPushEvent) {
  * @param device 设备信息，其中 productId、 dsn、bindType 必传!! 解绑 Speaker 设备时还必须传 pushIdExtra 字段（取值为 PUSH_ID_EXTRA_SDK_SPEAKER 或 PUSH_ID_EXTRA_TVS_SPEAKER 常量）！！
  * @param handler 回调，BOOL 值表示是否成功
  */
--(void)unbindDevice:(TVSDeviceInfo*)device handler:(nonnull void(^)(BOOL))handler;
+-(void)unbindDevice:(TVSDeviceInfo*)device handler:(void(^)(BOOL))handler;
 
 /*
  * @brief 通过 guid 查询设备列表
@@ -239,7 +239,7 @@ typedef NS_ENUM(NSInteger, TVSPushEvent) {
  * @param bindType 设备绑定类型
  * @param handler 回调
  */
--(void)queryDevicesByGuid:(NSString*)guid bindType:(TVSDeviceBindType)bindType handler:(nonnull void(^)(NSArray<TVSDeviceInfo*>*))handler;
+-(void)queryDevicesByGuid:(NSString*)guid bindType:(TVSDeviceBindType)bindType handler:(void(^)(NSArray<TVSDeviceInfo*>*))handler;
 
 /*
  * @brief 通过 productId/dsn 查询设备列表
@@ -248,7 +248,7 @@ typedef NS_ENUM(NSInteger, TVSPushEvent) {
  * @param bindType 设备绑定类型
  * @param handler 回调
  */
--(void)queryDevicesByProductId:(NSString*)productId dsn:(NSString*)dsn bindType:(TVSDeviceBindType)bindType handler:(nonnull void(^)(NSArray<TVSDeviceInfo*>*))handler;
+-(void)queryDevicesByProductId:(NSString*)productId dsn:(NSString*)dsn bindType:(TVSDeviceBindType)bindType handler:(void(^)(NSArray<TVSDeviceInfo*>*))handler;
 
 /*
  * @brief 通过账号查询设备列表
@@ -256,14 +256,14 @@ typedef NS_ENUM(NSInteger, TVSPushEvent) {
  * @param bindType 设备绑定类型
  * @param handler 回调
  */
--(void)queryDevicesByAccountWithBindType:(TVSDeviceBindType)bindType handler:(nonnull void(^)(NSArray<TVSDeviceInfo*>*))handler;
+-(void)queryDevicesByAccountWithBindType:(TVSDeviceBindType)bindType handler:(void(^)(NSArray<TVSDeviceInfo*>*))handler;
 
 /*
  * @brief 根据设备信息反查绑定的账号信息
  * @param device 设备信息，其中 productId、 dsn、bindType 必传!! 查询 Speaker 设备时还必须传 pushIdExtra 字段（取值为 PUSH_ID_EXTRA_SDK_SPEAKER 或 PUSH_ID_EXTRA_TVS_SPEAKER 常量）！！
  * @param handler 回调，TVSAccountInfo 为账号信息
  */
--(void)queryAccountWithDevice:(TVSDeviceInfo*)device handler:(nonnull void(^)(TVSAccountInfo*))handler;
+-(void)queryAccountWithDevice:(TVSDeviceInfo*)device handler:(void(^)(TVSAccountInfo*))handler;
 
 /**
  * @brief 更新设备信息
@@ -271,6 +271,6 @@ typedef NS_ENUM(NSInteger, TVSPushEvent) {
  * @param businessDict 业务数据
  * @param handler 回调
  */
--(void)updateDeviceInfo:(TVSDeviceInfo*)deviceInfo businessDict:(NSDictionary*)businessDict pushEvent:(TVSPushEvent)pushEvent handler:(nonnull void(^)(BOOL))handler;
+-(void)updateDeviceInfo:(TVSDeviceInfo*)deviceInfo businessDict:(NSDictionary*)businessDict pushEvent:(TVSPushEvent)pushEvent handler:(void(^)(BOOL))handler;
 
 @end

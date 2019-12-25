@@ -288,6 +288,6 @@ typedef NS_ENUM(NSInteger,TVSWebPageType) {
  * @param code JS 代码
  * @param handler 回调，BOOL 表示是否成功
  */
--(void)runJSCode:(NSString*)code handler:(nonnull void(^)(BOOL))handler;
+-(void)runJSCode:(NSString*)code handler:(void(^)(BOOL))handler;
 
 @end

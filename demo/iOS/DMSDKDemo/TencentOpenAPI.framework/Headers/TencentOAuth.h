@@ -17,16 +17,18 @@
 @class TencentApiReq;
 @class TencentApiResp;
 
-typedef NS_ENUM(NSUInteger, TencentAuthorizeState) {
+typedef enum
+{
     kTencentNotAuthorizeState,
     kTencentSSOAuthorizeState,
     kTencentWebviewAuthorzieState,
-};
+} TencentAuthorizeState;
 
-typedef NS_ENUM(NSUInteger, TencentAuthMode) {
+typedef enum
+{
     kAuthModeClientSideToken,
     kAuthModeServerSideCode,
-};
+} TencentAuthMode;
 
 #pragma mark - TencentOAuth(授权登录及相关开放接口调用)
 
@@ -68,9 +70,6 @@ typedef NS_ENUM(NSUInteger, TencentAuthMode) {
 /** 第三方应用在互联开放平台申请的appID */
 @property(nonatomic, retain) NSString* appId;
 
-/** 第三方应用在互联开放平台注册的UniversalLink */
-@property(nonatomic, retain) NSString* universalLink;
-
 /** 主要是互娱的游戏设置uin */
 @property(nonatomic, retain) NSString* uin;
 
@@ -88,35 +87,6 @@ typedef NS_ENUM(NSUInteger, TencentAuthMode) {
 
 /** 第三方在授权登录/分享 时选择 QQ，还是TIM 。在授权前一定要指定其中一个类型*/
 @property(nonatomic, assign) TencentAuthShareType authShareType;
-
-/**
- * 获取上次登录得到的token
- *
- **/
-- (NSString *)getCachedToken;
-
-/**
- * 获取上次登录得到的openid
- *
- **/
-- (NSString *)getCachedOpenID;
-
-/**
- * 获取上次登录的token过期日期
- *
- **/
-- (NSDate *)getCachedExpirationDate;
-
-/**
- * 上次登录的token是否过期(本地判断)
- **/
-- (BOOL)isCachedTokenValid;
-
-/**
- * 删除上次登录登录的token信息
- *
- **/
-- (BOOL)deleteCachedToken;
 
 /**
  * 用来获得当前sdk的版本号
@@ -153,14 +123,14 @@ typedef NS_ENUM(NSUInteger, TencentAuthMode) {
  * 用来获得当前手机qq的版本号
  * \return 返回手机qq版本号
  **/
-+ (int)iphoneQQVersion __attribute__((deprecated("已过期, 建议删除调用")));
++ (QQVersion)iphoneQQVersion;
 
 
 /**
  * 用来获得当前手机TIM的版本号
  * \return 返回手机qq版本号
  **/
-+ (int)iphoneTIMVersion __attribute__((deprecated("已过期, 建议删除调用")));
++ (QQVersion)iphoneTIMVersion;
 
 /**
  * 初始化TencentOAuth对象
@@ -171,34 +141,16 @@ typedef NS_ENUM(NSUInteger, TencentAuthMode) {
 - (id)initWithAppId:(NSString *)appId
         andDelegate:(id<TencentSessionDelegate>)delegate;
 
-/**
-* 初始化TencentOAuth对象（>=3.3.7）
-* \param appId 第三方应用在互联开放平台申请的唯一标识
-* \param universalLink 第三方应用在互联开放平台注册的universallink，和bundleID一一对应
-* \param delegate 第三方应用用于接收请求返回结果的委托对象
-* \return 初始化后的授权登录对象
-*/
-- (id)initWithAppId:(NSString *)appId
-   andUniversalLink:(NSString *)universalLink
-        andDelegate:(id<TencentSessionDelegate>)delegate;
 
 /**
  * 判断用户手机上是否安装手机QQ
  * \return YES:安装 NO:没安装
- *
- * \note SDK目前已经支持QQ、TIM授权登录及分享功能， 会按照QQ>TIM的顺序进行调用。
- * 只要用户安装了QQ、TIM中任意一个应用，都可为第三方应用进行授权登录、分享功能。
- * 第三方应用在接入SDK时不需要判断是否安装QQ、TIM。若有判断安装QQ、TIM的逻辑建议移除。
  */
 + (BOOL)iphoneQQInstalled;
 
 /**
  * 判断用户手机上是否安装手机TIM
  * \return YES:安装 NO:没安装
- *
- * \note SDK目前已经支持QQ、TIM授权登录及分享功能， 会按照QQ>TIM的顺序进行调用。
- * 只要用户安装了QQ、TIM中任意一个应用，都可为第三方应用进行授权登录、分享功能。
- * 第三方应用在接入SDK时不需要判断是否安装QQ、TIM。若有判断安装QQ、TIM的逻辑建议移除。
  */
 + (BOOL)iphoneTIMInstalled;
  
@@ -206,13 +158,13 @@ typedef NS_ENUM(NSUInteger, TencentAuthMode) {
  * 判断用户手机上的手机QQ是否支持SSO登录
  * \return YES:支持 NO:不支持
  */
-+ (BOOL)iphoneQQSupportSSOLogin __attribute__((deprecated("QQ版本均支持SSO登录。该接口已过期, 建议删除调用")));
++ (BOOL)iphoneQQSupportSSOLogin;
 
 /**
  * 判断用户手机上的手机TIM是否支持SSO登录
  * \return YES:支持 NO:不支持
  */
-+ (BOOL)iphoneTIMSupportSSOLogin __attribute__((deprecated("TIM版本均支持SSO登录。该接口已过期, 建议删除调用")));
++ (BOOL)iphoneTIMSupportSSOLogin;
 
 /**
  * 登录授权
@@ -238,13 +190,6 @@ typedef NS_ENUM(NSUInteger, TencentAuthMode) {
 - (BOOL)authorize:(NSArray *)permissions
        localAppId:(NSString *)localAppId
 		 inSafari:(BOOL)bInSafari;
-
-/**
- * 登录授权<web为二维码扫码方式>
- *
- * \param permissions 授权信息列
- */
-- (BOOL)authorizeWithQRlogin:(NSArray *)permissions;
 
 /**
  * 增量授权，因用户没有授予相应接口调用的权限，需要用户确认是否授权
@@ -279,21 +224,6 @@ typedef NS_ENUM(NSUInteger, TencentAuthMode) {
  * \return 处理结果，YES表示可以 NO表示不行
  */
 + (BOOL)CanHandleOpenURL:(NSURL *)url;
-
-/**
- * (静态方法)处理应用的UniversalLink拉起协议
- * \param url 处理被其他应用呼起时的逻辑
- * \return 处理结果，YES表示成功，NO表示失败
- */
-+ (BOOL)HandleUniversalLink:(NSURL *)url;
-
-/**
- * (静态方法)sdk是否可以处理应用的Universallink拉起协议
- * \param url 处理被其他应用呼起时的逻辑(应用的Universallink链接须满足官网注册时的格式要求)
- * \return 处理结果，YES表示可以 NO表示不行
- * 注：在调用其他Universallink相关处理接口之前，均需进行此项判断
- */
-+ (BOOL)CanHandleUniversalLink:(NSURL *)url;
 
 /**
  * (静态方法)获取TencentOAuth调用的上一次错误信息
@@ -389,12 +319,6 @@ typedef NS_ENUM(NSUInteger, TencentAuthMode) {
  * unionID获得
  */
 - (void)didGetUnionID;
-
-/**
- * 强制网页登录，包括账号密码登录和二维码登录
- * return YES时，就算本地有手Q也会打开web界面
- */
-- (BOOL)forceWebLogin;
 @end
 
 #pragma mark - TencentSessionDelegate(开放接口回调协议)
@@ -452,6 +376,7 @@ typedef NS_ENUM(NSUInteger, TencentAuthMode) {
  */
 - (void)getUserInfoResponse:(APIResponse*) response;
 
+
 /**
  * 社交API统一回调接口
  * \param response API返回结果，具体定义参见sdkdef.h文件中\ref APIResponse
@@ -476,7 +401,6 @@ typedef NS_ENUM(NSUInteger, TencentAuthMode) {
  * \param viewController 需要关闭的viewController
  */
 - (void)tencentOAuth:(TencentOAuth *)tencentOAuth doCloseViewController:(UIViewController *)viewController;
-
 @end
 
 #pragma mark - TencentWebViewDelegate(H5登录webview旋转方向回调)

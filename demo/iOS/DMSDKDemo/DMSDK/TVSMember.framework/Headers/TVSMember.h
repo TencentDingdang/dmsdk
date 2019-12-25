@@ -53,7 +53,7 @@ typedef NS_ENUM(NSInteger,TVSMemberUnit) {
  * @param type 会员类型
  * @param handler 回调，BOOL 值表示是否可以领取会员，NSInteger 和 TVSMemberUnit 分别表示可以领取的会员时长数量和单位
  */
--(void)queryDeviceStatusWithType:(TVSMemberType)type handler:(nonnull void(^)(BOOL,NSInteger,TVSMemberUnit))handler;
+-(void)queryDeviceStatusWithType:(TVSMemberType)type handler:(void(^)(BOOL,NSInteger,TVSMemberUnit))handler;
 
 /*
  * @brief 查询会员状态
@@ -61,6 +61,6 @@ typedef NS_ENUM(NSInteger,TVSMemberUnit) {
  * @param type 会员类型
  * @param handler 回调，BOOL 值表示是否是否会员，两个 NSDate 分别表示会员开始时间、会员过期时间
  */
--(void)queryMemberStatusWithType:(TVSMemberType)type handler:(nonnull void(^)(BOOL,NSDate*,NSDate*))handler;
+-(void)queryMemberStatusWithType:(TVSMemberType)type handler:(void(^)(BOOL,NSDate*,NSDate*))handler;
 
 @end

@@ -67,18 +67,13 @@ typedef NS_ENUM(NSInteger,TVSServerEnv) {
 /*
  * @brief 网络配置
  */
-@property(nonatomic,strong,readonly,nonnull) TVSNetworkConfig* netConfig;
-
-/*
- * @brief 是否启用异常上报
- */
-@property(nonatomic,assign) BOOL enableDiagnosis;
+@property(nonatomic,strong,readonly) TVSNetworkConfig* netConfig;
 
 /*
  * @brief 获得 TVS 环境类单例对象
  * @return TVS 环境类实例
  */
-+(nonnull instancetype)shared;
++(instancetype)shared;
 
 /*
  * @brief 开启日志
@@ -86,14 +81,9 @@ typedef NS_ENUM(NSInteger,TVSServerEnv) {
 -(void)enableLog;
 
 /*
- * @brief 触发日志上报
- */
-- (void)performLogReportWithHandler:(nonnull void (^)(BOOL, NSString * _Nullable))handler;
-
-/*
  * @brief 获得 SDK 版本
  * @return SDK 版本
  */
--(nonnull NSString*)sdkVersion;
+-(NSString*)sdkVersion;
 
 @end

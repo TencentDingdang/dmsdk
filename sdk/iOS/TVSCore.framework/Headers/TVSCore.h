@@ -16,11 +16,8 @@ FOUNDATION_EXPORT const unsigned char TVSCoreVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <TVSCore/PublicHeader.h>
 
+
+
 #import <TVSCore/TVSEnvironment.h>
 #import <TVSCore/TVSAuth.h>
 #import <TVSCore/TVSDevice.h>
-#import <TVSCore/TVSTSKMProxy.h>
-#import <TVSCore/TVSAlarmReminder.h>
-#import <TVSCore/TVSThirdPartyAuth.h>
-#import <TVSCore/TVSChildMode.h>
-#import <TVSCore/TVSDeviceControl.h>

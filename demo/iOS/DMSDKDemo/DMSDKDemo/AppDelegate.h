@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TVSCore/TVSTSKMProxy.h>
+#import <TVSTSKM/TVSTSKMProxy.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

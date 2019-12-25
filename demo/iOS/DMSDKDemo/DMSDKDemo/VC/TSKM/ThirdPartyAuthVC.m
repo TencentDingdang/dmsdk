@@ -7,7 +7,7 @@
 //
 
 #import "ThirdPartyAuthVC.h"
-#import <TVSCore/TVSThirdPartyAuth.h>
+#import <TVSTSKM/TVSThirdPartyAuth.h>
 #import "BrowserVC.h"
 
 @interface ThirdPartyAuthVC ()

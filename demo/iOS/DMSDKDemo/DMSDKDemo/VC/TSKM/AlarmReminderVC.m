@@ -7,7 +7,7 @@
 //
 
 #import "AlarmReminderVC.h"
-#import <TVSCore/TVSAlarmReminder.h>
+#import <TVSTSKM/TVSAlarmReminder.h>
 
 @interface AlarmReminderVC ()
 

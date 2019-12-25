@@ -80,7 +80,7 @@
  * @param productId
  * @param handler 回调，参数为音色配置列表
  */
--(void)getBotAISpeechOptionWithProductId:(NSString*)productId handler:(nonnull void(^)(NSArray<TVSAISpeechItem*>*))handler;
+-(void)getBotAISpeechOptionWithProductId:(NSString*)productId handler:(void(^)(NSArray<TVSAISpeechItem*>*))handler;
 
 /*
  * @brief 获取设备音色
@@ -89,7 +89,7 @@
  * @param dsn
  * @param handler 回调，参数为音色配置列表
  */
--(void)getDeviceAISpeechWithProductId:(NSString*)productId dsn:(NSString*)dsn handler:(nonnull void(^)(TVSAISpeechItem*))handler;
+-(void)getDeviceAISpeechWithProductId:(NSString*)productId dsn:(NSString*)dsn handler:(void(^)(TVSAISpeechItem*))handler;
 
 /*
  * @brief 设置设备音色
@@ -100,6 +100,6 @@
  * @param dsn
  * @param handler 回调，BOOL参数表示是否设置成功
  */
--(void)setDeviceAISpeechId:(NSString*)speechID ttsConfig:(TVSTTSConfig*)ttsConfig productId:(NSString*)productId dsn:(NSString*)dsn handler:(nonnull void(^)(BOOL))handler;
+-(void)setDeviceAISpeechId:(NSString*)speechID ttsConfig:(TVSTTSConfig*)ttsConfig productId:(NSString*)productId dsn:(NSString*)dsn handler:(void(^)(BOOL))handler;
 
 @end

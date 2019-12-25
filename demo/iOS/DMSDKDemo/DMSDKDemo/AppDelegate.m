@@ -10,7 +10,6 @@
 #import <TVSCore/TVSCore.h>
 #import "BrowserVC.h"
 #import "CPAuthAgents/QQMusicAuthAgent.h"
-#import <TencentOpenAPI/TencentOAuth.h>
 
 #define QQ_MUSIC_SECRET_KEY @""
 #define QQ_MUSIC_APP_ID @""
@@ -20,8 +19,6 @@
 
 //SDK 初始化
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // DM SDK默认启用了异常上报，若有需要可以关闭
-//    [TVSEnvironment shared].enableDiagnosis = NO;
     [[TVSEnvironment shared]enableLog];//开启日志
     [[TVSAuthManager shared]registerApp];//读取配置信息
     // 在这里注入QQ音乐授权实现到DMSDK，注意参数中填入您申请的QQ音乐AppID、密钥和配置对应的回调URL
@@ -69,24 +66,6 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
-- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> *restorableObjects))restorationHandler {
-    // Copied from QQ Open SDK's demo code
-    // Demo处理手Q UniversalLink回调的示例代码
-    if([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
-        NSURL *url = userActivity.webpageURL;
-        if(url && [TencentOAuth CanHandleUniversalLink:url]) {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"UniversalLink" message:url.description delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
-            [alertView show];
-#if BUILD_QQAPIDEMO
-            // 兼容[QQApiInterface handleOpenURL:delegate:]的接口回调能力
-            [QQApiInterface handleOpenUniversallink:url delegate:(id<QQApiInterfaceDelegate>)[QQApiShareEntry class]];
-#endif
-            return [TencentOAuth HandleUniversalLink:url];
-        }
-    }
-    return YES;
 }
 
 @end

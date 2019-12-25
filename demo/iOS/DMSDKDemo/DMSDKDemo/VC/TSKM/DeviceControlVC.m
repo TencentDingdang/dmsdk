@@ -7,7 +7,7 @@
 //
 
 #import "DeviceControlVC.h"
-#import <TVSCore/TVSDeviceControl.h>
+#import <TVSTSKM/TVSDeviceControl.h>
 
 @interface DeviceControlVC ()
 
