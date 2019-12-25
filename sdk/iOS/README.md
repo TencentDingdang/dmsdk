@@ -6,4 +6,6 @@
 
 * **TVSSpeech.framework**: 音色 TTS 配置，根据需要可选； 
 
+* **TVSTSKM.framework**: 技能服务访问，根据需要可选；
+
 * **TVSWeb.framework**: H5 页面，支持自己实现账号授权（须实现 `TVSAuthDelegate` 协议），根据需要可选；
