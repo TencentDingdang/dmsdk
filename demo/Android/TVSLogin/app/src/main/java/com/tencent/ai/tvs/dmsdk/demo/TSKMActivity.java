@@ -19,7 +19,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.tencent.ai.dobbydemo.R;
 import com.tencent.ai.tvs.LoginProxy;
-import com.tencent.ai.tvs.core.account.AccountInfoManager;
 import com.tencent.ai.tvs.core.common.TVSDevice;
 import com.tencent.ai.tvs.dmsdk.demo.tskm.AlarmActivity;
 import com.tencent.ai.tvs.dmsdk.demo.tskm.ChildModeActivity;
@@ -150,7 +149,7 @@ public class TSKMActivity extends AppCompatActivity {
     private void updateClientId() {
         String productId = mProductIDEditText.getText().toString();
         String dsn = mDSNEditText.getText().toString();
-        mClientId = AccountInfoManager.getInstance().getClientId(productId, dsn);
+        mClientId = LoginProxy.getInstance().getAccountInfoManager().getClientId(productId, dsn);
         mClientIdTextView.setText("Client ID:" + mClientId);
     }
 }

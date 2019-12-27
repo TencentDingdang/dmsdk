@@ -6,13 +6,22 @@
     android:layout_height="match_parent"
     tools:context="com.tencent.ai.tvs.dmsdk.demo.tskm.DeviceControlActivity">
 
+    <TextView
+        android:id="@+id/tipTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="调用该页面接口前请保证目标设备已经绑定到当前账号！"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/namespaceLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/nameLayout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/nameLayout">
+        app:layout_constraintTop_toBottomOf="@id/tipTextView">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/namespaceEditText"
@@ -26,9 +35,10 @@
         android:id="@+id/nameLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/namespaceLayout"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/namespaceLayout"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="@id/namespaceLayout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nameEditText"
@@ -56,30 +66,21 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/bindDeviceButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Bind device"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/sendMessageButton"
-        app:layout_constraintTop_toBottomOf="@id/blobInfoLayout" />
-
-    <Button
         android:id="@+id/sendMessageButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Send message"
-        app:layout_constraintStart_toEndOf="@id/bindDeviceButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/blobInfoLayout" />
 
     <com.tencent.ai.tvs.dmsdk.demo.widget.LogView
         android:id="@+id/logView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/bindDeviceButton"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/sendMessageButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

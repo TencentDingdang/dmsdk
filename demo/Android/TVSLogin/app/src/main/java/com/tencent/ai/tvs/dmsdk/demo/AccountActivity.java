@@ -46,7 +46,7 @@ public class AccountActivity extends ModuleActivity {
         mQQVerifyButton.setOnClickListener(v -> api.tvsTokenVerify(new SimpleTVSCallback("QQ验票")));
         mAccountInfoButton = findViewById(R.id.accountInfoButton);
         mAccountInfoButton.setOnClickListener(v -> {
-            AccountInfoManager m = AccountInfoManager.getInstance();
+            AccountInfoManager m = LoginProxy.getInstance().getAccountInfoManager();
             logSection("获取账户信息");
             logLine("appID = " + m.getAppID());
             logLine("openID = " + m.getOpenID());
@@ -58,7 +58,7 @@ public class AccountActivity extends ModuleActivity {
         });
         mUserInfoButton = findViewById(R.id.userInfoButton);
         mUserInfoButton.setOnClickListener(v -> {
-            UserInfoManager m = UserInfoManager.getInstance();
+            UserInfoManager m = LoginProxy.getInstance().getUserInfoManager();
             logSection("获取用户信息");
             logLine("nickname = " + m.getNickname());
             logLine("gender = " + (m.getSex() == UserInfoManager.MALE ? "男" : "女"));
@@ -89,7 +89,7 @@ public class AccountActivity extends ModuleActivity {
     }
 
     private void reloadState() {
-        ELoginPlatform platform = AccountInfoManager.getInstance().getPlatformType();
+        ELoginPlatform platform = LoginProxy.getInstance().getAccountInfoManager().getPlatformType();
         mWXTextView.setTextColor(platform == ELoginPlatform.WX ? Color.GREEN : Color.BLACK);
         mWXLoginButton.setEnabled(platform == null);
         mWXRefreshButton.setEnabled(platform == ELoginPlatform.WX);

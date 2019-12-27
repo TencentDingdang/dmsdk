@@ -27,12 +27,6 @@ public class DeviceControlActivity extends ModuleActivity {
         String dsn = getIntent().getStringExtra(TSKMActivity.EXTRA_DSN);
         mTskm = new TVSDeviceControl(productId, dsn);
 
-        findViewById(R.id.bindDeviceButton).setOnClickListener(v -> mTskm.bindDevice(new SimpleTVSCallback1<String>("BindDevice") {
-            @Override
-            protected String loggableResult(String result) {
-                return result;
-            }
-        }));
         findViewById(R.id.sendMessageButton).setOnClickListener(v ->
                 mTskm.controlDevice(mNamespaceEditText.getText().toString(), mNameEditText.getText().toString(), mBlobInfoEditText.getText().toString(), new SimpleTVSCallback1<String>("SendMessage") {
                     @Override

@@ -50,17 +50,11 @@ dependencies {
     implementation 'androidx.fragment:fragment:1.1.0'
     // Support libraries
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'com.google.android.material:material:1.2.0-alpha01'
+    implementation 'com.google.android.material:material:1.2.0-alpha03'
     // DMSDK
-    def tvsVer = '2.2.1'
+    def tvsVer = '2.3.0'
     // 核心模块，必须
     implementation "com.tencent.yunxiaowei.dmsdk:core:$tvsVer"
-    // AI Speech模块，可选
-    implementation "com.tencent.yunxiaowei.dmsdk:aispeech:$tvsVer"
-    // QQ音乐会员模块，可选
-    implementation "com.tencent.yunxiaowei.dmsdk:member:$tvsVer"
-    // TSKM技能服务模块，可选
-    implementation "com.tencent.yunxiaowei.dmsdk:tskm:$tvsVer"
     // WebViewSDK
     implementation "com.tencent.yunxiaowei.webviewsdk:webviewsdk:$tvsVer"
     // QQ Music 3rd-party auth

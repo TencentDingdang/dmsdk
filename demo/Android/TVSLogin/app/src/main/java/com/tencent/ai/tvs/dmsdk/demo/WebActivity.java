@@ -2,6 +2,7 @@ package com.tencent.ai.tvs.dmsdk.demo;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 
 import com.tencent.ai.dobbydemo.BuildConfig;
@@ -243,6 +245,13 @@ public class WebActivity extends ModuleActivity {
         @Override
         public void onLoadError() {
             Log.w(LOG_TAG, "onLoadError");
+        }
+
+        @Override
+        public boolean showDialog(String title, String message,
+                                  String positiveButtonText, @Nullable DialogInterface.OnClickListener positiveButtonListener,
+                                  @Nullable String negativeButtonText, @Nullable DialogInterface.OnClickListener negativeButtonListener) {
+            return false;
         }
     }
 

@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.tencent.ai.dobbydemo.R;
 import com.tencent.ai.tvs.LoginProxy;
+import com.tencent.ai.tvs.core.common.TVSCallback;
 import com.tencent.ai.tvs.core.common.TVSDevice;
 import com.tencent.ai.tvs.env.ELoginEnv;
 
@@ -91,7 +92,16 @@ public class MainActivity extends AppCompatActivity {
 
         // 每次应用启动时应当调用一次票据刷新，尽量保证票据不过期！
         if (LoginProxy.getInstance().isTokenExist()) {
-            LoginProxy.getInstance().tvsTokenVerify(null);
+            LoginProxy.getInstance().tvsTokenVerify(new TVSCallback() {
+                @Override
+                public void onSuccess() {
+                }
+
+                @Override
+                public void onError(int i) {
+                    Toast.makeText(MainActivity.this, "刷新登录凭证失败", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 

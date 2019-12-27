@@ -8,7 +8,4 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="TVSAssistTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
-    </style>
-
 </resources>
