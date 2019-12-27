@@ -1,5 +1,8 @@
 package com.tencent.ai.tvs.dmsdk.demo;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -130,6 +133,19 @@ public class MainActivity extends AppCompatActivity {
         mAdapter.addModuleEntry(getString(R.string.module_member), () -> startActivity(new Intent(this, MemberActivity.class)));
         mAdapter.addModuleEntry(getString(R.string.module_tskm), () -> startActivity(new Intent(this, TSKMActivity.class)));
         mAdapter.addModuleEntry(getString(R.string.module_ai_speech), () -> startActivity(new Intent(this, AISpeechActivity.class)));
+        mAdapter.addModuleEntry(getString(R.string.log_report), () -> LoginProxy.getInstance().performLogReport(new LoginProxy.LogReportCallback() {
+            @Override
+            public void onSuccess(@NonNull String reportId) {
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                clipboard.setPrimaryClip(ClipData.newPlainText("Report ID", reportId));
+                Toast.makeText(MainActivity.this, "日志上传成功，Report ID已经复制到剪切板", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onError(int i) {
+                Toast.makeText(MainActivity.this, "日志上传失败", Toast.LENGTH_LONG).show();
+            }
+        }));
     }
 
     private static class ModuleListAdapter extends RecyclerView.Adapter<ModuleListAdapter.ViewHolder> {
