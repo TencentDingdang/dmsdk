@@ -17,7 +17,6 @@
 		80814707225B6487000C023D /* BrowserVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 80814705225B6486000C023D /* BrowserVC.m */; };
 		8081470A225B6496000C023D /* MemberVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 80814708225B6496000C023D /* MemberVC.m */; };
 		8081470F225B64A9000C023D /* ThirdPartyAuthVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8081470D225B64A9000C023D /* ThirdPartyAuthVC.m */; };
-		80814713225B64BD000C023D /* SpeechVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 80814711225B64BD000C023D /* SpeechVC.m */; };
 		8081471A225B669A000C023D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 80814716225B669A000C023D /* AppDelegate.m */; };
 		80814721225B66BF000C023D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8081471D225B66BF000C023D /* Main.storyboard */; };
 		80814722225B66BF000C023D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8081471F225B66BF000C023D /* LaunchScreen.storyboard */; };
@@ -71,8 +70,6 @@
 		80814709225B6496000C023D /* MemberVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MemberVC.h; path = VC/Member/MemberVC.h; sourceTree = "<group>"; };
 		8081470C225B64A9000C023D /* ThirdPartyAuthVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThirdPartyAuthVC.h; path = VC/TSKM/ThirdPartyAuthVC.h; sourceTree = "<group>"; };
 		8081470D225B64A9000C023D /* ThirdPartyAuthVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThirdPartyAuthVC.m; path = VC/TSKM/ThirdPartyAuthVC.m; sourceTree = "<group>"; };
-		80814711225B64BD000C023D /* SpeechVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeechVC.m; path = VC/Speech/SpeechVC.m; sourceTree = "<group>"; };
-		80814712225B64BD000C023D /* SpeechVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeechVC.h; path = VC/Speech/SpeechVC.h; sourceTree = "<group>"; };
 		80814716225B669A000C023D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		80814717225B669A000C023D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		80814719225B669A000C023D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -198,15 +195,6 @@
 			name = TSKM;
 			sourceTree = "<group>";
 		};
-		80A709E022409003007A8E51 /* Speech */ = {
-			isa = PBXGroup;
-			children = (
-				80814712225B64BD000C023D /* SpeechVC.h */,
-				80814711225B64BD000C023D /* SpeechVC.m */,
-			);
-			name = Speech;
-			sourceTree = "<group>";
-		};
 		80C39058220000B000698F7D /* VC */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,7 +207,6 @@
 				80A709DB22408F94007A8E51 /* Web */,
 				80A709DE22408FE2007A8E51 /* Member */,
 				80A709DF22408FF2007A8E51 /* TSKM */,
-				80A709E022409003007A8E51 /* Speech */,
 			);
 			name = VC;
 			sourceTree = "<group>";
@@ -418,7 +405,6 @@
 				8081473E225B705C000C023D /* DeviceControlVC.m in Sources */,
 				80814701225B6475000C023D /* DeviceVC.m in Sources */,
 				8081472D225B6715000C023D /* AuthVC.m in Sources */,
-				80814713225B64BD000C023D /* SpeechVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,7 +571,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tencent.dingdang.dmsdk.demoxyz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "com.tencent.dingdang.dmsdk.demoxyz Development";
+				PROVISIONING_PROFILE_SPECIFIER = comtencentdingdangdmsdkdemoxyz_Development_SignProvision;
 			};
 			name = Debug;
 		};
