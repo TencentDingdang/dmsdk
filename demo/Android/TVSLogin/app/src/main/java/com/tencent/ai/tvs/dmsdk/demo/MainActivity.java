@@ -132,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
         });
         mAdapter.addModuleEntry(getString(R.string.module_member), () -> startActivity(new Intent(this, MemberActivity.class)));
         mAdapter.addModuleEntry(getString(R.string.module_tskm), () -> startActivity(new Intent(this, TSKMActivity.class)));
-        mAdapter.addModuleEntry(getString(R.string.module_ai_speech), () -> startActivity(new Intent(this, AISpeechActivity.class)));
         mAdapter.addModuleEntry(getString(R.string.log_report), () -> LoginProxy.getInstance().performLogReport(new LoginProxy.LogReportCallback() {
             @Override
             public void onSuccess(@NonNull String reportId) {

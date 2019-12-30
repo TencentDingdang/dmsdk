@@ -48,9 +48,6 @@
         <activity android:name="com.tencent.ai.tvs.dmsdk.demo.tskm.ChildModeActivity" />
         <activity android:name="com.tencent.ai.tvs.dmsdk.demo.tskm.DeviceControlActivity" />
         <activity android:name="com.tencent.ai.tvs.dmsdk.demo.tskm.ThirdPartBindOpActivity" />
-        <activity
-            android:name="com.tencent.ai.tvs.dmsdk.demo.AISpeechActivity"
-            android:label="@string/module_ai_speech" />
         <!-- Start: 微信登录接入 -->
         <!-- 要接入微信登录，需要添加下面的两个标签；如果您需要自定义WxEntryActivity，则不需要添加
              下面的标签，而是按照微信的接入文档添加自定义的WxEntryActivity，但要使用DMSDK的微信登录
