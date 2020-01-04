@@ -12,6 +12,8 @@ public class DemoApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        DemoConstant.loadCustomConfigIfEnabled(this);
+
         // 注意：下面的初始化提供了自定义的AuthDelegate实现！一般情况下不需要传第四个参数，使用三参数的registerApp即可。
         //       自定义AuthDelegate的目的见registerApp的文档。
         // 注意：此处使用的微信和QQ的App ID均为demo专用，无法用于您的应用，您需要为自己的应用申请专门的App ID！详见接入指南文档。

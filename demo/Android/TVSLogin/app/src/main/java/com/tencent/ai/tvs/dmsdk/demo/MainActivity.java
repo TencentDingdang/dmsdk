@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         mAdapter = new ModuleListAdapter();
 
+        findViewById(R.id.customConfigButton).setOnClickListener(v -> startActivity(new Intent(this, CustomConfigActivity.class)));
         RadioButton testingRadioButton = findViewById(R.id.testingRadioButton);
         testingRadioButton.setOnClickListener(v -> LoginProxy.getInstance().setEnv(ELoginEnv.TEST));
         RadioButton experienceRadioButton = findViewById(R.id.experienceRadioButton);

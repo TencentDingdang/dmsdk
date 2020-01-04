@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
+        <activity android:name="com.tencent.ai.tvs.dmsdk.demo.CustomConfigActivity" />
         <activity android:name="com.tencent.ai.tvs.dmsdk.demo.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -90,7 +90,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <!-- 请填入您在QQ音乐申请的App ID！ -->
-                <data android:scheme="qqmusic" />
+                <data android:scheme="qqmusictvsdemo" />
             </intent-filter>
         </activity>
     </application>

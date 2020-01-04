@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="useCustomConfig"
+        android:summaryOff="将使用DemoConstant中填写的配置。"
+        android:summaryOn="将使用本界面的参数配置。"
+        android:title="使用自定义配置"
+        tools:defaultValue="true" />
+    <EditTextPreference
+        android:dependency="useCustomConfig"
+        android:key="qqMusicAppId"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="QQ音乐授权App ID"
+        app:useSimpleSummaryProvider="true" />
+    <EditTextPreference
+        android:dependency="useCustomConfig"
+        android:key="qqMusicPrivateKey"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="QQ音乐授权私钥"
+        app:useSimpleSummaryProvider="true" />
+</PreferenceScreen>

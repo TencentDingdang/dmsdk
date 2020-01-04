@@ -6,12 +6,21 @@
     android:layout_height="match_parent"
     tools:context="com.tencent.ai.tvs.dmsdk.demo.MainActivity">
 
+    <Button
+        android:id="@+id/customConfigButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="使用自定义配置"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <RadioGroup
         android:id="@+id/envRadioGroup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/customConfigButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
