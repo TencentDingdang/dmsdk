@@ -15,7 +15,7 @@
 
 更新日志：[更新日志](https://dingdang.qq.com/doc/page/347)。
 
-您可以在[Releases页面](https://github.com/TencentDingdang/dmsdk/releases)下载编译好的Android demo应用体验。注意该demo需要您手动输入申请的Product ID、DSN，且QQ音乐服务的体验会有频率限制。
+您可以在[Releases页面](https://github.com/TencentDingdang/dmsdk/releases)下载编译好的Android demo应用体验。注意该demo需要您手动输入申请的Product ID、DSN；您可以在demo中配置您申请的QQ音乐授权的参数以体验QQ音乐授权功能，详见[demo的README](./demo/Android/TVSLogin/README.md)。
 
 ## iOS
 
