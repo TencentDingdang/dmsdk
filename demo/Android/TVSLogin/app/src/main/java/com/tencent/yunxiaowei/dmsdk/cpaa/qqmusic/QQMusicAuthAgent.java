@@ -45,6 +45,7 @@ public class QQMusicAuthAgent implements CpAuthAgent {
     private static final int REQUIRED_QQ_MUSIC_MAJOR = 8;
     private static final int REQUIRED_QQ_MUSIC_MINOR = 9;
     private static final int REQUIRED_QQ_MUSIC_PATCH = 6;
+    private static final long[] BIND_SERVICE_RETRY_INTERVALS = new long[]{ 100, 200, 300, 500 };
     private final String mAppId;
     private final String mPrivateKey;
     private final String mCallbackUrl;
@@ -116,10 +117,15 @@ public class QQMusicAuthAgent implements CpAuthAgent {
     @Override
     public void requestCpAuthCredential(ThirdPartyAuthCallback callback) {
         mCallback = callback;
-        bindServiceIfNeeded(true);
+        bindServiceIfNeeded(0);
     }
 
-    private void bindServiceIfNeeded(boolean retry) {
+    /**
+     * 尝试绑定QQ音乐后台服务，若失败会多次重试。
+     * @param retry 当前重试次数，第1次是100ms后，第2次是200ms后，第3次是300ms后，第4次是500ms后，第4次失败则返回失败。
+     */
+    private void bindServiceIfNeeded(int retry) {
+        DMLog.i(TAG, "bindServiceIfNeeded: retry = " + retry);
         if (mBound) {
             initSdkIfNeeded();
             return;
@@ -127,9 +133,10 @@ public class QQMusicAuthAgent implements CpAuthAgent {
         Intent intent = new Intent("com.tencent.qqmusic.third.api.QQMusicApiService");
         intent.setPackage(PN_QQ_MUSIC);
         if (!mContext.bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE)) {
-            if (retry) {
+            if (retry < 4) {
+                DMLog.i(TAG, "bindServiceIfNeeded: Failed on retry #" + retry);
                 CommonCmd.startQQMusicProcess(mContext, PN_QQ_MUSIC);
-                mUiHandler.postDelayed(() -> bindServiceIfNeeded(false), 100);
+                mUiHandler.postDelayed(() -> bindServiceIfNeeded(retry + 1), BIND_SERVICE_RETRY_INTERVALS[retry]);
             } else {
                 onFailure(CpAuthError.FAILED_TO_CONNECT_TO_APP, "绑定QQ音乐后台服务失败");
             }
@@ -261,6 +268,7 @@ public class QQMusicAuthAgent implements CpAuthAgent {
         mUiHandler.post(() -> {
             if (mCallback != null) {
                 mCallback.onSuccess(credential);
+                mCallback = null;
             }
         });
     }
@@ -269,6 +277,7 @@ public class QQMusicAuthAgent implements CpAuthAgent {
         mUiHandler.post(() -> {
             if (mCallback != null) {
                 mCallback.onFailure(code, displayMessage);
+                mCallback = null;
             }
         });
     }
