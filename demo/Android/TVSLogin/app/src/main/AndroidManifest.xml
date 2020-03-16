@@ -53,14 +53,14 @@
              下面的标签，而是按照微信的接入文档添加自定义的WxEntryActivity，但要使用DMSDK的微信登录
              的话需要参考文档调用相应的API。 -->
         <activity
-            android:name="com.tencent.ai.tvs.WXEntryActivity"
+            android:name="com.tencent.ai.dobbydemo.wxapi.WXEntryActivity"
             android:exported="true"
             android:launchMode="singleTask" />
         <activity-alias
-            android:name="${applicationId}.wxapi.WXEntryActivity"
+            android:name="${applicationId}.wxapi.WXEntryActivit"
             android:exported="true"
             android:launchMode="singleTask"
-            android:targetActivity="com.tencent.ai.tvs.WXEntryActivity" />
+            android:targetActivity="com.tencent.ai.dobbydemo.wxapi.WXEntryActivity" />
         <!-- End: 微信登录接入 -->
 
         <!-- Start: QQOpen登录接入 -->
@@ -90,7 +90,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <!-- 请填入您在QQ音乐申请的App ID！ -->
-                <data android:scheme="qqmusictvsdemo" />
+                <data android:scheme="qqmusictvsdemo42" />
             </intent-filter>
         </activity>
     </application>

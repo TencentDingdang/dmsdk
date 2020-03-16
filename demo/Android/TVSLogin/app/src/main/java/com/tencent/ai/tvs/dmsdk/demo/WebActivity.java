@@ -28,6 +28,8 @@ import com.tencent.ai.tvs.core.common.TVSDevice;
 import com.tencent.ai.tvs.env.ELoginPlatform;
 import com.tencent.ai.tvs.env.EUserAttrType;
 import com.tencent.ai.tvs.tskm.TVSThirdPartyAuth;
+import com.tencent.ai.tvs.tskm.thirdpartyauth.CpAuthAgent;
+import com.tencent.ai.tvs.tskm.thirdpartyauth.ThirdPartyCp;
 import com.tencent.ai.tvs.web.TVSWebController;
 import com.tencent.ai.tvs.web.TVSWebView;
 
@@ -179,6 +181,15 @@ public class WebActivity extends ModuleActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        CpAuthAgent agent = TVSThirdPartyAuth.getCpAuthAgent(ThirdPartyCp.QQ_MUSIC);
+        if (agent != null) {
+            agent.onResume();
+        }
+    }
+
+    @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if (!mWebViewController.goBack()) {
@@ -193,6 +204,10 @@ public class WebActivity extends ModuleActivity {
     @Override
     protected void onDestroy() {
         Log.v(LOG_TAG, "onDestroy");
+        CpAuthAgent agent = TVSThirdPartyAuth.getCpAuthAgent(ThirdPartyCp.QQ_MUSIC);
+        if (agent != null) {
+            agent.onDestory();
+        }
         mWebViewController.onDestroy();
         super.onDestroy();
     }
