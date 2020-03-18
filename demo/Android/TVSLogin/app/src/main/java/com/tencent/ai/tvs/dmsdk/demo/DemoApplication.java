@@ -1,6 +1,8 @@
 package com.tencent.ai.tvs.dmsdk.demo;
 
+import android.app.ActivityManager;
 import android.app.Application;
+import android.content.Context;
 
 import com.tencent.ai.dobbydemo.proxy.QqSdkProxy;
 import com.tencent.ai.dobbydemo.proxy.WxSdkProxy;
@@ -15,12 +17,26 @@ import com.tencent.yunxiaowei.dmsdk.cpaa.qqmusic.QQMusicQqmpAuthAgent;
 import com.tencent.yunxiaowei.dmsdk.cpaa.qqmusic.QQMusicWcmpAuthAgent;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class DemoApplication extends Application {
 
     public IWXAPI getWXAPI() {
         return WxSdkProxy.getInstance().getWXAPI();
+    }
+
+    private boolean isMainProcess() {
+        ActivityManager am = ((ActivityManager) getSystemService(Context.ACTIVITY_SERVICE));
+        List<ActivityManager.RunningAppProcessInfo> processInfos = am.getRunningAppProcesses();
+        String mainProcessName = getPackageName();
+        int myPid = android.os.Process.myPid();
+        for (ActivityManager.RunningAppProcessInfo info : processInfos) {
+            if (info.pid == myPid && mainProcessName.equals(info.processName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
@@ -50,5 +66,11 @@ public class DemoApplication extends Application {
         TVSThirdPartyAuth.setCpAuthAgent(ThirdPartyCp.QQ_MUSIC, agentMap);
         // 是否在登录成功后检查绑定。一般而言不需要启用。
 //        TVSWeb.getConfiguration().setEnableBinding(true);
+
+        if (isMainProcess()) {
+            // 为了防止在子进程中重复刷票，要判断一下是否主进程
+            TokenVerify.getInstance().init(this);
+            TokenVerify.getInstance().tryRefreshToken();
+        }
     }
 }

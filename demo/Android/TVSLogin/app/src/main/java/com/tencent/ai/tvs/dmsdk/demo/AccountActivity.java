@@ -24,6 +24,14 @@ public class AccountActivity extends ModuleActivity {
     private Button mUserInfoButton;
     private Button mLogoutButton;
 
+    private void registerNextTokenVerify() {
+        TokenVerify.getInstance().registerNextTokenVerify();
+    }
+
+    private void stopTokenVerify() {
+        TokenVerify.getInstance().stopTokenVerify();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +79,7 @@ public class AccountActivity extends ModuleActivity {
             reloadState();
             logSection("退出登录");
             logLine("Success");
+            stopTokenVerify();
         });
         CheckBox logoutBeforeReloginCheckBox = findViewById(R.id.logoutBeforeReloginCheckBox);
         logoutBeforeReloginCheckBox.setChecked(LoginProxy.getInstance().isLogoutBeforeRelogin());
@@ -111,7 +120,8 @@ public class AccountActivity extends ModuleActivity {
             logSection(mAction);
             logLine("Success");
             reloadState();
-
+            // 设置下次刷票时间
+            registerNextTokenVerify();
         }
 
         @Override
