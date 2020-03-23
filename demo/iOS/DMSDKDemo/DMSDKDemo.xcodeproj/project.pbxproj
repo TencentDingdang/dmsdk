@@ -571,7 +571,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tencent.dingdang.dmsdk.demoxyz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = comtencentdingdangdmsdkdemoxyz_Development_SignProvision;
+				PROVISIONING_PROFILE_SPECIFIER = com.tencent.dingdang.dmsdk.demoxyz_Development_SignProvision;
 			};
 			name = Debug;
 		};
@@ -610,7 +610,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tencent.dingdang.dmsdk.demoxyz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = comtencentdingdangdmsdkdemoxyz_Development_SignProvision;
+				PROVISIONING_PROFILE_SPECIFIER = com.tencent.dingdang.dmsdk.demoxyz_Development_SignProvision;
 			};
 			name = Release;
 		};
