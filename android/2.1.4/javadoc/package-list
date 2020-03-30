@@ -1,0 +1,13 @@
+com.tencent.ai.tvs
+com.tencent.ai.tvs.aispeech
+com.tencent.ai.tvs.base.log
+com.tencent.ai.tvs.base.util
+com.tencent.ai.tvs.core.account
+com.tencent.ai.tvs.core.common
+com.tencent.ai.tvs.env
+com.tencent.ai.tvs.member
+com.tencent.ai.tvs.miniprogram
+com.tencent.ai.tvs.qrcode
+com.tencent.ai.tvs.speaker
+com.tencent.ai.tvs.tskm
+com.tencent.ai.tvs.web
