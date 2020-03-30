@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>DM SDK & WebView SDK文档归档 |  </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
+    <!-- fonts -->
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Ubuntu:300,400,500,600,700" rel="stylesheet">
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="/dmsdk/style/doc.css">
+
+    <!-- favicon -->
+    <link rel="icon" href="/dmsdk/favicon.ico">
+
+    
+
+  <meta name="generator" content="Hexo 4.2.0"></head>
+  <body>
+
+   <script>window.__INITIAL_STATE__ = {"page":{"path":"dmsdk-ios/2.2.1/API文档/账号管理.html","title":""},"data":{"navigation":{"logo":{"text":"文档归档","type":"label"},"main":[{"text":"DM SDK Android","type":"label"},{"text":"2.2.1","type":"link","path":"dmsdk-android/2.2.1/接入指南.html","children":[{"text":"UniAccess接口","type":"link","path":"dmsdk-android/2.2.1/UniAccess接口.html"},{"text":"QQ音乐授权","type":"link","path":"dmsdk-android/2.2.1/QQ音乐授权.html"},{"text":"常见问题","type":"link","path":"dmsdk-android/2.2.1/常见问题.html"},{"text":"更新日志","type":"link","path":"dmsdk-android/2.2.1/更新日志.html"},{"text":"API文档","type":"link","path":"https://tencentdingdang.github.io/dmsdk/android/2.2.1/javadoc/index.html"}]},{"text":"2.3.0","type":"link","path":"dmsdk-android/2.3.0/接入指南.html","children":[{"text":"UniAccess接口","type":"link","path":"dmsdk-android/2.3.0/UniAccess接口.html"},{"text":"QQ音乐授权","type":"link","path":"dmsdk-android/2.3.0/QQ音乐授权.html"},{"text":"常见问题","type":"link","path":"dmsdk-android/2.3.0/常见问题.html"},{"text":"更新日志","type":"link","path":"dmsdk-android/2.3.0/更新日志.html"},{"text":"API文档","type":"link","path":"https://tencentdingdang.github.io/dmsdk/android/2.3.0/javadoc/index.html"}]},{"text":"DM SDK iOS","type":"label"},{"text":"2.3.0","type":"link","path":"dmsdk-ios/2.3.0/接入指南.html","children":[{"text":"UniAccess接口","type":"link","path":"dmsdk-ios/2.3.0/UniAccess接口.html"},{"text":"QQ音乐授权","type":"link","path":"dmsdk-ios/2.3.0/QQ音乐授权.html"},{"text":"常见问题","type":"link","path":"dmsdk-ios/2.3.0/常见问题.html"},{"text":"更新日志","type":"link","path":"dmsdk-ios/2.3.0/更新日志.html"},{"text":"API文档","type":"label","children":[{"text":"账号管理","type":"link","path":"dmsdk-ios/2.3.0/API文档/账号管理.html"},{"text":"web页面","type":"link","path":"dmsdk-ios/2.3.0/API文档/web页面.html"},{"text":"技能服务","type":"link","path":"dmsdk-ios/2.3.0/API文档/技能服务.html"},{"text":"语音设置","type":"link","path":"dmsdk-ios/2.3.0/API文档/语音设置.html"},{"text":"会员管理","type":"link","path":"dmsdk-ios/2.3.0/API文档/会员管理.html"}]}]},{"text":"2.2.1","type":"link","path":"dmsdk-ios/2.2.1/接入指南.html","children":[{"text":"UniAccess接口","type":"link","path":"dmsdk-ios/2.2.1/UniAccess接口.html"},{"text":"QQ音乐授权","type":"link","path":"dmsdk-ios/2.2.1/QQ音乐授权.html"},{"text":"常见问题","type":"link","path":"dmsdk-ios/2.2.1/常见问题.html"},{"text":"更新日志","type":"link","path":"dmsdk-ios/2.2.1/更新日志.html"},{"text":"API文档","type":"label","children":[{"text":"账号管理","type":"link","path":"dmsdk-ios/2.2.1/API文档/账号管理.html"},{"text":"web页面","type":"link","path":"dmsdk-ios/2.2.1/API文档/web页面.html"},{"text":"技能服务","type":"link","path":"dmsdk-ios/2.2.1/API文档/技能服务.html"},{"text":"语音设置","type":"link","path":"dmsdk-ios/2.2.1/API文档/语音设置.html"},{"text":"会员管理","type":"link","path":"dmsdk-ios/2.2.1/API文档/会员管理.html"}]}]},{"text":"WebView SDK","type":"label"},{"text":"2.2.1","type":"link","path":"webviewsdk-android/2.2.1/接入指南.html","children":[{"text":"技能授权","type":"link","path":"webviewsdk-android/2.2.1/技能授权.html"},{"text":"离线UI模版","type":"link","path":"webviewsdk-android/2.2.1/离线UI模版.html"},{"text":"常见问题","type":"link","path":"webviewsdk-android/2.2.1/常见问题.html"},{"text":"API文档","type":"link","path":"https://tencentdingdang.github.io/WebViewSDK/android/2.2.1/javadoc/index.html"}]}]}},"config":{"timezone":"","root":"/dmsdk/","time_format":"HH:mm:ss","theme":"../node_modules/hexo-theme-doc","theme_config":{"swagger_ui":{"version":2,"permalinks":true,"api_explorer":true,"download":"Download specification","show_extensions":false,"deep_linking":true,"display_operation_id":false,"doc_expansion":"none"},"search":{"skip":false,"background":false,"route":"/lunr.json"},"favicon":"/favicon.ico"}}}</script>
+
+    <div id="react-navigation-root"><div class="doc-navigation" data-reactroot=""><nav class="doc-navbar"><a href="/dmsdk/" class="doc-navbar__logo"><img src="/dmsdk/images/logo.png" class="doc-navbar__logo__img"/><span class="doc-navbar__logo__text">文档归档</span></a><i class="dc-icon dc-icon--close dc-icon--interactive doc-sidebar-close doc-navbar__sidebar-close doc-navbar__sidebar-close--desktop"></i><i class="dc-icon dc-icon--menu dc-icon--interactive doc-sidebar-toggle doc-navbar__sidebar-toggle"></i></nav><nav class="doc-sidebar"><div class="doc-sidebar__vertical-menu"><i class="dc-icon dc-icon--menu dc-icon--interactive doc-sidebar-toggle doc-sidebar-toggle--primary doc-sidebar__vertical-menu__item"></i><i class="dc-icon dc-icon--search dc-icon--interactive doc-sidebar__vertical-menu__item doc-sidebar__vertical-menu__item--primary"></i></div><div class="doc-sidebar-content"><div class="doc-sidebar__search-form"></div><ul class="doc-sidebar-list"></ul></div></nav></div></div>
+    <div class="doc-content">
+  <div class="dc-page">
+    <div class="dc-card">
+      <div id="react-search-results-root"></div>
+      <div id="page-content" class="doc-formatting">
+        <h1 id="TVSCore"><a href="#TVSCore" class="headerlink" title="TVSCore"></a>TVSCore</h1><h2 id="一、环境变量-lt-TVSCore-TVSEnvironment-h-gt"><a href="#一、环境变量-lt-TVSCore-TVSEnvironment-h-gt" class="headerlink" title="一、环境变量 &lt;TVSCore/TVSEnvironment.h&gt;"></a>一、环境变量 &lt;TVSCore/TVSEnvironment.h&gt;</h2><h3 id="1-TVSServerEnv-后台环境枚举"><a href="#1-TVSServerEnv-后台环境枚举" class="headerlink" title="1 TVSServerEnv 后台环境枚举"></a>1 TVSServerEnv 后台环境枚举</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TVSServerEnvFormal</td>
+<td>正式环境</td>
+<td>默认</td>
+</tr>
+<tr>
+<td>TVSServerEnvExplore</td>
+<td>体验环境</td>
+<td></td>
+</tr>
+<tr>
+<td>TVSServerEnvTest</td>
+<td>测试环境</td>
+<td></td>
+</tr>
+<tr>
+<td>TVSServerEnvDev</td>
+<td>开发环境</td>
+<td>暂不对外开放</td>
+</tr>
+</tbody></table>
+<h3 id="2-TVSEnvironment-环境变量类"><a href="#2-TVSEnvironment-环境变量类" class="headerlink" title="2 TVSEnvironment 环境变量类"></a>2 TVSEnvironment 环境变量类</h3><h4 id="成员"><a href="#成员" class="headerlink" title="成员"></a>成员</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>serverEnv</td>
+<td>TVSServerEnv</td>
+<td>后台环境</td>
+<td>默认正式环境</td>
+</tr>
+<tr>
+<td>serverReqTimeout</td>
+<td>NSTimeInterval</td>
+<td>后台请求超时时间</td>
+<td>默认 10 秒</td>
+</tr>
+</tbody></table>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><h5 id="instancetype-shared"><a href="#instancetype-shared" class="headerlink" title="+(instancetype)shared;"></a><code>+(instancetype)shared;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  获取 TVSEnvironment 实例对象；</p>
+<p>  <strong>参数</strong>:</p>
+<p>  无;</p>
+<p>  <strong>返回</strong>:</p>
+<p>  TVSEnvironment 实例；</p>
+<h5 id="void-enableLog"><a href="#void-enableLog" class="headerlink" title="-(void)enableLog;"></a><code>-(void)enableLog;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  开启日志；</p>
+<p>  <strong>参数</strong>:</p>
+<p>  无；</p>
+<p>  <strong>返回</strong>:</p>
+<p>  无；</p>
+<h5 id="NSString-sdkVersion"><a href="#NSString-sdkVersion" class="headerlink" title="-(NSString*)sdkVersion;"></a><code>-(NSString*)sdkVersion;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  获取 SDK 版本；</p>
+<p>  <strong>参数</strong>:</p>
+<p>  无；</p>
+<p>  <strong>返回</strong>:</p>
+<p>  SDK 版本；</p>
+<h2 id="二、账号管理-lt-TVSCore-TVSAuth-h-gt"><a href="#二、账号管理-lt-TVSCore-TVSAuth-h-gt" class="headerlink" title="二、账号管理 &lt;TVSCore/TVSAuth.h&gt;"></a>二、账号管理 &lt;TVSCore/TVSAuth.h&gt;</h2><h3 id="1-常量"><a href="#1-常量" class="headerlink" title="1 常量"></a>1 常量</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TVSInvalidClientId</td>
+<td>NSString*</td>
+<td>非法的 ClientId</td>
+</tr>
+<tr>
+<td>TVSInvalidRefreshToken</td>
+<td>NSString*</td>
+<td>非法的 RefreshToken</td>
+</tr>
+</tbody></table>
+<h3 id="2-TVSAccountType-账号登录类型枚举"><a href="#2-TVSAccountType-账号登录类型枚举" class="headerlink" title="2 TVSAccountType 账号登录类型枚举"></a>2 TVSAccountType 账号登录类型枚举</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TVSAccountTypeQQNumber</td>
+<td>QQ 号</td>
+</tr>
+<tr>
+<td>TVSAccountTypeQQOpenId</td>
+<td>QQ 登录</td>
+</tr>
+<tr>
+<td>TVSAccountTypeWechatOpenId</td>
+<td>微信登录</td>
+</tr>
+<tr>
+<td>TVSAccountTypePhoneNumber</td>
+<td>手机号</td>
+</tr>
+<tr>
+<td>TVSAccountTypeQbId</td>
+<td>QQ 浏览器 id</td>
+</tr>
+<tr>
+<td>TVSAccountTypeIOSVistor</td>
+<td>iOS 访客</td>
+</tr>
+<tr>
+<td>TVSAccountTypeUnknown</td>
+<td>未知类型</td>
+</tr>
+</tbody></table>
+<h3 id="3-TVSAuthResult-账号授权结果枚举"><a href="#3-TVSAuthResult-账号授权结果枚举" class="headerlink" title="3  TVSAuthResult 账号授权结果枚举"></a>3  TVSAuthResult 账号授权结果枚举</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TVSAuthResultSuccess</td>
+<td>授权成功</td>
+</tr>
+<tr>
+<td>TVSAuthResultFailedNetwork</td>
+<td>授权失败（网络原因）</td>
+</tr>
+<tr>
+<td>TVSAuthResultFailedNotLogin</td>
+<td>授权失败（未登录）</td>
+</tr>
+<tr>
+<td>TVSAuthResultFailedOther</td>
+<td>授权失败（其他原因）</td>
+</tr>
+</tbody></table>
+<h3 id="4-TVSAccountInfo-账号信息类"><a href="#4-TVSAccountInfo-账号信息类" class="headerlink" title="4 TVSAccountInfo 账号信息类"></a>4 TVSAccountInfo 账号信息类</h3><h4 id="成员-1"><a href="#成员-1" class="headerlink" title="成员"></a>成员</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>accountType</td>
+<td>TVSAccountType</td>
+<td>账号类型</td>
+</tr>
+<tr>
+<td>appId</td>
+<td>NSString*</td>
+<td>QQ/微信开放平台申请的 appId</td>
+</tr>
+<tr>
+<td>openId</td>
+<td>NSString*</td>
+<td>QQ/微信登录返回的 openId</td>
+</tr>
+<tr>
+<td>accessToken</td>
+<td>NSString*</td>
+<td>QQ/微信登录返回的 accessToken</td>
+</tr>
+<tr>
+<td>refreshToken</td>
+<td>NSString*</td>
+<td>微信用于刷票的 refreshToken</td>
+</tr>
+<tr>
+<td>unionId</td>
+<td>NSString*</td>
+<td>微信登录返回的 unionId</td>
+</tr>
+<tr>
+<td>expireTime</td>
+<td>NSInteger</td>
+<td>QQ/微信 token 过期时间</td>
+</tr>
+<tr>
+<td>tvsId</td>
+<td>NSString*</td>
+<td>TVS 平台返回的账号 id</td>
+</tr>
+<tr>
+<td>userId</td>
+<td>NSString*</td>
+<td>TVS 平台返回的 userId</td>
+</tr>
+</tbody></table>
+<h4 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h4><h5 id="NSString-clientIdWithProductId-NSString-productId-dsn-NSString-dsn"><a href="#NSString-clientIdWithProductId-NSString-productId-dsn-NSString-dsn" class="headerlink" title="+(NSString*)clientIdWithProductId:(NSString*)productId dsn:(NSString*)dsn;"></a><code>+(NSString*)clientIdWithProductId:(NSString*)productId dsn:(NSString*)dsn;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  获取 TVS 平台 ClientId；（适用于使用本 SDK 登录的场景）<br>  必须确保已登录！</p>
+<p>  <strong>参数</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>productId</td>
+<td>NSString*</td>
+<td>TVS 后台申请的 appid/accessToken 信息</td>
+<td>是</td>
+</tr>
+<tr>
+<td>dsn</td>
+<td>NSString*</td>
+<td>设备序列号</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>：</p>
+<p>  TVS 平台 ClientId;</p>
+<h5 id="NSString-clientIdWithProductId-NSString-productId-dsn-NSString-dsn-accountId-NSString-accountId"><a href="#NSString-clientIdWithProductId-NSString-productId-dsn-NSString-dsn-accountId-NSString-accountId" class="headerlink" title="+(NSString*)clientIdWithProductId:(NSString*)productId dsn:(NSString*)dsn accountId:(NSString*)accountId;"></a><code>+(NSString*)clientIdWithProductId:(NSString*)productId dsn:(NSString*)dsn accountId:(NSString*)accountId;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  获取 TVS 平台 ClientId；（适用于自己做登录的场景）<br>  其中 productId、dsn、openId 必传！！</p>
+<p>  <strong>参数</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>productId</td>
+<td>NSString*</td>
+<td>TVS 后台申请的 appid/accessToken 信息</td>
+<td>是</td>
+</tr>
+<tr>
+<td>dsn</td>
+<td>NSString*</td>
+<td>设备序列号</td>
+<td>是</td>
+</tr>
+<tr>
+<td>accountId</td>
+<td>NSString*</td>
+<td>账号唯一ID</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>：</p>
+<p>  TVS 平台 ClientId;</p>
+<h5 id="NSString-clientIdWithProductId-NSString-productId-dsn-NSString-dsn-openId-NSString-openId-accessToken-NSString-accessToken-refreshToken-NSString-refreshToken"><a href="#NSString-clientIdWithProductId-NSString-productId-dsn-NSString-dsn-openId-NSString-openId-accessToken-NSString-accessToken-refreshToken-NSString-refreshToken" class="headerlink" title="+(NSString*)clientIdWithProductId:(NSString*)productId dsn:(NSString*)dsn openId:(NSString*)openId accessToken:(NSString*)accessToken refreshToken:(NSString*)refreshToken;"></a><code>+(NSString*)clientIdWithProductId:(NSString*)productId dsn:(NSString*)dsn openId:(NSString*)openId accessToken:(NSString*)accessToken refreshToken:(NSString*)refreshToken;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  获取 TVS 平台 ClientId；（适用于自己做登录的场景）<br>  其中 productId、dsn、openId 必传！！</p>
+<p>  <strong>参数</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>productId</td>
+<td>NSString*</td>
+<td>TVS 后台申请的 appid/accessToken 信息</td>
+<td>是</td>
+</tr>
+<tr>
+<td>dsn</td>
+<td>NSString*</td>
+<td>设备序列号</td>
+<td>是</td>
+</tr>
+<tr>
+<td>openId</td>
+<td>NSString*</td>
+<td>QQ/微信 openid</td>
+<td>是</td>
+</tr>
+<tr>
+<td>accessToken</td>
+<td>NSString*</td>
+<td></td>
+<td>否</td>
+</tr>
+<tr>
+<td>refreshToken</td>
+<td>NSString*</td>
+<td></td>
+<td>否</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>：</p>
+<p>  TVS 平台 ClientId;</p>
+<h5 id="instancetype-initWithAccountId-NSString-accountId"><a href="#instancetype-initWithAccountId-NSString-accountId" class="headerlink" title="-(instancetype)initWithAccountId:(NSString*)accountId;"></a><code>-(instancetype)initWithAccountId:(NSString*)accountId;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  通过账号 ID 生成账号信息；<br>  仅适用于自己实现账号登录且没有token的场景！！</p>
+<p>  <strong>参数</strong>:</p>
+<p>  | 名称 | 类型 | 描述 | 是否必填 |<br>  | accountId | NSString* | 账号唯一ID，比如手机号 | 是 |</p>
+<p>  <strong>返回</strong>:</p>
+<p>  TVSAccountInfo 实例；</p>
+<h3 id="5-TVSUserInfo-用户资料信息类"><a href="#5-TVSUserInfo-用户资料信息类" class="headerlink" title="5 TVSUserInfo 用户资料信息类"></a>5 TVSUserInfo 用户资料信息类</h3><h4 id="成员-2"><a href="#成员-2" class="headerlink" title="成员"></a>成员</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>idType</td>
+<td>TVSAccountType</td>
+<td>账号类型</td>
+</tr>
+<tr>
+<td>nickName</td>
+<td>NSString*</td>
+<td>昵称</td>
+</tr>
+<tr>
+<td>headImgUrl</td>
+<td>NSString*</td>
+<td>头像 url</td>
+</tr>
+<tr>
+<td>sex</td>
+<td>NSInteger</td>
+<td>性别（0：女；1：男）</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>NSString*</td>
+<td>手机号</td>
+</tr>
+</tbody></table>
+<h4 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h4><p>  无；</p>
+<h3 id="6-TVSAuthDelegate-账号授权协议"><a href="#6-TVSAuthDelegate-账号授权协议" class="headerlink" title="6 TVSAuthDelegate 账号授权协议"></a>6 TVSAuthDelegate 账号授权协议</h3><h4 id="方法-3"><a href="#方法-3" class="headerlink" title="方法"></a>方法</h4><h5 id="void-TVSAuthWXLoginWithHandler-void-TVSAuthResult-handler"><a href="#void-TVSAuthWXLoginWithHandler-void-TVSAuthResult-handler" class="headerlink" title="-(void)TVSAuthWXLoginWithHandler:(void(^)(TVSAuthResult))handler;"></a><code>-(void)TVSAuthWXLoginWithHandler:(void(^)(TVSAuthResult))handler;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  微信登录实现；</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>handler</td>
+<td>void(^)(TVSAuthResult)</td>
+<td>结果回调</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  无；</p>
+<h5 id="void-TVSAuthWXTokenRefreshWithHandler-void-TVSAuthResult-handler"><a href="#void-TVSAuthWXTokenRefreshWithHandler-void-TVSAuthResult-handler" class="headerlink" title="-(void)TVSAuthWXTokenRefreshWithHandler:(void(^)(TVSAuthResult))handler;"></a><code>-(void)TVSAuthWXTokenRefreshWithHandler:(void(^)(TVSAuthResult))handler;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  微信刷票实现；</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>handler</td>
+<td>void(^)(TVSAuthResult)</td>
+<td>结果回调</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  无；</p>
+<h5 id="void-TVSAuthQQLoginWithHandler-void-TVSAuthResult-handler"><a href="#void-TVSAuthQQLoginWithHandler-void-TVSAuthResult-handler" class="headerlink" title="-(void)TVSAuthQQLoginWithHandler:(void(^)(TVSAuthResult))handler;"></a><code>-(void)TVSAuthQQLoginWithHandler:(void(^)(TVSAuthResult))handler;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  QQ 登录实现；</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>handler</td>
+<td>void(^)(TVSAuthResult)</td>
+<td>结果回调</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  无；</p>
+<h5 id="void-TVSAuthQQTokenVerifyWithHandler-void-TVSAuthResult-handler"><a href="#void-TVSAuthQQTokenVerifyWithHandler-void-TVSAuthResult-handler" class="headerlink" title="-(void)TVSAuthQQTokenVerifyWithHandler:(void(^)(TVSAuthResult))handler;"></a><code>-(void)TVSAuthQQTokenVerifyWithHandler:(void(^)(TVSAuthResult))handler;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  QQ 验票实现；</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>handler</td>
+<td>void(^)(TVSAuthResult)</td>
+<td>结果回调</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  无；</p>
+<h5 id="void-TVSAuthLogout"><a href="#void-TVSAuthLogout" class="headerlink" title="-(void)TVSAuthLogout;"></a><code>-(void)TVSAuthLogout;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  账号注销实现；</p>
+<p>  <strong>参数</strong>:</p>
+<p>  无；</p>
+<p>  <strong>返回</strong>:</p>
+<p>  无；</p>
+<h5 id="TVSAccountInfo-TVSAuthGetAccountInfo"><a href="#TVSAccountInfo-TVSAuthGetAccountInfo" class="headerlink" title="-(TVSAccountInfo*)TVSAuthGetAccountInfo;"></a><code>-(TVSAccountInfo*)TVSAuthGetAccountInfo;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  获取账号信息；</p>
+<p>  <strong>参数</strong>:</p>
+<p>  无；</p>
+<p>  <strong>返回</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TVSAccountInfo*</td>
+<td>账号信息</td>
+</tr>
+</tbody></table>
+<h5 id="TVSAuthGetUser"><a href="#TVSAuthGetUser" class="headerlink" title="TVSAuthGetUser;"></a><code>TVSAuthGetUser;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  获取用户资料信息；</p>
+<p>  <strong>参数</strong>:</p>
+<p>  无；</p>
+<p>  <strong>返回</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TVSUserInfo*</td>
+<td>用户资料信息</td>
+</tr>
+</tbody></table>
+<h5 id="TVSAuthSetPhoneNumber-NSString-phoneNumber"><a href="#TVSAuthSetPhoneNumber-NSString-phoneNumber" class="headerlink" title="TVSAuthSetPhoneNumber:(NSString*)phoneNumber;"></a><code>TVSAuthSetPhoneNumber:(NSString*)phoneNumber;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  保存手机号；</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>phoneNumber</td>
+<td>NSString*</td>
+<td>手机号</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  无；</p>
+<h3 id="7-TVSAuthManager-账号授权管理类"><a href="#7-TVSAuthManager-账号授权管理类" class="headerlink" title="7 TVSAuthManager 账号授权管理类"></a>7 TVSAuthManager 账号授权管理类</h3><h4 id="成员-3"><a href="#成员-3" class="headerlink" title="成员"></a>成员</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>accountInfo</td>
+<td>TVSAccountInfo*</td>
+<td>账号信息</td>
+<td>如果不使用本 SDK 做账号授权，必须手动注入账号信息才能使用某些模块（比如设备绑定等）!!</td>
+</tr>
+<tr>
+<td>userInfo</td>
+<td>TVSUserInfo*</td>
+<td>设备信息</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="方法-4"><a href="#方法-4" class="headerlink" title="方法"></a>方法</h4><h5 id="instancetype-shared-1"><a href="#instancetype-shared-1" class="headerlink" title="+(instancetype)shared;"></a><code>+(instancetype)shared;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  获得 TVSAccount 类实例对象；</p>
+<p>  <strong>参数</strong>:</p>
+<p>  无；</p>
+<p>  <strong>返回</strong>:</p>
+<p>  TVSAccount 类实例；</p>
+<h5 id="void-registerApp"><a href="#void-registerApp" class="headerlink" title="-(void)registerApp;"></a><code>-(void)registerApp;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  初始化 (自动从 Info.plist 读取相关参数)；<br>  必须在 <code>AppDelegate</code> 的 <code>application:didFinishLaunchingWithOptions:</code> 方法中调用！</p>
+<p>  <strong>参数</strong>:</p>
+<p>  无；</p>
+<p>  <strong>返回</strong>:</p>
+<p>  无；</p>
+<h5 id="BOOL-handleOpenUrl-NSURL-url"><a href="#BOOL-handleOpenUrl-NSURL-url" class="headerlink" title="-(BOOL)handleOpenUrl:(NSURL*)url;"></a><code>-(BOOL)handleOpenUrl:(NSURL*)url;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  处理 URL 跳转；<br>  必须在 <code>AppDelegate</code> 的 <code>application:openURL:options:</code> 方法中调用!!</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>url</td>
+<td>NSURL*</td>
+<td>跳转链接</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  是否成功处理 URL 跳转；</p>
+<h5 id="BOOL-isWXTokenExist"><a href="#BOOL-isWXTokenExist" class="headerlink" title="-(BOOL)isWXTokenExist;"></a><code>-(BOOL)isWXTokenExist;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  检查微信 token 是否存在；</p>
+<p>  <strong>参数</strong>:</p>
+<p>  无；</p>
+<p>  <strong>返回</strong>:</p>
+<p>  是否存在；</p>
+<h5 id="BOOL-isQQTokenExist"><a href="#BOOL-isQQTokenExist" class="headerlink" title="-(BOOL)isQQTokenExist;"></a><code>-(BOOL)isQQTokenExist;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  检查 QQ token 是否存在；</p>
+<p>  <strong>参数</strong>:</p>
+<p>  无；</p>
+<p>  <strong>返回</strong>:</p>
+<p>  是否存在；</p>
+<h5 id="BOOL-checkWXAppWithAlert-BOOL-alert"><a href="#BOOL-checkWXAppWithAlert-BOOL-alert" class="headerlink" title="-(BOOL)checkWXAppWithAlert:(BOOL)alert;"></a><code>-(BOOL)checkWXAppWithAlert:(BOOL)alert;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  检测微信是否安装，版本是否支持；</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>alert</td>
+<td>BOOL</td>
+<td>是否弹窗提示</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  安装微信且版本支持返回 <code>YES</code>;</p>
+<h5 id="void-wxLoginWithHandler-void-TVSAuthResult-handler"><a href="#void-wxLoginWithHandler-void-TVSAuthResult-handler" class="headerlink" title="-(void)wxLoginWithHandler:(void(^)(TVSAuthResult))handler;"></a><code>-(void)wxLoginWithHandler:(void(^)(TVSAuthResult))handler;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  微信登录；<br>  如果微信 token 不存在，则必须调用此方法，以获得 TVS 后台返回的相关账户信息！</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>handler</td>
+<td>void(^)(TVSAuthResult)</td>
+<td>回调，TVSAuthResult 表示授权结果</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  无；</p>
+<h5 id="void-wxLoginWithViewController-UIViewController-vc-handler-void-TVSAuthResult-handler"><a href="#void-wxLoginWithViewController-UIViewController-vc-handler-void-TVSAuthResult-handler" class="headerlink" title="-(void)wxLoginWithViewController:(UIViewController*)vc handler:(void(^)(TVSAuthResult))handler;"></a><code>-(void)wxLoginWithViewController:(UIViewController*)vc handler:(void(^)(TVSAuthResult))handler;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  微信登录(支持未安装微信的情况，会跳转 H5 短信登录)；<br>  如果微信 token 不存在，则必须调用此方法，以获得 TVS 后台返回的相关账户信息！</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>viewController</td>
+<td>UIViewController*</td>
+<td>发起微信登录的页面</td>
+<td>是</td>
+</tr>
+<tr>
+<td>handler</td>
+<td>void(^)(TVSAuthResult)</td>
+<td>回调，TVSAuthResult 表示授权结果</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  无；</p>
+<h5 id="void-wxTokenRefreshWithHandler-void-TVSAuthResult-handler"><a href="#void-wxTokenRefreshWithHandler-void-TVSAuthResult-handler" class="headerlink" title="-(void)wxTokenRefreshWithHandler:(void(^)(TVSAuthResult))handler;"></a><code>-(void)wxTokenRefreshWithHandler:(void(^)(TVSAuthResult))handler;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  刷新微信 token；<br>  如果微信 token 存在，则必须调用此方法，以获得(更新) TVS 后台返回的相关账户信息！</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>handler</td>
+<td>void(^)(TVSAuthResult)</td>
+<td>TVSAuthResult 表示授权结果</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  无；</p>
+<h5 id="void-qqLoginWithHandler-void-TVSAuthResult-handler"><a href="#void-qqLoginWithHandler-void-TVSAuthResult-handler" class="headerlink" title="-(void)qqLoginWithHandler:(void(^)(TVSAuthResult))handler;"></a><code>-(void)qqLoginWithHandler:(void(^)(TVSAuthResult))handler;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  QQ 登录；<br>  如果 QQ token 不存在，则必须调用此方法，以获得 TVS 后台返回的相关账户信息！</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>handler</td>
+<td>void(^)(TVSAuthResult)</td>
+<td>TVSAuthResult 表示授权结果</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  无；</p>
+<h5 id="void-qqTokenVerifyWithHandler-void-TVSAuthResult-handler"><a href="#void-qqTokenVerifyWithHandler-void-TVSAuthResult-handler" class="headerlink" title="-(void)qqTokenVerifyWithHandler:(void(^)(TVSAuthResult))handler;"></a><code>-(void)qqTokenVerifyWithHandler:(void(^)(TVSAuthResult))handler;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  验证 QQ token;<br>  如果 QQ token 存在，则必须调用此方法，以获得(更新) TVS 后台返回的相关账户信息!</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>handler</td>
+<td>void(^)(TVSAuthResult)</td>
+<td>TVSAuthResult 表示授权结果</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  无；</p>
+<h5 id="void-tvsAuthWithOpenId-NSString-openId-accessToken-NSString-accessToken-accountType-TVSAccountType-accountType-handler-void-TVSAuthResult-handler"><a href="#void-tvsAuthWithOpenId-NSString-openId-accessToken-NSString-accessToken-accountType-TVSAccountType-accountType-handler-void-TVSAuthResult-handler" class="headerlink" title="-(void)tvsAuthWithOpenId:(NSString*)openId accessToken:(NSString*)accessToken accountType:(TVSAccountType)accountType handler:(void(^)(TVSAuthResult))handler;"></a><code>-(void)tvsAuthWithOpenId:(NSString*)openId accessToken:(NSString*)accessToken accountType:(TVSAccountType)accountType handler:(void(^)(TVSAuthResult))handler;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  通过微信/QQ 账号信息直接到 TVS 后台授权（换取tvsId）；<br>  仅针对之前已经独自接入 QQ/微信 SDK，且自己维护 token 过期刷新的场景！</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>openId</td>
+<td>NSString*</td>
+<td>QQ/微信登录返回的 openId</td>
+<td>是</td>
+</tr>
+<tr>
+<td>accessToken</td>
+<td>NSString*</td>
+<td>QQ/微信登录返回的 accessToken</td>
+<td>是</td>
+</tr>
+<tr>
+<td>accountType</td>
+<td>TVSAccountType</td>
+<td>账号类型</td>
+<td>是</td>
+</tr>
+<tr>
+<td>handler</td>
+<td>void(^)(TVSAuthResult)</td>
+<td>TVSAuthResult 表示授权结果，成功后即可通过 TVSAccountInfo 读取 tvsId</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  无；</p>
+<h5 id="void-verifyQQTokenWithOpenId-NSString-openId-accessToken-NSString-accessToken-handler-void-TVSAuthResult-handler"><a href="#void-verifyQQTokenWithOpenId-NSString-openId-accessToken-NSString-accessToken-handler-void-TVSAuthResult-handler" class="headerlink" title="-(void)verifyQQTokenWithOpenId:(NSString*)openId accessToken:(NSString*)accessToken handler:(void(^)(TVSAuthResult))handler;"></a><code>-(void)verifyQQTokenWithOpenId:(NSString*)openId accessToken:(NSString*)accessToken handler:(void(^)(TVSAuthResult))handler;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  验证 QQ token；<br>  仅针对之前已经独自接入 QQ/微信 SDK，且自己维护 token 过期刷新的场景！</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>openId</td>
+<td>NSString*</td>
+<td>QQ/微信登录返回的 openId</td>
+<td>是</td>
+</tr>
+<tr>
+<td>accessToken</td>
+<td>NSString*</td>
+<td>QQ/微信登录返回的 accessToken</td>
+<td>是</td>
+</tr>
+<tr>
+<td>handler</td>
+<td>void(^)(TVSAuthResult)</td>
+<td>TVSAuthResult 表示授权结果，成功后即可通过 TVSAccountInfo 读取 tvsId</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  无；</p>
+<p>  <strong>返回</strong>:</p>
+<p>  TVSUserInfo* 用户资料信息；</p>
+<h5 id="void-logout"><a href="#void-logout" class="headerlink" title="-(void)logout;"></a><code>-(void)logout;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  注销登录（清除本地保存的账户信息）；</p>
+<p>  <strong>参数</strong>:</p>
+<p>  无；</p>
+<p>  <strong>返回</strong>:</p>
+<p>  无；</p>
+<h5 id="void-getCaptchaWithPhoneNumber-NSString-phoneNumber-handler-void-BOOL-handler"><a href="#void-getCaptchaWithPhoneNumber-NSString-phoneNumber-handler-void-BOOL-handler" class="headerlink" title="-(void)getCaptchaWithPhoneNumber:(NSString*)phoneNumber handler:(void(^)(BOOL))handler;"></a><code>-(void)getCaptchaWithPhoneNumber:(NSString*)phoneNumber handler:(void(^)(BOOL))handler;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  获取用于绑定手机号的验证码；<br>  必须确保已登录！</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>phoneNumber</td>
+<td>NSString*</td>
+<td>手机号</td>
+<td>是</td>
+</tr>
+<tr>
+<td>handler</td>
+<td>void(^)(BOOL)</td>
+<td>回调，BOOL 表示验证码是否发送成功</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  无；</p>
+<h5 id="void-bindPhoneNumber-NSString-phoneNumber-captcha-NSString-captcha-handler-void-BOOL-handler"><a href="#void-bindPhoneNumber-NSString-phoneNumber-captcha-NSString-captcha-handler-void-BOOL-handler" class="headerlink" title="-(void)bindPhoneNumber:(NSString*)phoneNumber captcha:(NSString*)captcha handler:(void(^)(BOOL))handler;"></a><code>-(void)bindPhoneNumber:(NSString*)phoneNumber captcha:(NSString*)captcha handler:(void(^)(BOOL))handler;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  绑定手机号；<br>  必须确保已登录！</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>phoneNumber</td>
+<td>NSString*</td>
+<td>手机号</td>
+<td>是</td>
+</tr>
+<tr>
+<td>captcha</td>
+<td>NSString*</td>
+<td>验证码</td>
+<td>是</td>
+</tr>
+<tr>
+<td>handler</td>
+<td>void(^)(BOOL)</td>
+<td>回调，BOOL 表示是否绑定成功</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  否；</p>
+<h5 id="void-syncUserInfo-TVSUserInfo-userInfo-handler-void-BOOL-handler"><a href="#void-syncUserInfo-TVSUserInfo-userInfo-handler-void-BOOL-handler" class="headerlink" title="-(void)syncUserInfo:(TVSUserInfo*)userInfo handler:(void(^)(BOOL))handler;"></a><code>-(void)syncUserInfo:(TVSUserInfo*)userInfo handler:(void(^)(BOOL))handler;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  保存用户信息到 TVS 后台(暂时只支持头像昵称)；<br>  必须确保已登录！</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>userInfo</td>
+<td>TVSUserInfo*</td>
+<td>用户信息</td>
+<td>是</td>
+</tr>
+<tr>
+<td>handler</td>
+<td>void(^)(BOOL)</td>
+<td>回调，BOOL 表示是否设置成功</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  无；</p>
+<h5 id="void-queryUserInfoWithOpenId-NSString-openId-handler-void-TVSUserInfo-handler"><a href="#void-queryUserInfoWithOpenId-NSString-openId-handler-void-TVSUserInfo-handler" class="headerlink" title="-(void)queryUserInfoWithOpenId:(NSString*)openId handler:(void(^)(TVSUserInfo*))handler;"></a><code>-(void)queryUserInfoWithOpenId:(NSString*)openId handler:(void(^)(TVSUserInfo*))handler;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  通过 openId 查询用户信息(暂时只支持头像昵称);</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>openId</td>
+<td>NSString*</td>
+<td>用户 OpenId</td>
+<td>是</td>
+</tr>
+<tr>
+<td>handler</td>
+<td>void(^)(TVSUserInfo*)</td>
+<td>回调，用于接收返回的用户信息</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  无；</p>
+<h2 id="三、设备管理-lt-TVSCore-TVSDevice-h-gt"><a href="#三、设备管理-lt-TVSCore-TVSDevice-h-gt" class="headerlink" title="三、设备管理 &lt;TVSCore/TVSDevice.h&gt;"></a>三、设备管理 &lt;TVSCore/TVSDevice.h&gt;</h2><h3 id="1-常量-1"><a href="#1-常量-1" class="headerlink" title="1 常量"></a>1 常量</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PUSH_ID_EXTRA_SDK_SPEAKER</td>
+<td>NSString*</td>
+<td>SDK 接入方案的音箱绑定时需要传入的 pushIdExtra 常量</td>
+</tr>
+<tr>
+<td>PUSH_ID_EXTRA_TVS_SPEAKER</td>
+<td>NSString*</td>
+<td>云端 API 接入方案的音箱绑定时需要传入的 pushIdExtra 常量</td>
+</tr>
+</tbody></table>
+<h3 id="2-TVSDeviceBindType-设备绑定类型枚举"><a href="#2-TVSDeviceBindType-设备绑定类型枚举" class="headerlink" title="2 TVSDeviceBindType 设备绑定类型枚举"></a>2 TVSDeviceBindType 设备绑定类型枚举</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TVSDeviceBindTypeSDKApp</td>
+<td>SDK 接入方案的 App</td>
+</tr>
+<tr>
+<td>TVSDeviceBindTypeSDKSpeaker</td>
+<td>SDK 接入方案的音箱</td>
+</tr>
+<tr>
+<td>TVSDeviceBindTypeTVSApp</td>
+<td>云端 API 接入方案的 App</td>
+</tr>
+<tr>
+<td>TVSDeviceBindTypeTVSSpeaker</td>
+<td>云端 API 接入方案的音箱</td>
+</tr>
+</tbody></table>
+<h3 id="3-TVSDeviceInfo-设备信息实体类"><a href="#3-TVSDeviceInfo-设备信息实体类" class="headerlink" title="3 TVSDeviceInfo 设备信息实体类"></a>3 TVSDeviceInfo 设备信息实体类</h3><h4 id="成员-4"><a href="#成员-4" class="headerlink" title="成员"></a>成员</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>productId</td>
+<td>NSString*</td>
+<td>TVS 后台申请的 appid/accessToken 信息</td>
+</tr>
+<tr>
+<td>dsn</td>
+<td>NSString*</td>
+<td>设备序列号</td>
+</tr>
+<tr>
+<td>pushId</td>
+<td>NSString*</td>
+<td>用于 push 的标识</td>
+</tr>
+<tr>
+<td>pushIdExtra</td>
+<td>NSString*</td>
+<td>pushId 扩展字段</td>
+</tr>
+<tr>
+<td>guid</td>
+<td>NSString*</td>
+<td>全局唯一标识</td>
+</tr>
+<tr>
+<td>deviceId</td>
+<td>NSString*</td>
+<td>设备标识</td>
+</tr>
+<tr>
+<td>deviceName</td>
+<td>NSString*</td>
+<td>设备名</td>
+</tr>
+<tr>
+<td>deviceType</td>
+<td>NSString*</td>
+<td>设备类型</td>
+</tr>
+<tr>
+<td>deviceSerial</td>
+<td>NSString*</td>
+<td>设备系列</td>
+</tr>
+<tr>
+<td>deviceOEM</td>
+<td>NSString*</td>
+<td>设备厂商</td>
+</tr>
+<tr>
+<td>deviceOEMUrl</td>
+<td>NSString*</td>
+<td>设备厂商 logo url</td>
+</tr>
+<tr>
+<td>deviceOEMToken</td>
+<td>NSString*</td>
+<td>设备厂商 token(用于 PushKit)</td>
+</tr>
+<tr>
+<td>deviceMark</td>
+<td>NSString*</td>
+<td>设备备注</td>
+</tr>
+<tr>
+<td>QUA</td>
+<td>NSString*</td>
+<td></td>
+</tr>
+<tr>
+<td>IMEI</td>
+<td>NSString*</td>
+<td></td>
+</tr>
+<tr>
+<td>LC</td>
+<td>NSString*</td>
+<td></td>
+</tr>
+<tr>
+<td>MAC</td>
+<td>NSString*</td>
+<td>MAC 地址</td>
+</tr>
+<tr>
+<td>QIMEI</td>
+<td>NSString*</td>
+<td></td>
+</tr>
+<tr>
+<td>enrollTime</td>
+<td>long long</td>
+<td>注册时间</td>
+</tr>
+<tr>
+<td>bindTime</td>
+<td>long long</td>
+<td>绑定时间</td>
+</tr>
+<tr>
+<td>extra</td>
+<td>NSDictionary*</td>
+<td>扩展信息字典</td>
+</tr>
+<tr>
+<td>businessExtra</td>
+<td>NSDictionary*</td>
+<td>业务扩展信息字典</td>
+</tr>
+<tr>
+<td>accountInfo</td>
+<td>TVSAccountInfo*</td>
+<td>账号信息</td>
+</tr>
+</tbody></table>
+<h4 id="方法-5"><a href="#方法-5" class="headerlink" title="方法"></a>方法</h4><p>  无；</p>
+<h3 id="4-TVSDeviceManager-设备管理类"><a href="#4-TVSDeviceManager-设备管理类" class="headerlink" title="4 TVSDeviceManager 设备管理类"></a>4 TVSDeviceManager 设备管理类</h3><h4 id="成员-5"><a href="#成员-5" class="headerlink" title="成员"></a>成员</h4><p>  无；</p>
+<h4 id="方法-6"><a href="#方法-6" class="headerlink" title="方法"></a>方法</h4><h5 id="instancetype-shared-2"><a href="#instancetype-shared-2" class="headerlink" title="+(instancetype)shared;"></a><code>+(instancetype)shared;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  获取设备管理类实例对象;</p>
+<p>  <strong>参数</strong>:</p>
+<p>  无;</p>
+<p>  <strong>返回</strong>：</p>
+<p>  设备管理类实例；</p>
+<h5 id="void-preBindScreenDevice-TVSDeviceInfo-device-cancel-BOOL-cancel-handler-void-BOOL-handler"><a href="#void-preBindScreenDevice-TVSDeviceInfo-device-cancel-BOOL-cancel-handler-void-BOOL-handler" class="headerlink" title="-(void)preBindScreenDevice:(TVSDeviceInfo*)device cancel:(BOOL)cancel handler:(void(^)(BOOL))handler;"></a><code>-(void)preBindScreenDevice:(TVSDeviceInfo*)device cancel:(BOOL)cancel handler:(void(^)(BOOL))handler;</code></h5><p>  <strong>描述</strong>：</p>
+<p>  有屏设备预绑定；<br>  必须确保已登录！</p>
+<p>  <strong>参数</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>device</td>
+<td>TVSDeviceInfo*</td>
+<td>设备信息</td>
+<td>其中 productId、dsn、bindType 必须填，其他字段根据需要透传；绑定 Speaker 设备时还必须传 pushIdExtra 字段（取值为 PUSH_ID_EXTRA_SDK_SPEAKER 或 PUSH_ID_EXTRA_TVS_SPEAKER 常量）；</td>
+</tr>
+<tr>
+<td>cancel</td>
+<td>BOOL</td>
+<td>是否取消</td>
+<td>是</td>
+</tr>
+<tr>
+<td>handler</td>
+<td>void(^)(BOOL)</td>
+<td>回调，BOOL 值表示是否预绑定成功</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>：</p>
+<p>  无；</p>
+<h5 id="void-bindDevice-TVSDeviceInfo-device-handler-void-BOOL-handler"><a href="#void-bindDevice-TVSDeviceInfo-device-handler-void-BOOL-handler" class="headerlink" title="-(void)bindDevice:(TVSDeviceInfo*)device handler:(void(^)(BOOL))handler;"></a><code>-(void)bindDevice:(TVSDeviceInfo*)device handler:(void(^)(BOOL))handler;</code></h5><p>  <strong>描述</strong>：</p>
+<p>  绑定设备；<br>  必须确保已登录！</p>
+<p>  <strong>参数</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>device</td>
+<td>TVSDeviceInfo*</td>
+<td>设备信息</td>
+<td>其中 productId、dsn、bindType 必须填，其他字段根据需要透传；绑定 Speaker 设备时还必须传 pushIdExtra 字段（取值为 PUSH_ID_EXTRA_SDK_SPEAKER 或 PUSH_ID_EXTRA_TVS_SPEAKER 常量）；</td>
+</tr>
+<tr>
+<td>handler</td>
+<td>void(^)(BOOL)</td>
+<td>回调，BOOL 标识是否绑定成功</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>：</p>
+<p>  无；</p>
+<h5 id="void-unbindDevice-TVSDeviceInfo-device-handler-void-BOOL-handler"><a href="#void-unbindDevice-TVSDeviceInfo-device-handler-void-BOOL-handler" class="headerlink" title="-(void)unbindDevice:(TVSDeviceInfo*)device handler:(void(^)(BOOL))handler;"></a><code>-(void)unbindDevice:(TVSDeviceInfo*)device handler:(void(^)(BOOL))handler;</code></h5><p>  <strong>描述</strong>：</p>
+<p>  解绑设备；<br>  必须确保已登录！</p>
+<p>  <strong>参数</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>device</td>
+<td>TVSDeviceInfo*</td>
+<td>设备信息</td>
+<td>其中 productId、dsn、bindType 必须填，其他字段根据需要透传；解绑 Speaker 设备时还必须传 pushIdExtra 字段（取值为 PUSH_ID_EXTRA_SDK_SPEAKER 或 PUSH_ID_EXTRA_TVS_SPEAKER 常量）；</td>
+</tr>
+<tr>
+<td>handler</td>
+<td>void(^)(BOOL)</td>
+<td>回调，BOOL标识是否解绑成功</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>：</p>
+<p>  无；</p>
+<h5 id="void-queryDevicesByGuid-NSString-guid-bindType-TVSDeviceBindType-bindType-handler-void-NSArray-lt-TVSDeviceInfo-gt-handler"><a href="#void-queryDevicesByGuid-NSString-guid-bindType-TVSDeviceBindType-bindType-handler-void-NSArray-lt-TVSDeviceInfo-gt-handler" class="headerlink" title="-(void)queryDevicesByGuid:(NSString*)guid bindType:(TVSDeviceBindType)bindType handler:(void(^)(NSArray&lt;TVSDeviceInfo*&gt;*))handler;"></a><code>-(void)queryDevicesByGuid:(NSString*)guid bindType:(TVSDeviceBindType)bindType handler:(void(^)(NSArray&lt;TVSDeviceInfo*&gt;*))handler;</code></h5><p>  <strong>描述</strong>：</p>
+<p>  通过 guid 查询设备列表；</p>
+<p>  <strong>参数</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>guid</td>
+<td>NSString*</td>
+<td>guid</td>
+<td>是</td>
+</tr>
+<tr>
+<td>bindType</td>
+<td>TVSDeviceBindType</td>
+<td>设备绑定类型</td>
+<td>是</td>
+</tr>
+<tr>
+<td>handler</td>
+<td>void(^)(NSArray&lt;TVSDeviceInfo<em>&gt;</em>)</td>
+<td>回调，返回设备信息列表</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>：</p>
+<p>  无；</p>
+<h5 id="void-queryDevicesByProductId-NSString-productId-dsn-NSString-dsn-bindType-TVSDeviceBindType-bindType-handler-void-NSArray-lt-TVSDeviceInfo-gt-handler"><a href="#void-queryDevicesByProductId-NSString-productId-dsn-NSString-dsn-bindType-TVSDeviceBindType-bindType-handler-void-NSArray-lt-TVSDeviceInfo-gt-handler" class="headerlink" title="-(void)queryDevicesByProductId:(NSString*)productId dsn:(NSString*)dsn bindType:(TVSDeviceBindType)bindType handler:(void(^)(NSArray&lt;TVSDeviceInfo*&gt;*))handler;"></a><code>-(void)queryDevicesByProductId:(NSString*)productId dsn:(NSString*)dsn bindType:(TVSDeviceBindType)bindType handler:(void(^)(NSArray&lt;TVSDeviceInfo*&gt;*))handler;</code></h5><p>  <strong>描述</strong>：</p>
+<p>  通过 productId/dsn 查询设备列表；</p>
+<p>  <strong>参数</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>productId</td>
+<td>NSString*</td>
+<td>设备 productId</td>
+<td>是</td>
+</tr>
+<tr>
+<td>dsn</td>
+<td>NSString*</td>
+<td>设备序列号</td>
+<td>是</td>
+</tr>
+<tr>
+<td>bindType</td>
+<td>TVSDeviceBindType</td>
+<td>设备绑定类型</td>
+<td>是</td>
+</tr>
+<tr>
+<td>handler</td>
+<td>void(^)(NSArray&lt;TVSDeviceInfo<em>&gt;</em>)</td>
+<td>回调，返回设备信息列表</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>：</p>
+<p>  无；</p>
+<h5 id="void-queryDevicesByAccountWithBindType-TVSDeviceBindType-bindType-handler-void-NSArray-lt-TVSDeviceInfo-gt-handler"><a href="#void-queryDevicesByAccountWithBindType-TVSDeviceBindType-bindType-handler-void-NSArray-lt-TVSDeviceInfo-gt-handler" class="headerlink" title="-(void)queryDevicesByAccountWithBindType:(TVSDeviceBindType)bindType handler:(void(^)(NSArray&lt;TVSDeviceInfo*&gt;*))handler;"></a><code>-(void)queryDevicesByAccountWithBindType:(TVSDeviceBindType)bindType handler:(void(^)(NSArray&lt;TVSDeviceInfo*&gt;*))handler;</code></h5><p>  <strong>描述</strong>：</p>
+<p>  通过账号查询设备列表；<br>  必须确保已登录！！</p>
+<p>  <strong>参数</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bindType</td>
+<td>TVSDeviceBindType</td>
+<td>设备绑定类型</td>
+<td>是</td>
+</tr>
+<tr>
+<td>handler</td>
+<td>void(^)(NSArray&lt;TVSDeviceInfo<em>&gt;</em>)</td>
+<td>回调，返回设备信息列表</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>：</p>
+<p>  无；</p>
+<h5 id="void-queryAccountWithDevice-TVSDeviceIndo-device-handler-void-TVSAccountInfo-handler"><a href="#void-queryAccountWithDevice-TVSDeviceIndo-device-handler-void-TVSAccountInfo-handler" class="headerlink" title="-(void)queryAccountWithDevice:(TVSDeviceIndo*)device handler:(void(^)(TVSAccountInfo*))handler;"></a><code>-(void)queryAccountWithDevice:(TVSDeviceIndo*)device handler:(void(^)(TVSAccountInfo*))handler;</code></h5><p>  <strong>描述</strong>：</p>
+<p>  根据设备信息反查绑定的账号信息；</p>
+<p>  <strong>参数</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>device</td>
+<td>TVSDeviceInfo*</td>
+<td>设备信息</td>
+<td>其中 productId、dsn、bindType 必须填，其他字段根据需要透传；查询 Speaker 设备时还必须传 pushIdExtra 字段（取值为 PUSH_ID_EXTRA_SDK_SPEAKER 或 PUSH_ID_EXTRA_TVS_SPEAKER 常量）；</td>
+</tr>
+<tr>
+<td>handler</td>
+<td>void(^)(TVSAccountInfo*)</td>
+<td>回调，返回账号信息 TVSAccountInfo，具体字段定义详见账号管理部分</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>：</p>
+<p>  无；</p>
+
+        <div id="react-support-footer-root"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+
+    
+
+    <!-- js vendors -->
+    <script src="//code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lunr.js/2.1.0/lunr.min.js"></script>
+
+    <!-- js source  -->
+    <script src="/dmsdk/script/doc.js"></script>
+
+    
+
+  </body>
+</html>
