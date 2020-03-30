@@ -276,13 +276,45 @@ typedef NS_ENUM(NSInteger,TVSAuthResult) {
 
 @end
 
+/// SDK登录代理。当需要微信或QQ登录时需要实现该协议。
+@protocol OpenSdkLoginDelegate <NSObject>
 
+@optional
+/// 微信登录。当需要DM SDK支持拉起微信登录时，在该接口中实现与微信SDK的交互，取得code后回调handler。
+/// @param viewController 拉起微信登录的UIViewController。请参考WXApi中sendReq:和sendAuthReq:viewController:delegate:接口的区别。
+/// @param handler DM SDK接受code的回调，result表示是否登录结果，成功时需要传递后续字段。
+- (void)doWeChatLoginForViewController:(nullable UIViewController *)viewController withHandler:(nonnull void(^)(TVSAuthResult result, NSString * _Nullable code))handler;
+
+@optional
+/// 检查微信是否已被用户安装。当需要DM SDK支持拉起微信登录时，在该接口中调用WXApi的isWXAppInstalled接口。
+/// @return 微信已安装返回YES，未安装返回NO。
+- (BOOL)isWXAppInstalled;
+
+@optional
+/// 判断当前微信的版本是否支持OpenApi。当需要DM SDK支持拉起微信登录时，在该接口中调用WXApi的isWXAppSupportApi接口。
+/// @return 支持返回YES，不支持返回NO。
+- (BOOL)isWXAppSupportApi;
+
+@optional
+/// 获取微信的itunes安装地址。当需要DM SDK支持拉起微信登录时，在该接口中调用WXApi的getWXAppInstallUrl接口。
+/// @return 微信的安装地址字符串。
+- (nullable NSString *)getWXAppInstallUrl;
+
+@optional
+/// QQ登录。当需要DM SDK支持拉起QQ登录时，在该接口中实现与QQ SDK的交互，取得OpenID、AccessToken、昵称和头像。
+/// @param handler DM SDK接受账号信息的回调，result表示是否登录结果，成功时需要传递后续字段。
+- (void)doQqLoginWithHandler:(nonnull void(^)(TVSAuthResult result, NSString * _Nullable openId, NSString * _Nullable accessToken, NSString * _Nullable nickname, NSString * _Nullable avatarUrl))handler;
+
+@end
 
 /*
  * @class TVSAuthManager
  * @brief TVS 账号授权接口
  */
 @interface TVSAuthManager: NSObject <TVSAuthDelegate>
+
+/// SDK登录代理。当需要微信或QQ登录时需要设置该协议。
+@property(nonatomic, strong, nullable) id<OpenSdkLoginDelegate> openSdkLoginDelegate;
 
 /*
  * @brief 账号信息
@@ -306,14 +338,6 @@ typedef NS_ENUM(NSInteger,TVSAuthResult) {
  * @warning 必须在 AppDelegate 的 application:didFinishLaunchingWithOptions: 方法中调用
  */
 -(void)registerApp;
-
-/*
- * @brief 处理 URL 跳转
- * @warning 必须在 AppDelegate 的 application:openURL:options: 方法中调用
- * @param url 待处理的 URL
- * @return 是否成功处理相关 URL 跳转
- */
--(BOOL)handleOpenUrl:(NSURL*)url;
 
 /*
  * @brief 检查微信 Token 是否存在

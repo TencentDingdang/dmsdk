@@ -7,7 +7,7 @@
 //
 
 #import "TSKMVC.h"
-#import "ThirdPartyAuthVC.h"
+#import "ThirdPartyAuthQQMusicVC.h"
 #import "DeviceControlVC.h"
 #import "BrowserVC.h"
 
@@ -42,21 +42,10 @@
     return ([TVSAuthManager shared].isQQTokenExist || [TVSAuthManager shared].isWXTokenExist) && NotEmpty(weakSelf.tfPID.text) && NotEmpty(weakSelf.tfDSN.text);
 }
 
-- (IBAction)onClickQQMusicAuthButton:(id)sender {
-    [self checkToken:^{// 所有 TSKM 相关接口都需要先验证 token ！！！
-        // 跳转第三方账号授权 H5
-        BrowserVC* bv = [BrowserVC new];
-        bv.pageType = TVSWebPageTypeCPAuthQQMusic;
-        bv.pid = self->_tfPID.text;
-        bv.dsn = self->_tfDSN.text;
-        [self.navigationController pushViewController:bv animated:YES];
-    }];
-}
-
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // 第三方授权需要设备信息
-    if ([segue.destinationViewController isKindOfClass:[ThirdPartyAuthVC class]] || [segue.destinationViewController isKindOfClass:[DeviceControlVC class]]) {
-        ThirdPartyAuthVC* vc = (ThirdPartyAuthVC*)segue.destinationViewController;
+    // QQ音乐授权需要设备信息
+    if ([segue.destinationViewController isKindOfClass:[ThirdPartyAuthQQMusicVC class]]) {
+        ThirdPartyAuthQQMusicVC* vc = (ThirdPartyAuthQQMusicVC*)segue.destinationViewController;
         vc.deviceInfo = _deviceInfo;
     }
 }
