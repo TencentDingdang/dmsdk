@@ -6,14 +6,17 @@
 //  Copyright © 2019 tencent. All rights reserved.
 //
 
+#import <TVSCore/TVSThirdPartyAuth.h>
 #import "BrowserVC.h"
+#import "QQMusicQqmpAuthAgent.h"
 
-@interface BrowserVC()<TVSWebUniversalDelegate, TVSWebBusinessDelegate/*, TVSAuthDelegate*/>
+@interface BrowserVC()<TVSWebUniversalDelegate, TVSWebBusinessDelegate, DialogDelegate/*, TVSAuthDelegate*/>
 
 @property(nonatomic,strong) UIView* vNav;
 @property(nonatomic,strong) UIButton *btnBack, *btnReload, *btnStop, *btnForward;
 @property(nonatomic,strong) UIProgressView* progressView;
 @property(nonatomic,strong) TVSWebView* webview;
+@property(nonatomic,strong) UIAlertController * loadingDialogController;
 
 @end
 
@@ -53,6 +56,17 @@
     // 自定义 TVSWebView 内部的 UIScrollView
     _webview.scrollView.bounces = YES;
     _webview.scrollView.showsVerticalScrollIndicator = YES;
+    
+    // Set device information to CP Auth Agent
+    id agent = [[TVSCPAuthAgentManager shared]getAgentOfCP:TVSCPQQMusic andAuthType:QQ_MUSIC_AUTH_TYPE_QQ];
+    if (agent && [agent isKindOfClass:[QQMusicQqmpAuthAgent class]]) {
+        QQMusicQqmpAuthAgent * qqmpAgent = agent;
+        TVSDeviceInfo * di = [TVSDeviceInfo new];
+        di.productId = _pid;
+        di.dsn = _dsn;
+        qqmpAgent.deviceInfo = di;
+        qqmpAgent.dialogDelegate = self;
+    }
     
     // 加载网页或 URL
     if (_url) {
@@ -168,6 +182,24 @@
 // 注入额外数据
 -(NSDictionary*)TVSWebRequestExtraData {
     return @{@"k": @"v"};
+}
+
+#pragma mark DialogDelegate
+
+- (void)showLoadingDialog {
+    _loadingDialogController = [UIAlertController alertControllerWithTitle:nil message:@"查询授权结果" preferredStyle:UIAlertControllerStyleAlert];
+    UIActivityIndicatorView * indicator = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(10, 5, 50, 50)];
+    indicator.hidesWhenStopped = YES;
+    indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    [indicator startAnimating];
+    [_loadingDialogController.view addSubview:indicator];
+    [self presentViewController:_loadingDialogController animated:YES completion:nil];
+}
+
+- (void)hideLoadingDialog {
+    if (_loadingDialogController) {
+        [_loadingDialogController dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 #pragma mark TVSAuthDelegate

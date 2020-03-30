@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6xC-Lj-aAE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6xC-Lj-aAE">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1169,10 +1169,10 @@
             </objects>
             <point key="canvasLocation" x="2957.971014492754" y="1509.375"/>
         </scene>
-        <!--第三方账号授权-->
+        <!--QQ音乐账号授权-->
         <scene sceneID="43S-mv-efU">
             <objects>
-                <viewController title="第三方账号授权" id="bbO-u2-oB4" customClass="ThirdPartyAuthVC" sceneMemberID="viewController">
+                <viewController title="QQ音乐账号授权" id="bbO-u2-oB4" customClass="ThirdPartyAuthQQMusicVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="V2n-vw-Ujo"/>
                         <viewControllerLayoutGuide type="bottom" id="AYt-VP-Jss"/>
@@ -1181,56 +1181,85 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="H5参数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3E-wA-RKK">
+                                <rect key="frame" x="20" y="96" width="58" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="app=1&amp;weixin=1&amp;qq=1" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hd9-xa-b5k">
+                                <rect key="frame" x="20" y="125" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OP5-TB-JQm">
+                                <rect key="frame" x="0.0" y="167" width="414" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V8B-Vp-Maq">
+                                        <rect key="frame" x="184" y="5" width="46" height="30"/>
+                                        <state key="normal" title="去授权"/>
+                                        <connections>
+                                            <action selector="onClickBtnAuth:" destination="bbO-u2-oB4" eventType="touchUpInside" id="DOp-mh-hGq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="V8B-Vp-Maq" firstAttribute="centerY" secondItem="OP5-TB-JQm" secondAttribute="centerY" id="2nf-EI-Gc4"/>
+                                    <constraint firstAttribute="height" constant="40" id="AbP-vF-p7c"/>
+                                    <constraint firstItem="V8B-Vp-Maq" firstAttribute="centerX" secondItem="OP5-TB-JQm" secondAttribute="centerX" id="xg7-PU-LxV"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zV4-Ip-aj1">
+                                <rect key="frame" x="0.0" y="215" width="414" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9MY-Ub-WcM">
+                                        <rect key="frame" x="138" y="5" width="138" height="30"/>
+                                        <state key="normal" title="查询绑定的账号信息"/>
+                                        <connections>
+                                            <action selector="onClickGetBoundCPAccountButton:" destination="bbO-u2-oB4" eventType="touchUpInside" id="ZXa-eK-4jI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="X0U-Gb-lFY"/>
+                                    <constraint firstItem="9MY-Ub-WcM" firstAttribute="centerY" secondItem="zV4-Ip-aj1" secondAttribute="centerY" id="i4u-tD-Sxh"/>
+                                    <constraint firstItem="9MY-Ub-WcM" firstAttribute="centerX" secondItem="zV4-Ip-aj1" secondAttribute="centerX" id="q3V-Xz-gAI"/>
+                                </constraints>
+                            </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Sr7-Th-bdC">
-                                <rect key="frame" x="0.0" y="114" width="414" height="748"/>
+                                <rect key="frame" x="0.0" y="263" width="414" height="599"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="scrollIndicatorInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zV4-Ip-aj1">
-                                <rect key="frame" x="0.0" y="59" width="414" height="40"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9MY-Ub-WcM">
-                                        <rect key="frame" x="50" y="5" width="138" height="30"/>
-                                        <state key="normal" title="查询绑定的账号信息"/>
-                                        <connections>
-                                            <action selector="onClickBtnQueryAcct:" destination="bbO-u2-oB4" eventType="touchUpInside" id="Rj5-su-UbN"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAU-7i-hh4">
-                                        <rect key="frame" x="318" y="5" width="46" height="30"/>
-                                        <state key="normal" title="去授权"/>
-                                        <connections>
-                                            <action selector="onClickBtnAuth:" destination="bbO-u2-oB4" eventType="touchUpInside" id="seK-Su-ZmJ"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="zAU-7i-hh4" firstAttribute="centerY" secondItem="zV4-Ip-aj1" secondAttribute="centerY" id="GUF-50-nUZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="zAU-7i-hh4" secondAttribute="trailing" constant="50" id="MoO-jk-Fdd"/>
-                                    <constraint firstAttribute="height" constant="40" id="X0U-Gb-lFY"/>
-                                    <constraint firstItem="9MY-Ub-WcM" firstAttribute="leading" secondItem="zV4-Ip-aj1" secondAttribute="leading" constant="50" id="YeZ-uH-ZkW"/>
-                                    <constraint firstItem="9MY-Ub-WcM" firstAttribute="centerY" secondItem="zV4-Ip-aj1" secondAttribute="centerY" id="i4u-tD-Sxh"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="zV4-Ip-aj1" firstAttribute="top" secondItem="V2n-vw-Ujo" secondAttribute="bottom" constant="15" id="FPb-p4-bWB"/>
+                            <constraint firstItem="B3E-wA-RKK" firstAttribute="leading" secondItem="oB1-On-YB4" secondAttribute="leadingMargin" id="2m1-VN-9AH"/>
+                            <constraint firstItem="hd9-xa-b5k" firstAttribute="leading" secondItem="oB1-On-YB4" secondAttribute="leadingMargin" id="89e-tO-0cq"/>
+                            <constraint firstItem="Sr7-Th-bdC" firstAttribute="top" secondItem="zV4-Ip-aj1" secondAttribute="bottom" constant="8" symbolic="YES" id="90Z-gJ-J0l"/>
+                            <constraint firstAttribute="trailing" secondItem="OP5-TB-JQm" secondAttribute="trailing" id="9Sf-ca-lJE"/>
+                            <constraint firstItem="OP5-TB-JQm" firstAttribute="top" secondItem="hd9-xa-b5k" secondAttribute="bottom" constant="8" symbolic="YES" id="Fzd-gt-2vO"/>
                             <constraint firstItem="AYt-VP-Jss" firstAttribute="top" secondItem="Sr7-Th-bdC" secondAttribute="bottom" id="HFC-ux-Sxl"/>
                             <constraint firstAttribute="trailing" secondItem="zV4-Ip-aj1" secondAttribute="trailing" id="KU4-ab-NRJ"/>
                             <constraint firstItem="zV4-Ip-aj1" firstAttribute="leading" secondItem="oB1-On-YB4" secondAttribute="leading" id="MeK-d1-bmF"/>
                             <constraint firstItem="Sr7-Th-bdC" firstAttribute="leading" secondItem="oB1-On-YB4" secondAttribute="leading" id="R9v-Cr-Heq"/>
+                            <constraint firstItem="B3E-wA-RKK" firstAttribute="top" secondItem="V2n-vw-Ujo" secondAttribute="bottom" constant="8" symbolic="YES" id="RaA-TN-tft"/>
                             <constraint firstAttribute="trailing" secondItem="Sr7-Th-bdC" secondAttribute="trailing" id="TP6-SR-OzW"/>
-                            <constraint firstItem="Sr7-Th-bdC" firstAttribute="top" secondItem="zV4-Ip-aj1" secondAttribute="bottom" constant="15" id="xu4-sE-QFr"/>
-                            <constraint firstItem="Sr7-Th-bdC" firstAttribute="top" secondItem="zV4-Ip-aj1" secondAttribute="bottom" constant="15" id="zai-pa-YsN"/>
+                            <constraint firstItem="OP5-TB-JQm" firstAttribute="leading" secondItem="oB1-On-YB4" secondAttribute="leading" id="YAf-5U-BVy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hd9-xa-b5k" secondAttribute="trailing" id="Yhs-kB-C0f"/>
+                            <constraint firstItem="hd9-xa-b5k" firstAttribute="top" secondItem="B3E-wA-RKK" secondAttribute="bottom" constant="8" symbolic="YES" id="ceU-6m-xtv"/>
+                            <constraint firstItem="zV4-Ip-aj1" firstAttribute="top" secondItem="OP5-TB-JQm" secondAttribute="bottom" constant="8" symbolic="YES" id="v0R-sj-hlj"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="0eF-mJ-Q7e"/>
                     <connections>
-                        <outlet property="tvResult" destination="Sr7-Th-bdC" id="gqT-EO-jAR"/>
+                        <outlet property="tfQuery" destination="hd9-xa-b5k" id="3c8-tf-zMd"/>
+                        <outlet property="tvResult" destination="Sr7-Th-bdC" id="seh-lE-upI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ckc-xM-d62" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1405,7 +1434,7 @@
                                         <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="QQ音乐账号授权"/>
                                         <connections>
-                                            <action selector="onClickQQMusicAuthButton:" destination="fWA-9F-mDO" eventType="touchUpInside" id="BS5-T3-TVn"/>
+                                            <segue destination="bbO-u2-oB4" kind="show" id="qcQ-Jp-onN"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fT8-0I-DCD">

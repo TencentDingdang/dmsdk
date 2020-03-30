@@ -19,6 +19,6 @@
 
 ## iOS
 
-![iOS framework](https://img.shields.io/badge/framework-v2.3.1-blue)
+![iOS framework](https://img.shields.io/badge/framework-v2.4.0-blue)
 
 更新日志：[更新日志](https://dingdang.qq.com/doc/page/355)。

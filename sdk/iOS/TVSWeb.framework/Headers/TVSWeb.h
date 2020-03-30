@@ -224,6 +224,11 @@ typedef NS_ENUM(NSInteger,TVSWebPageType) {
  */
 @property(nonatomic,assign) BOOL showDebugTool;
 
+/// 获取当前环境下云小微提供的服务的URL。云小微提供的各Web服务在各自的path下，传入该path，可获得对应DM SDK当前环境的该Web服务的URL。将该URL传给[TVSWebView loadUrl]即可打开该URL。例如，QQ音乐授权的path为/v2m/cooperation/skillAuthManagerForCP。不同环境下URL的域名有所不同，因此请使用该接口获取正确的URL，避免硬编码URL。
+/// @param path Web服务对应的path，会被URL编码！
+/// @return 获取的URL，如果参数不合法则返回nil
++(nullable NSString *)getPresetUrlByPath:(nullable NSString *)path;
+
 /*
  * @brief 实例化
  * @param frame

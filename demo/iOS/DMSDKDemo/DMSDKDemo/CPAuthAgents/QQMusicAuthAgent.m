@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "QQMusicAuthAgent.h"
+#import "UrlUtil.h"
 
 @interface QQMusicAuthAgent ()
 
@@ -34,6 +35,7 @@
 }
 
 - (BOOL)checkCPInstalled {
+    DDLogDebug(@"QQMusicAuthAgent.checkCPInstalled");
     return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"qqmusic://qq.com"]];
 }
 
@@ -42,27 +44,32 @@
 }
 
 - (void)jumpToAppStore {
-    [self openUrl:[NSURL URLWithString:[NSString stringWithFormat:@"itms-appss://itunes.apple.com/us/app/apple-store/id%@?mt=8", @"414603431"]].absoluteString];
+    DDLogDebug(@"QQMusicAuthAgent.jumpToAppStore");
+    [UrlUtil openUrl:[NSURL URLWithString:[NSString stringWithFormat:@"itms-appss://itunes.apple.com/us/app/apple-store/id%@?mt=8", @"414603431"]].absoluteString];
 }
 
 - (void)requestCPCredentialWithHandler:(void (^)(BOOL, NSInteger, NSString *, TVSCPCredential *))handler {
+    DDLogDebug(@"QQMusicAuthAgent.requestCPCredentialWithHandler");
     _requestCPCredentialHandler = handler;
     [QQMusicOpenSDK startAuth];
 }
 
 - (void)onAuthSuccess:(NSString *)openID Token:(NSString *)openToken {
+    DDLogDebug(@"QQMusicAuthAgent.onAuthSuccess openID:%@", openID);
     if (_requestCPCredentialHandler) {
         _requestCPCredentialHandler(YES, 0, nil, [[TVSCPCredential alloc]initWithCP:TVSCPQQMusic andAppId:_appId andOpenId:openID andOpenToken:openToken andExpireTime:-1]);
     }
 }
 
 - (void)onAuthFailed:(NSInteger)errorCode ErrorMsg:(NSString *)errorMsg {
+    DDLogDebug(@"QQMusicAuthAgent.onAuthFailed errorCode:%ld errorMsg:%@", (long)errorCode, errorMsg);
     if (_requestCPCredentialHandler) {
         _requestCPCredentialHandler(NO, TVSCPErrorRequestingAuthFailure, [NSString stringWithFormat:@"Failed with %ld:%@", (long)errorCode, errorMsg], nil);
     }
 }
 
 - (void)onAuthCancel {
+    DDLogDebug(@"QQMusicAuthAgent.onAuthCancel");
     if (_requestCPCredentialHandler) {
         _requestCPCredentialHandler(NO, TVSCPErrorUserCancellation, @"", nil);
     }
@@ -70,25 +77,6 @@
 
 - (void)traceLog:(NSString *)log level:(QQMusicLogLevel)level {
     DDLogDebug(@"%@", log);
-}
-
--(void)openUrl:(NSString *)urlStr {
-    if (urlStr && urlStr.length > 0) {
-        // DDLogDebug(@"OpenUrl:%@", urlStr);
-        NSURL* url = [NSURL URLWithString:urlStr];
-        UIApplication *app = [UIApplication sharedApplication];
-        if ([app canOpenURL:url]) {
-            if ([[[UIDevice currentDevice] systemVersion] compare:@"10.0" options:NSNumericSearch] != NSOrderedAscending) {
-                if (@available(iOS 10.0, *)) {
-                    [app openURL:url options:@{} completionHandler:^(BOOL success) {
-                    }];
-                }
-            } else {
-                [app openURL:url];
-            }
-            return;
-        }
-    }
 }
 
 @end

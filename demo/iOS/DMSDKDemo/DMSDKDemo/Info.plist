@@ -49,10 +49,10 @@
 			</array>
 		</dict>
 		<dict>
-			<key>CFBundleURLName</key>
-			<string>qqmusiccallback</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>qqmusiccallback</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>qqmusic</string>
@@ -65,6 +65,7 @@
 	<array>
 		<string>weixin</string>
 		<string>wechat</string>
+		<string>weixinULAPI</string>
 		<string>mqqapi</string>
 		<string>mqq</string>
 		<string>mqqOpensdkSSoLogin</string>
