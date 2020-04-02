@@ -152,29 +152,26 @@ public class WebActivity extends ModuleActivity {
     public boolean onContextItemSelected(MenuItem item) {
         // TODO: Change URL EditText
         switch (item.getItemId()) {
-            case R.id.authMenuItem:
-                mWebViewController.toPresetURL(EUserAttrType.AUTH);
-                return true;
-            case R.id.profileMenuItem:
-                mWebViewController.toPresetURL(EUserAttrType.HOMEPAGE);
-                return true;
-            case R.id.memberRequestMenuItem:
-                mWebViewController.toPresetURL(EUserAttrType.CPOPERATION);
-                return true;
-            case R.id.memberPurchaseMenuItem:
-                mWebViewController.toPresetURL(EUserAttrType.RECHARGE);
-                return true;
-            case R.id.phoneMenuItem:
-                mWebViewController.toPresetURL(EUserAttrType.INFOSETTING);
-                return true;
-            case R.id.qqMusicMenuItem:
-                mWebViewController.toPresetURL(EUserAttrType.QQ_MUSIC);
-                return true;
             case R.id.iotMenuItem:
-                mWebViewController.toPresetURL(EUserAttrType.IOT);
+                mWebViewController.loadPresetURLByPath("/smartHome");
                 return true;
             case R.id.musicCtrlItem:
-                mWebViewController.toPresetURL(EUserAttrType.MUSIC_CTRL);
+                mWebViewController.loadPresetURLByPath("/v2m/musicControl");
+                return true;
+            case R.id.ugcItem:
+                mWebViewController.loadPresetURLByPath("/ugc");
+                return true;
+            case R.id.fmControlItem:
+                mWebViewController.loadPresetURLByPath("/v2m/fmControl");
+                return true;
+            case R.id.childControlItem:
+                mWebViewController.loadPresetURLByPath("/v2m/childControl");
+                return true;
+            case R.id.generalControlItem:
+                mWebViewController.loadPresetURLByPath("/v2m/generalControl");
+                return true;
+            case R.id.dingdangItem:
+                mWebViewController.loadPresetURLByPath("/dingdangsmartHome");
                 return true;
         }
         return super.onContextItemSelected(item);
@@ -283,6 +280,7 @@ public class WebActivity extends ModuleActivity {
 
         @Override
         public void onReceiveProxyData(JSONObject data) {
+            Log.i(LOG_TAG, "onReceiveProxyData: data = " + data);
         }
 
         @Override
