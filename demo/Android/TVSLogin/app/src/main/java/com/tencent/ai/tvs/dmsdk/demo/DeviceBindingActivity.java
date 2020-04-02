@@ -20,37 +20,40 @@ public class DeviceBindingActivity extends ModuleActivity {
     private EditText mProductIDEditText;
     private EditText mDSNEditText;
     private TVSDevice mQueriedDevice;
+    private DemoPreference preference = new DemoPreference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_binding);
+        String productId = preference.loadProductID(this);
+        String dsn = preference.loadDSN(this);
 
         mProductIDEditText = findViewById(R.id.productIDEditText);
-        mProductIDEditText.setText(DemoConstant.PRODUCT_ID);
+        mProductIDEditText.setText(productId);
         mDSNEditText = findViewById(R.id.dsnEditText);
-        mDSNEditText.setText(DemoConstant.DSN);
+        mDSNEditText.setText(dsn);
         findViewById(R.id.bindButton).setOnClickListener(v -> {
-            if (TextUtils.isEmpty(mProductIDEditText.getText().toString()) && TextUtils.isEmpty(DemoConstant.PRODUCT_ID)) {
+            if (TextUtils.isEmpty(mProductIDEditText.getText().toString()) && TextUtils.isEmpty(productId)) {
                 ToastUtil.productId(this);
                 return;
             }
-            if (TextUtils.isEmpty(mDSNEditText.getText().toString()) && TextUtils.isEmpty(DemoConstant.DSN)) {
+            if (TextUtils.isEmpty(mDSNEditText.getText().toString()) && TextUtils.isEmpty(dsn)) {
                 ToastUtil.dsn(this);
                 return;
             }
-            LoginProxy.getInstance().bindPushDevice(getDevice(), new SimpleTVSCallback("绑定"));
+            LoginProxy.getInstance().bindPushDevice(getDevice(productId, dsn), new SimpleTVSCallback("绑定"));
         });
         findViewById(R.id.unbindButton).setOnClickListener(v -> {
-            if (TextUtils.isEmpty(mProductIDEditText.getText().toString()) && TextUtils.isEmpty(DemoConstant.PRODUCT_ID)) {
+            if (TextUtils.isEmpty(mProductIDEditText.getText().toString()) && TextUtils.isEmpty(productId)) {
                 ToastUtil.productId(this);
                 return;
             }
-            if (TextUtils.isEmpty(mDSNEditText.getText().toString()) && TextUtils.isEmpty(DemoConstant.DSN)) {
+            if (TextUtils.isEmpty(mDSNEditText.getText().toString()) && TextUtils.isEmpty(dsn)) {
                 ToastUtil.dsn(this);
                 return;
             }
-            LoginProxy.getInstance().unbindPushDevice(getDevice(), new SimpleTVSCallback("解绑"));
+            LoginProxy.getInstance().unbindPushDevice(getDevice(productId, dsn), new SimpleTVSCallback("解绑"));
         });
         findViewById(R.id.queryDeviceButton).setOnClickListener(v -> LoginProxy.getInstance().getDeviceInfoListByAccount(TVSDeviceBindType.TVS_SPEAKER, new SimpleTVSCallback1<ArrayList<TVSDevice>>("帐号查设备") {
             @Override
@@ -64,17 +67,17 @@ public class DeviceBindingActivity extends ModuleActivity {
         }));
 
         findViewById(R.id.queryDeviceGuidButton).setOnClickListener(v -> {
-            if (TextUtils.isEmpty(mProductIDEditText.getText().toString()) && TextUtils.isEmpty(DemoConstant.PRODUCT_ID)) {
+            if (TextUtils.isEmpty(mProductIDEditText.getText().toString()) && TextUtils.isEmpty(productId)) {
                 ToastUtil.productId(this);
                 return;
             }
-            if (TextUtils.isEmpty(mDSNEditText.getText().toString()) && TextUtils.isEmpty(DemoConstant.DSN)) {
+            if (TextUtils.isEmpty(mDSNEditText.getText().toString()) && TextUtils.isEmpty(dsn)) {
                 ToastUtil.dsn(this);
                 return;
             }
             LoginProxy.getInstance().getDeviceInfoListByDSN(TVSDeviceBindType.TVS_SPEAKER,
-                    TextUtils.isEmpty(mProductIDEditText.getText().toString()) ? DemoConstant.PRODUCT_ID : mProductIDEditText.getText().toString(),
-                        TextUtils.isEmpty(mDSNEditText.getText().toString()) ? DemoConstant.DSN : mDSNEditText.getText().toString(),
+                    TextUtils.isEmpty(mProductIDEditText.getText().toString()) ? productId : mProductIDEditText.getText().toString(),
+                        TextUtils.isEmpty(mDSNEditText.getText().toString()) ? dsn : mDSNEditText.getText().toString(),
                             new SimpleTVSCallback1<ArrayList<TVSDevice>>("帐号查设备") {
                 @Override
                 protected String loggableResult(ArrayList<TVSDevice> result) {
@@ -92,15 +95,15 @@ public class DeviceBindingActivity extends ModuleActivity {
         });
 
         findViewById(R.id.queryAccountButton).setOnClickListener(v -> {
-            if (TextUtils.isEmpty(mProductIDEditText.getText().toString()) && TextUtils.isEmpty(DemoConstant.PRODUCT_ID)) {
+            if (TextUtils.isEmpty(mProductIDEditText.getText().toString()) && TextUtils.isEmpty(productId)) {
                 ToastUtil.productId(this);
                 return;
             }
-            if (TextUtils.isEmpty(mDSNEditText.getText().toString()) && TextUtils.isEmpty(DemoConstant.DSN)) {
+            if (TextUtils.isEmpty(mDSNEditText.getText().toString()) && TextUtils.isEmpty(dsn)) {
                 ToastUtil.dsn(this);
                 return;
             }
-            LoginProxy.getInstance().getBoundAccount(getDevice(), new SimpleTVSCallback1<TVSAccountInfo>("设备查帐号", false) {
+            LoginProxy.getInstance().getBoundAccount(getDevice(productId, dsn), new SimpleTVSCallback1<TVSAccountInfo>("设备查帐号", false) {
                 @Override
                 protected String loggableResult(TVSAccountInfo result) {
                     return "OpenID = " + result.getOpenID();
@@ -129,16 +132,16 @@ public class DeviceBindingActivity extends ModuleActivity {
         });
     }
 
-    private TVSDevice getDevice() {
+    private TVSDevice getDevice(String productId, String dsn) {
         TVSDevice device = new TVSDevice();
         if (mProductIDEditText.getText().toString().equals("")) {
-            device.productID = DemoConstant.PRODUCT_ID;
+            device.productID = productId;
         }
         else {
             device.productID = mProductIDEditText.getText().toString();
         }
         if (mDSNEditText.getText().toString().equals("")) {
-            device.dsn = DemoConstant.DSN;
+            device.dsn = dsn;
         }
         else {
             device.dsn = mDSNEditText.getText().toString();

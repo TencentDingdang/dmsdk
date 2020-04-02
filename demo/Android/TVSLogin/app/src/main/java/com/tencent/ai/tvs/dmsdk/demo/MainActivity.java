@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private ModuleListAdapter mAdapter;
     private TextInputEditText mProductIdEditText;
     private TextInputEditText mDsnEditText;
+    private DemoPreference preference = new DemoPreference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +72,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                DemoConstant.PRODUCT_ID = editable.toString();
+                preference.saveProductID(MainActivity.this, editable.toString());
+
             }
         });
         mDsnEditText = findViewById(R.id.dsnEditText);
@@ -84,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                DemoConstant.DSN = editable.toString();
+                preference.saveDSN(MainActivity.this, editable.toString());
             }
         });
 
@@ -112,22 +114,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mProductIdEditText.setText(DemoConstant.PRODUCT_ID);
-        mDsnEditText.setText(DemoConstant.DSN);
+        mProductIdEditText.setText(preference.loadProductID(this));
+        mDsnEditText.setText(preference.loadDSN(this));
     }
 
     private void initModuleList() {
+        String productId = preference.loadProductID(this);
+        String dsn = preference.loadDSN(this);
         mAdapter.addModuleEntry(getString(R.string.module_account), () -> startActivity(new Intent(this, AccountActivity.class)));
         mAdapter.addModuleEntry(getString(R.string.module_device_binding), () -> startActivity(new Intent(this, DeviceBindingActivity.class)));
         mAdapter.addModuleEntry(getString(R.string.module_web), () -> {
-            if (TextUtils.isEmpty(DemoConstant.PRODUCT_ID) || TextUtils.isEmpty(DemoConstant.DSN)) {
+            if (TextUtils.isEmpty(productId) || TextUtils.isEmpty(dsn)) {
                 Toast.makeText(this, "请在DemoConstant类中填写ProductID和DSN", Toast.LENGTH_SHORT).show();
                 return;
             }
             Intent intent = new Intent(this, WebActivity.class);
             TVSDevice device = new TVSDevice();
-            device.productID = DemoConstant.PRODUCT_ID;
-            device.dsn = DemoConstant.DSN;
+            device.productID = productId;
+            device.dsn = dsn;
             intent.putExtra("devInfo", device);
             startActivity(intent);
         });

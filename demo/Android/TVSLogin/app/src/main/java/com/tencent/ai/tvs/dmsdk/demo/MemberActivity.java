@@ -13,16 +13,19 @@ import java.util.Date;
 public class MemberActivity extends ModuleActivity {
     private EditText mProductIDEditText;
     private EditText mDSNEditText;
+    private DemoPreference preference = new DemoPreference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_member);
+        String productId = preference.loadProductID(this);
+        String dsn = preference.loadDSN(this);
 
         mProductIDEditText = findViewById(R.id.productIDEditText);
-        mProductIDEditText.setText(DemoConstant.PRODUCT_ID);
+        mProductIDEditText.setText(productId);
         mDSNEditText = findViewById(R.id.dsnEditText);
-        mDSNEditText.setText(DemoConstant.DSN);
+        mDSNEditText.setText(dsn);
 
         findViewById(R.id.deviceStatusButton).setOnClickListener(v -> {
             if (TextUtils.isEmpty(mProductIDEditText.getText().toString())) {

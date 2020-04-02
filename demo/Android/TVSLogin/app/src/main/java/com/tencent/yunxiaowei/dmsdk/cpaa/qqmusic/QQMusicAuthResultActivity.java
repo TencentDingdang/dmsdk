@@ -4,24 +4,25 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.tencent.ai.tvs.base.log.DMLog;
 import com.tencent.ai.tvs.tskm.TVSThirdPartyAuth;
 import com.tencent.ai.tvs.tskm.thirdpartyauth.CpAuthAgent;
 import com.tencent.ai.tvs.tskm.thirdpartyauth.ThirdPartyCp;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class QQMusicAuthResultActivity extends AppCompatActivity {
-    private static final String TAG = "QQMusicAuthResultActivi";
+    private static final String TAG = "QQMusicAuthResultActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // 授权结果包含在这个Uri中
         Uri uri = getIntent().getData();
         DMLog.i(TAG, "uri:" + uri);
         CpAuthAgent agent = TVSThirdPartyAuth.getCpAuthAgent(ThirdPartyCp.QQ_MUSIC);
-        if (uri != null && agent instanceof QQMusicAuthAgent) {
+        if (uri != null && agent != null && agent instanceof QQMusicAuthAgent) {
             QQMusicAuthAgent qqMusicAuthAgent = (QQMusicAuthAgent) agent;
             String cmd = uri.getQueryParameter("cmd");
             String qmlogin = uri.getQueryParameter("qmlogin");

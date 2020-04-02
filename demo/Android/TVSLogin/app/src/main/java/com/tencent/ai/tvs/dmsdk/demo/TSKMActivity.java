@@ -31,6 +31,8 @@ public class TSKMActivity extends AppCompatActivity {
     public static final String EXTRA_PRODUCT_ID = "PRODUCT_ID";
     public static final String EXTRA_DSN = "DSN";
 
+    private DemoPreference preference = new DemoPreference();
+
     private EditText mProductIDEditText;
     private EditText mDSNEditText;
     private TextView mClientIdTextView;
@@ -69,10 +71,10 @@ public class TSKMActivity extends AppCompatActivity {
             case R.id.cpAuthQqMusicButton:
                 // Simply open the WebPage
                 intent = new Intent(this, WebActivity.class);
-                intent.putExtra(WebActivity.EXTRA_TARGET_PRESET_URL_PATH, TVSThirdPartyAuth.getPresetUrlPathByCp(ThirdPartyCp.QQ_MUSIC));
+                intent.putExtra(WebActivity.EXTRA_TARGET_PRESET_URL_PATH, TVSThirdPartyAuth.getPresetUrlPathByCp(ThirdPartyCp.QQ_MUSIC)+ "?app=1&weixin=1&qq=1");
                 TVSDevice device = new TVSDevice();
-                device.productID = DemoConstant.PRODUCT_ID;
-                device.dsn = DemoConstant.DSN;
+                device.productID = preference.loadProductID(this);
+                device.dsn = preference.loadDSN(this);
                 intent.putExtra(WebActivity.EXTRA_DEVICE_INFO, device);
                 break;
         }
@@ -110,10 +112,10 @@ public class TSKMActivity extends AppCompatActivity {
 
         mClientIdTextView = findViewById(R.id.clientIdTextView);
         mProductIDEditText = findViewById(R.id.productIDEditText);
-        mProductIDEditText.setText(DemoConstant.PRODUCT_ID);
+        mProductIDEditText.setText(preference.loadProductID(this));
         mProductIDEditText.addTextChangedListener(mUpdateClientIdWatcher);
         mDSNEditText = findViewById(R.id.dsnEditText);
-        mDSNEditText.setText(DemoConstant.DSN);
+        mDSNEditText.setText(preference.loadDSN(this));
         mDSNEditText.addTextChangedListener(mUpdateClientIdWatcher);
 
         findViewById(R.id.alarmButton).setOnClickListener(mOnClickListener);
