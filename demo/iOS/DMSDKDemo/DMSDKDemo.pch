@@ -12,4 +12,8 @@
 #import <CocoaLumberjack/CocoaLumberjack.h>
 static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 
+#define QQ_MUSIC_AUTH_TYPE_APP @"app"
+#define QQ_MUSIC_AUTH_TYPE_WEIXIN @"weixin"
+#define QQ_MUSIC_AUTH_TYPE_QQ @"qq"
+
 #endif /* Prefix_h */

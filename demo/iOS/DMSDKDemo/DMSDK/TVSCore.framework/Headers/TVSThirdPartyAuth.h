@@ -33,12 +33,30 @@ typedef NS_ENUM(NSInteger,TVSCP) {
 @end
 
 typedef NS_ENUM(NSInteger,TVSCPError) {
+    // Common
     TVSCPErrorNotSupported = 1,
-    TVSCPErrorNotInstalled,
-    TVSCPErrorConnectingToAppFailure,
-    TVSCPErrorUserCancellation,
-    TVSCPErrorRequestingAuthFailure,
-    TVSCPErrorBindingFailure
+    // QQ Music App
+    TVSCPErrorNotInstalled = 2,
+    TVSCPErrorConnectingToAppFailure = 3,
+    TVSCPErrorUserCancellation = 4,
+    TVSCPErrorRequestingAuthFailure = 5,
+    TVSCPErrorBindingFailure = 6,
+    // QQ Mini Program
+    TVSCPErrorQqmpGetUrlRequest = 1001,
+    TVSCPErrorQqmpGetUrlResponse = 1002,
+    TVSCPErrorQqmpGetUrlInvalid = 1003,
+    TVSCPErrorQqmpGetResultRequest = 1101,
+    TVSCPErrorQqmpGetResultResponse = 1102,
+    TVSCPErrorQqmpGetResultInvalid = 1103,
+    TVSCPErrorQqmpGetResultDecrypt = 1104,
+    TVSCPErrorQqmpGetResultNoData = 1105,
+    TVSCPErrorQqmpGetResultVerify = 1106,
+    // WeChat Mini Program
+    TVSCPErrorWxmpLaunch = 1201,
+    TVSCPErrorWxmpResponse = 1202,
+    TVSCPErrorWxmpDecrypt = 1203,
+    TVSCPErrorWxmpNoData = 1204,
+    TVSCPErrorWxmpVerify = 1205,
 };
 
 @protocol TVSCPAuthAgent <NSObject>
@@ -57,7 +75,11 @@ typedef NS_ENUM(NSInteger,TVSCPError) {
 
 +(instancetype)shared;
 
+-(id<TVSCPAuthAgent>)getAgentOfCP:(TVSCP)cp andAuthType:(NSString *)authType;
+
 -(id<TVSCPAuthAgent>)getAgentOfCP:(TVSCP)cp;
+
+-(void)setAgentMap:(NSDictionary<NSString *, id<TVSCPAuthAgent>> *)agentMap ofCP:(TVSCP)cp;
 
 -(void)setAgent:(id<TVSCPAuthAgent>)agent ofCP:(TVSCP)cp;
 
@@ -97,5 +119,10 @@ typedef NS_ENUM(NSInteger,TVSCPError) {
  * @param handler 回调
  */
 -(void)unbindWithAccountInfo:(TVSAccountInfo*)accountInfo handler:(nonnull void(^)(BOOL))handler __attribute__ ((deprecated("云叮当账号方案即将下线，请迁移到QQ音乐应用方案")));
+
+/// 查询已获授权的CP账号信息。
+/// 该接口对应的UniAccess接口文档为https://github.com/TencentDingdang/tvs-tools/blob/master/Tsk%20Protocol/domains_V3/TSKOAuth.md。
+/// @param handler 请求结果回调，回调第一个参数为错误码，0为成功，非0为失败；当且仅当错误码为0且授权账号存在时，第二个参数为账号类型，第三个参数为账号的OpenID和AppID。
+- (void)getBoundCPAccountWithHandler:(nonnull void(^)(NSInteger, NSString * _Nullable, TVSCPCredential * _Nullable))handler;
 
 @end

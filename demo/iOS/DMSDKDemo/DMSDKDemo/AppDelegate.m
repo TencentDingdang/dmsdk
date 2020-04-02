@@ -6,41 +6,52 @@
 //  Copyright © 2019 tencent. All rights reserved.
 //
 
-#import "AppDelegate.h"
 #import <TVSCore/TVSCore.h>
+#import <TencentOpenAPI/TencentOAuth.h>
+#import "AppDelegate.h"
+#import "SdkLoginProxy.h"
 #import "BrowserVC.h"
 #import "CPAuthAgents/QQMusicAuthAgent.h"
-#import <TencentOpenAPI/TencentOAuth.h>
+#import "CPAuthAgents/QQMusicWxmpAuthAgent.h"
+#import "CPAuthAgents/QQMusicQqmpAuthAgent.h"
 
 #define QQ_MUSIC_SECRET_KEY @""
 #define QQ_MUSIC_APP_ID @""
 #define QQ_MUSIC_CALLBACK_URL @"qqmusic://"
+#define QQ_MUSIC_DEV_NAME @"产品名称"
 
 @implementation AppDelegate
 
 //SDK 初始化
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // 初始化SDK登录代理，以支持微信、QQ登录
+    [[SdkLoginProxy shared]registerApp];
     // DM SDK默认启用了异常上报，若有需要可以关闭
 //    [TVSEnvironment shared].enableDiagnosis = NO;
     [[TVSEnvironment shared]enableLog];//开启日志
     [[TVSAuthManager shared]registerApp];//读取配置信息
+    // 注册SDK登录代理
+    [TVSAuthManager shared].openSdkLoginDelegate = [SdkLoginProxy shared];
     // 在这里注入QQ音乐授权实现到DMSDK，注意参数中填入您申请的QQ音乐AppID、密钥和配置对应的回调URL
-    [[TVSCPAuthAgentManager shared]setAgent:[[QQMusicAuthAgent alloc]initWithAppId:QQ_MUSIC_APP_ID andSecretKey:QQ_MUSIC_SECRET_KEY andCallbackUrl:QQ_MUSIC_CALLBACK_URL] ofCP:TVSCPQQMusic];
+    NSMutableDictionary<NSString *, id<TVSCPAuthAgent>> * agentMap = [NSMutableDictionary dictionary];
+    agentMap[QQ_MUSIC_AUTH_TYPE_APP] = [[QQMusicAuthAgent alloc]initWithAppId:QQ_MUSIC_APP_ID andSecretKey:QQ_MUSIC_SECRET_KEY andCallbackUrl:QQ_MUSIC_CALLBACK_URL];
+    agentMap[QQ_MUSIC_AUTH_TYPE_WEIXIN] = [[QQMusicWxmpAuthAgent alloc]initWithAppId:QQ_MUSIC_APP_ID andSecretKey:QQ_MUSIC_SECRET_KEY];
+    agentMap[QQ_MUSIC_AUTH_TYPE_QQ] = [[QQMusicQqmpAuthAgent alloc]initWithAppId:QQ_MUSIC_APP_ID andSecretKey:QQ_MUSIC_SECRET_KEY andDevName:QQ_MUSIC_DEV_NAME];
+    [[TVSCPAuthAgentManager shared]setAgentMap:agentMap ofCP:TVSCPQQMusic];
     return YES;
 }
 
 //处理 微信/QQ 等 URL 跳转
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-    // 处理微信/QQ 登录跳转
-    if ([[TVSAuthManager shared] handleOpenUrl:url]) return YES;
-    // 处理云叮当 APP 授权后的 URL 回跳
-    /*if ([url.host isEqualToString:@"tvs-auth"] && [url.query isEqualToString:@"result=0"]) {
-        // 打开第三方授权网页
-        BrowserVC* bv = [BrowserVC new];
-        bv.pageType = TVSWebPageTypeThirdPartyAuth;
-        [(UINavigationController*)(self.window.rootViewController) pushViewController:bv animated:YES];
-    }*/
-    if ([QQMusicOpenSDK handleOpenURL:url]) return YES;
+    DDLogDebug(@"AppDelegate.openURL");
+    if ([[SdkLoginProxy shared]handleOpenUrl:url]) {
+        DDLogDebug(@"AppDelegate.openURL Handled by SdkLoginProxy");
+        return YES;
+    }
+    if ([QQMusicOpenSDK handleOpenURL:url]) {
+        DDLogDebug(@"AppDelegate.openURL Handled by QQMusicOpenSDK");
+        return YES;
+    }
     return NO;
 }
 
@@ -59,6 +70,15 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    DDLogDebug(@"AppDelegate.applicationWillEnterForeground");
+    id agent = [[TVSCPAuthAgentManager shared]getAgentOfCP:TVSCPQQMusic andAuthType:QQ_MUSIC_AUTH_TYPE_QQ];
+    if (agent && [agent isKindOfClass:[QQMusicQqmpAuthAgent class]]) {
+        QQMusicQqmpAuthAgent * qqmpAgent = agent;
+        if ([qqmpAgent willEnterForeground]) {
+            DDLogDebug(@"AppDelegate.applicationWillEnterForeground Handled by QQMusicQqmpAuthAgent");
+            return;
+        }
+    }
 }
 
 
@@ -72,6 +92,11 @@
 }
 
 - (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> *restorableObjects))restorationHandler {
+    DDLogDebug(@"AppDelegate.continueUserActivity");
+    if ([[SdkLoginProxy shared]handleContinueUserActivity:userActivity]) {
+        DDLogDebug(@"AppDelegate.continueUserActivity Handled by SdkLoginProxy");
+        return YES;
+    }
     // Copied from QQ Open SDK's demo code
     // Demo处理手Q UniversalLink回调的示例代码
     if([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
