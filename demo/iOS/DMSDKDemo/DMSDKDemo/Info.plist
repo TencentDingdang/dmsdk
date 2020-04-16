@@ -55,7 +55,7 @@
 			<string>qqmusiccallback</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>qqmusic</string>
+				<string>qqmusiciosdemo</string>
 			</array>
 		</dict>
 	</array>

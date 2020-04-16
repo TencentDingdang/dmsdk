@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UITextField *tfPid;
 @property (strong, nonatomic) IBOutlet UITextField *tfDSN;
 @property (strong, nonatomic) IBOutlet UITextView *tvResult;
+@property (strong, nonatomic) IBOutlet UITextField *tfAuthReqInfo;
 
 @end
 

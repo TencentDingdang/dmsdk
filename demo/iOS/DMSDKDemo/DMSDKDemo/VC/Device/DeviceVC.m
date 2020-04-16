@@ -18,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _tfPid.text = YXW_PRODUCT_ID;
+    _tfDSN.text = YXW_DEFAULT_DSN;
 }
 
 
@@ -32,52 +34,61 @@
 }
 */
 
--(TVSDeviceInfo*)getDevice {
-    TVSDeviceInfo* device = nil;
-    if (NotEmpty(_tfPid.text) && NotEmpty(_tfDSN.text)) {
-        device = [TVSDeviceInfo new];
-        device.bindType = TVSDeviceBindTypeTVSSpeaker/*TVSDeviceBindTypeSDKSpeaker*/; //注意设置设备类型!!
-        device.pushIdExtra = PUSH_ID_EXTRA_TVS_SPEAKER/*PUSH_ID_EXTRA_SDK_SPEAKER*/; // 注意绑定设备需要传 pushIdExtra 字段!!
-        device.productId = _tfPid.text;
-        device.dsn = _tfDSN.text;
+-(TVSDeviceIdentity*)getDevice {
+    TVSDeviceIdentity* device = nil;
+    if (NotEmpty(_tfDSN.text)) {
+        device = [TVSDeviceIdentity tvsDeviceIdentityWithProductId:YXW_PRODUCT_ID andDsn:_tfDSN.text];
     }
     return device;
 }
 
-//绑定设备
+//设备授权
 - (IBAction)onClickBtnBind:(id)sender {
     [self hideKeyboard];
-    TVSDeviceInfo* device = [self getDevice];
+    TVSDeviceIdentity* device = [self getDevice];
     if (!device) return;
+    NSString* authReqInfo = _tfAuthReqInfo.text;
+    if (!NotEmpty(authReqInfo)) {
+        return;
+    }
     __weak typeof(self) weakSelf = self;
     [self checkLogin:^{
-        [[TVSDeviceManager shared]bindDevice:device handler:^(BOOL success) {
-            [self showText:[NSString stringWithFormat:@"绑定 %@", success ? @"成功" : @"失败"] view:weakSelf.tvResult];
+        [[TVSDeviceAuthManager shared]authorizeDevice:device withAuthReqInfo:authReqInfo andHandler:^(NSInteger errorcode, NSString * clientid, NSString * authRespInfo) {
+            if (errorcode == 0) {
+                [self showText:[NSString stringWithFormat:@"设备授权成功，client id %@, authRespID %@", clientid, authRespInfo] view:weakSelf.tvResult];
+            }else {
+                [self showText:[NSString stringWithFormat:@"设备授权失败，错误码 %ld", errorcode] view:weakSelf.tvResult];
+            }
+            
         }];
     }];
 }
 
-//解绑设备
+//解绑授权
 - (IBAction)onClickBtnUnbind:(id)sender {
     [self hideKeyboard];
-    TVSDeviceInfo* device = [self getDevice];
+    TVSDeviceIdentity* device = [self getDevice];
     if (!device) return;
     __weak typeof(self) weakSelf = self;
     [self checkLogin:^{
-        [[TVSDeviceManager shared]unbindDevice:device handler:^(BOOL success) {
-            [self showText:[NSString stringWithFormat:@"解绑 %@", success ? @"成功" : @"失败"] view:weakSelf.tvResult];
+        [[TVSDeviceAuthManager shared]revokeDeviceAuthorizationFor:device withHandler:^(NSInteger errorcode) {
+            if (errorcode == 0) {
+                [self showText:[NSString stringWithFormat:@"设备解除授权成功"] view:weakSelf.tvResult];
+            } else {
+                [self showText:[NSString stringWithFormat:@"设备解除授权失败，错误码 %ld", errorcode] view:weakSelf.tvResult];
+            }
         }];
     }];
 }
 
-//查询绑定的设备列表
+//查询账号关联的的设备列表
 - (IBAction)onClickBtnQueryDevices:(id)sender {
     [self hideKeyboard];
     __weak typeof(self) weakSelf = self;
     [self checkLogin:^{
-        [[TVSDeviceManager shared]queryDevicesByAccountWithBindType:[self getDevice].bindType handler:^(NSArray<TVSDeviceInfo *> * devices) {
+        [[TVSDeviceAuthManager shared]getAuthorizedDevicesWithHandler:^(NSInteger code, NSArray<TVSDeviceIdentity *> * devices) {
             if (devices && devices.count > 0) {
-                for (TVSDeviceInfo* d in devices) {
+                for (TVSDeviceIdentity* d in devices) {
                     [self showText:[NSString stringWithFormat:@"查到设备\nProductId: %@\nDSN: %@", d.productId, d.dsn] view:weakSelf.tvResult];
                 }
             } else {
@@ -90,10 +101,15 @@
 //根据设备信息查询绑定的账户信息
 - (IBAction)onClickBtnQueryAccount:(id)sender {
     [self hideKeyboard];
-    TVSDeviceInfo* device = [self getDevice];
+    TVSDeviceIdentity* device = [self getDevice];
     if (!device) return;
     __weak typeof(self) weakSelf = self;
-    [[TVSDeviceManager shared]queryAccountWithDevice:device handler:^(TVSAccountInfo * account) {
+    [[TVSDeviceAuthManager shared]getBoundAccountForAuthorizedDevice:device
+                                                         withHandler:^(NSInteger code, TVSAccountInfo * account) {
+        if (code != 0) {
+            [self showText:[NSString stringWithFormat:@"查询账号失败，错误码 %ld", code] view:weakSelf.tvResult];
+            return;
+        }
         if (account && account.openId) {
             NSLog(@"openId: %@", account.openId);
             [self showText:[NSString stringWithFormat:@"查到账号\nOpenId: %@", account.openId] view:weakSelf.tvResult];

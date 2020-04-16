@@ -32,6 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void)checkToken:(void(^)(void))block;
 
+-(NSString*)getProductID;
+
 @end
 
 NS_ASSUME_NONNULL_END

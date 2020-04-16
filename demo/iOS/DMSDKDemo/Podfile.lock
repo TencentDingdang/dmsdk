@@ -11,11 +11,10 @@ DEPENDENCIES:
   - SSZipArchive (~> 2.1.5)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - CocoaLumberjack
-    - SSZipArchive
   trunk:
     - AFNetworking
+    - CocoaLumberjack
+    - SSZipArchive
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -24,4 +23,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 90b4e9a28815276270f8224408f7927ec335da66
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1

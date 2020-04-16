@@ -46,7 +46,7 @@
     // QQ 音乐会员相关页面需要设备信息
     _webview.device = [TVSDeviceInfo new];
     _webview.device.bindType = TVSDeviceBindTypeTVSSpeaker;
-    _webview.device.pushIdExtra = PUSH_ID_EXTRA_TVS_SPEAKER;
+    //_webview.device.pushIdExtra = PUSH_ID_EXTRA_TVS_SPEAKER;
     _webview.device.deviceType = @"ScreenSpeaker";
     _webview.device.deviceOEM = @"TencentDingdang";
     _webview.device.productId = _pid;

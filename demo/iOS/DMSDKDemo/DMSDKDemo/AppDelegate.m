@@ -7,31 +7,36 @@
 //
 
 #import <TVSCore/TVSCore.h>
-#import <TencentOpenAPI/TencentOAuth.h>
 #import "AppDelegate.h"
-#import "SdkLoginProxy.h"
 #import "BrowserVC.h"
+#import "SdkLoginProxy.h"
 #import "CPAuthAgents/QQMusicAuthAgent.h"
 #import "CPAuthAgents/QQMusicWxmpAuthAgent.h"
 #import "CPAuthAgents/QQMusicQqmpAuthAgent.h"
 
+// 请输入您在qq音乐部门申请的私钥
 #define QQ_MUSIC_SECRET_KEY @""
+// 请输入您在qq音乐部门申请的appid
 #define QQ_MUSIC_APP_ID @""
-#define QQ_MUSIC_CALLBACK_URL @"qqmusic://"
-#define QQ_MUSIC_DEV_NAME @"产品名称"
+// 请配置回调URL
+#define QQ_MUSIC_CALLBACK_URL @"qqmusiciosdemo://"
+// 请设置应用名，将在Q音授权时显示
+#define QQ_MUSIC_DEV_NAME @"腾讯云小微"
 
 @implementation AppDelegate
 
 //SDK 初始化
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // 初始化SDK登录代理，以支持微信、QQ登录
-    [[SdkLoginProxy shared]registerApp];
+    // 初始化微信SDK，为QQ音乐微信小程序授权做准备，如果不需要微信小程序授权，可以删除
+    [[SdkLoginProxy shared] registerApp];
+    
     // DM SDK默认启用了异常上报，若有需要可以关闭
 //    [TVSEnvironment shared].enableDiagnosis = NO;
     [[TVSEnvironment shared]enableLog];//开启日志
-    [[TVSAuthManager shared]registerApp];//读取配置信息
-    // 注册SDK登录代理
-    [TVSAuthManager shared].openSdkLoginDelegate = [SdkLoginProxy shared];
+    [[TVSAuthManager shared]registerAppWithAppKey:YXW_APP_KEY];//读取配置信息
+    
+    NSLog(@"YOUR Product id is %@", YXW_PRODUCT_ID);
+
     // 在这里注入QQ音乐授权实现到DMSDK，注意参数中填入您申请的QQ音乐AppID、密钥和配置对应的回调URL
     NSMutableDictionary<NSString *, id<TVSCPAuthAgent>> * agentMap = [NSMutableDictionary dictionary];
     agentMap[QQ_MUSIC_AUTH_TYPE_APP] = [[QQMusicAuthAgent alloc]initWithAppId:QQ_MUSIC_APP_ID andSecretKey:QQ_MUSIC_SECRET_KEY andCallbackUrl:QQ_MUSIC_CALLBACK_URL];
@@ -45,7 +50,6 @@
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
     DDLogDebug(@"AppDelegate.openURL");
     if ([[SdkLoginProxy shared]handleOpenUrl:url]) {
-        DDLogDebug(@"AppDelegate.openURL Handled by SdkLoginProxy");
         return YES;
     }
     if ([QQMusicOpenSDK handleOpenURL:url]) {
@@ -92,25 +96,6 @@
 }
 
 - (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> *restorableObjects))restorationHandler {
-    DDLogDebug(@"AppDelegate.continueUserActivity");
-    if ([[SdkLoginProxy shared]handleContinueUserActivity:userActivity]) {
-        DDLogDebug(@"AppDelegate.continueUserActivity Handled by SdkLoginProxy");
-        return YES;
-    }
-    // Copied from QQ Open SDK's demo code
-    // Demo处理手Q UniversalLink回调的示例代码
-    if([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
-        NSURL *url = userActivity.webpageURL;
-        if(url && [TencentOAuth CanHandleUniversalLink:url]) {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"UniversalLink" message:url.description delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
-            [alertView show];
-#if BUILD_QQAPIDEMO
-            // 兼容[QQApiInterface handleOpenURL:delegate:]的接口回调能力
-            [QQApiInterface handleOpenUniversallink:url delegate:(id<QQApiInterfaceDelegate>)[QQApiShareEntry class]];
-#endif
-            return [TencentOAuth HandleUniversalLink:url];
-        }
-    }
     return YES;
 }
 

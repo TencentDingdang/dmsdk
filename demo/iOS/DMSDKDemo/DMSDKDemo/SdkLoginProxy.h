@@ -9,15 +9,13 @@
 #ifndef SdkLoginProxy_h
 #define SdkLoginProxy_h
 
-@interface SdkLoginProxy : NSObject<OpenSdkLoginDelegate>
+@interface SdkLoginProxy : NSObject
 
 + (instancetype)shared;
 
 - (void)registerApp;
 
 - (BOOL)handleOpenUrl:(NSURL *)url;
-
-- (BOOL)handleContinueUserActivity:(NSUserActivity *)userActivity;
 
 @end
 

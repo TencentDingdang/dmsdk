@@ -22,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _deviceInfo = [TVSDeviceInfo new];
+    _tfPID.text = YXW_PRODUCT_ID;
+    _tfDSN.text = YXW_DEFAULT_DSN;
 }
 
 // 初始化 TVSTSKMProxy
@@ -35,11 +37,11 @@
             weakSelf.deviceInfo.dsn = weakSelf.tfDSN.text;
             // 为了便于后面绑定设备，需要传 bindType 和 pushIdExtra 字段
             weakSelf.deviceInfo.bindType = TVSDeviceBindTypeTVSSpeaker/*TVSDeviceBindTypeSDKSpeaker*/;
-            weakSelf.deviceInfo.pushIdExtra = PUSH_ID_EXTRA_TVS_SPEAKER/*PUSH_ID_EXTRA_SDK_SPEAKER*/;
+            //weakSelf.deviceInfo.pushIdExtra = PUSH_ID_EXTRA_TVS_SPEAKER/*PUSH_ID_EXTRA_SDK_SPEAKER*/;
             [weakSelf delegate].tskmProxy = [[TVSTSKMProxy alloc] initWithDeviceInfo:weakSelf.deviceInfo];
         }
     }];
-    return ([TVSAuthManager shared].isQQTokenExist || [TVSAuthManager shared].isWXTokenExist) && NotEmpty(weakSelf.tfPID.text) && NotEmpty(weakSelf.tfDSN.text);
+    return ([TVSAuthManager shared].isVendorTokenExist) && NotEmpty(weakSelf.tfPID.text) && NotEmpty(weakSelf.tfDSN.text);
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

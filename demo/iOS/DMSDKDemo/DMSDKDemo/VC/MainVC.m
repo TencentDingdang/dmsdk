@@ -77,7 +77,7 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     if ([TVSEnvironment shared].netConfig.serverEnv == row) return;
     
-    if ([TVSAuthManager shared].isQQTokenExist || [TVSAuthManager shared].isWXTokenExist) {
+    if ([TVSAuthManager shared].isVendorTokenExist) {
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"不同环境下账号信息不互通，切换后需要重新登录。确定要切换么？" preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
             // 注销

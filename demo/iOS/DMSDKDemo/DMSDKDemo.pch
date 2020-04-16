@@ -16,4 +16,16 @@ static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 #define QQ_MUSIC_AUTH_TYPE_WEIXIN @"weixin"
 #define QQ_MUSIC_AUTH_TYPE_QQ @"qq"
 
+// 请输入在云小微开放平台上申请的appkey
+#define YXW_APP_KEY @""
+// 请输入在云小微开放平台上申请的acess token
+#define YXW_APP_ACCESS_TOKEN @""
+// 请输入在云小微开放平台上申请的app secret
+#define YXW_APP_SECRET @""
+
+#define YXW_PRODUCT_ID   YXW_APP_KEY @":" YXW_APP_ACCESS_TOKEN
+
+// 请输入设备唯一标识
+#define YXW_DEFAULT_DSN  @""
+
 #endif /* Prefix_h */

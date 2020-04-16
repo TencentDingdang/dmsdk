@@ -25,6 +25,7 @@ static NSString * const kScheme_Nonce = @"nonce";
 static NSString * const kScheme_Sign = @"sign";
 static NSString * const kScheme_OpenId= @"openId";
 static NSString * const kScheme_OpenToken= @"openToken";
+// qq音乐的公钥，千万不要动
 static NSString * const QQMusic_PubKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrp4sMcJjY9hb2J3sHWlwIEBrJlw2Cimv+rZAQmR8V3EI+0PUK14pL8OcG7CY79li30IHwYGWwUapADKA01nKgNeq7+rSciMYZv6ByVq+ocxKY8az78HwIppwxKWpQ+ziqYavvfE5+iHIzAc8RvGj9lL6xx1zhoPkdaA0agAyuMQIDAQAB";
 
 @interface QQMusicQqmpAuthAgent ()

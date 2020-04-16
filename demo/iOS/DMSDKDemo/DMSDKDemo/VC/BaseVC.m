@@ -32,7 +32,7 @@
 */
 
 -(void)checkLogin:(void(^)(void))block {
-    BOOL isLogin = [TVSAuthManager shared].isQQTokenExist || [TVSAuthManager shared].isWXTokenExist;
+    BOOL isLogin = [TVSAuthManager shared].isVendorTokenExist;
     if (isLogin) {
         block();
     } else {
@@ -81,24 +81,15 @@
 }
 
 -(void)checkToken:(void (^)(void))block {
-    void(^resultBlock)(TVSAuthResult) = ^(TVSAuthResult result) {
-        if (result == TVSAuthResultSuccess) {
-            if (block) block();
-        } else {
-            [self gotoLoginAlert:@"token已过期，请重新登录"];
-        }
-    };
-    if ([[TVSAuthManager shared]isWXTokenExist]) {
-        [[TVSAuthManager shared] wxTokenRefreshWithHandler:^(TVSAuthResult result) {
-            resultBlock(result);
-        }];
-    } else if ([[TVSAuthManager shared]isQQTokenExist]) {
-        [[TVSAuthManager shared] qqTokenVerifyWithHandler:^(TVSAuthResult result) {
-            resultBlock(result);
-        }];
-    } else {
+    if ([[TVSAuthManager shared] isVendorTokenExist]) {
+        block();
+    }else {
         [self gotoLoginAlert:@"此功能需要账号信息"];
     }
+}
+
+-(NSString*)getProductID {
+    return YXW_PRODUCT_ID;
 }
 
 @end
