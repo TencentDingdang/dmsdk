@@ -11,21 +11,21 @@
 
 
 
-/*
+/**
  * @brief 闹钟提醒操作
  */
 typedef NS_ENUM(NSInteger, TVSAlarmReminderOperation) {
-    /*
+    /**
      * @brief 管理
      */
     TVSAlarmReminderOperationManage,
     
-    /*
+    /**
      * @brief 同步数据
      */
     TVSAlarmReminderOperationSyncData,
     
-    /*
+    /**
      * @brief 清除数据
      */
     TVSAlarmReminderOperationClearData
@@ -33,32 +33,32 @@ typedef NS_ENUM(NSInteger, TVSAlarmReminderOperation) {
 
 
 
-/*
+/**
  * @class TVSAlarmReminder
  * @brief TVS 闹钟提醒管理
  */
 @interface TVSAlarmReminder : NSObject
 
-/*
+/**
  * @brief 初始化方法
  * @param tskmProxy 技能服务访问代理
  * @return TVSAlarmReminder 实例
  */
 -(instancetype)initWithTSKMProxy:(nonnull TVSTSKMProxy*)tskmProxy;
 
-/*
+/**
  * @brief 管理闹钟
  * @param op 操作类型
  * @param blob 请求数据
- * @return handler 回调
+ * @param handler 回调
  */
 -(void)alarmOperation:(TVSAlarmReminderOperation)op blob:(NSDictionary*)blob handler:(nonnull TVSTSKMCallback)handler;
 
-/*
+/**
  * @brief 管理提醒
 * @param op 操作类型
  * @param blob 请求数据
- * @return handler 回调
+ * @param handler 回调
  */
 -(void)reminderOperation:(TVSAlarmReminderOperation)op blob:(NSDictionary*)blob handler:(nonnull TVSTSKMCallback)handler;
 
