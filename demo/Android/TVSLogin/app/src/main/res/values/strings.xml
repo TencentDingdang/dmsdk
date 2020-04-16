@@ -2,7 +2,7 @@
     <string name="app_name">DMSDK Demo应用</string>
     <string name="login_required">该操作需要登录，请登录后重试</string>
     <string name="module_account">帐号登录</string>
-    <string name="module_device_binding">设备绑定</string>
+    <string name="module_device_binding">设备授权</string>
     <string name="module_web">Web页面</string>
     <string name="module_member">会员状态</string>
     <string name="module_tskm">TSK技能服务</string>

@@ -29,7 +29,7 @@ import com.tencent.ai.tvs.env.ELoginEnv;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     private ModuleListAdapter mAdapter;
     private TextInputEditText mProductIdEditText;
     private TextInputEditText mDsnEditText;
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         mAdapter = new ModuleListAdapter();
 
-        findViewById(R.id.customConfigButton).setOnClickListener(v -> startActivity(new Intent(this, CustomConfigActivity.class)));
+        //findViewById(R.id.customConfigButton).setOnClickListener(v -> startActivity(new Intent(this, CustomConfigActivity.class)));
         RadioButton testingRadioButton = findViewById(R.id.testingRadioButton);
         testingRadioButton.setOnClickListener(v -> LoginProxy.getInstance().setEnv(ELoginEnv.TEST));
         RadioButton experienceRadioButton = findViewById(R.id.experienceRadioButton);
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                preference.saveProductID(MainActivity.this, editable.toString());
+                //preference.saveProductID(MainActivity.this, editable.toString());
 
             }
         });
@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("devInfo", device);
             startActivity(intent);
         });
-        mAdapter.addModuleEntry(getString(R.string.module_member), () -> startActivity(new Intent(this, MemberActivity.class)));
+        //mAdapter.addModuleEntry(getString(R.string.module_member), () -> startActivity(new Intent(this, MemberActivity.class)));
         mAdapter.addModuleEntry(getString(R.string.module_tskm), () -> startActivity(new Intent(this, TSKMActivity.class)));
         mAdapter.addModuleEntry(getString(R.string.log_report), () -> LoginProxy.getInstance().performLogReport(new LoginProxy.LogReportCallback() {
             @Override

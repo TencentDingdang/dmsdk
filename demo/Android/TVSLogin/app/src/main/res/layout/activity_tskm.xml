@@ -11,66 +11,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/productIDLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/productIDEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="DemoConstant中填入PRODUCT_ID为平台信息，格式为appkey:apptoken" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/dsnLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/productIDLayout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/dsnEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="DemoConstant中填入DSN为设备唯一识别码" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/clientIdTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            android:text="Client ID:"
-            app:layout_constraintTop_toBottomOf="@id/dsnLayout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/copyClientIdButton" />
-
-        <ImageButton
-            android:id="@+id/copyClientIdButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/ic_content_copy_black_24dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/clientIdTextView"
-            app:layout_constraintBottom_toBottomOf="@id/clientIdTextView" />
-
         <Button
             android:id="@+id/alarmButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="闹钟管理"
-            app:layout_constraintTop_toBottomOf="@id/clientIdTextView"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/childModeButton"
@@ -89,21 +37,13 @@
             app:layout_constraintTop_toBottomOf="@id/childModeButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
-        <Button
-            android:id="@+id/thirdpartyBindOpButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="云叮当账号授权"
-            app:layout_constraintTop_toBottomOf="@id/deviceControlButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
 
         <Button
             android:id="@+id/cpAuthQqMusicButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="QQ音乐CP账号授权"
-            app:layout_constraintTop_toBottomOf="@id/thirdpartyBindOpButton"
+            app:layout_constraintTop_toBottomOf="@id/deviceControlButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

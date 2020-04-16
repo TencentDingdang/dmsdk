@@ -2,6 +2,9 @@
 
 buildscript {
     repositories {
+        maven {
+            url "https://mirrors.tencent.com/nexus/repository/maven-public"
+        }
         jcenter()
         google()
     }
@@ -14,6 +17,9 @@ buildscript {
 
 allprojects {
     repositories {
+        maven {
+            url "https://mirrors.tencent.com/nexus/repository/maven-public"
+        }
         jcenter()
         google()
     }
