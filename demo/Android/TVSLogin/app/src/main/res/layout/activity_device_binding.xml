@@ -18,7 +18,8 @@
             android:id="@+id/productIDEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="DemoConstant中填入PRODUCT_ID为平台信息，格式为appkey:apptoken" />
+            android:hint="DemoConstant中填入PRODUCT_ID为平台信息，格式为appkey:apptoken"
+            android:enabled="false"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -38,86 +39,56 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/authReqInfoLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/dsnLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/authReqInfoText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入AuthReqInfo" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <View
         android:id="@+id/buttonTop"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/dsnLayout"
+        app:layout_constraintTop_toBottomOf="@id/authReqInfoLayout"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/bindButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="绑定"
-        app:layout_constraintTop_toBottomOf="@id/buttonTop"
+        android:text="授权"
         app:layout_constraintEnd_toStartOf="@id/unbindButton"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonTop" />
 
     <Button
         android:id="@+id/unbindButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="解绑"
+        android:text="解除授权"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/bindButton"
-        app:layout_constraintEnd_toStartOf="@id/queryDeviceButton"
         app:layout_constraintTop_toBottomOf="@id/buttonTop" />
-
-    <Button
-        android:id="@+id/queryDeviceButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="ACCT查DSN"
-        app:layout_constraintTop_toBottomOf="@id/buttonTop"
-        app:layout_constraintStart_toEndOf="@id/unbindButton"
-        app:layout_constraintEnd_toStartOf="@id/queryDeviceGuidButton" />
-
-    <Button
-        android:id="@+id/queryDeviceGuidButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="DSN查GUID"
-        app:layout_constraintStart_toEndOf="@id/queryDeviceButton"
-        app:layout_constraintEnd_toStartOf="@id/queryAccountButton"
-        app:layout_constraintTop_toBottomOf="@id/buttonTop" />
-
-    <Button
-        android:id="@+id/queryAccountButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="DSN查ACCT"
-        app:layout_constraintStart_toEndOf="@id/queryDeviceGuidButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonTop" />
-
-    <Button
-        android:id="@+id/toCloudDDWebButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="云叮当授权(Web)"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/toCloudDDNativeButton"
-        app:layout_constraintTop_toBottomOf="@id/bindButton" />
-
-    <Button
-        android:id="@+id/toCloudDDNativeButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="云叮当授权(Native)"
-        app:layout_constraintStart_toEndOf="@id/toCloudDDWebButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/unbindButton"
-        />
 
 
     <com.tencent.ai.tvs.dmsdk.demo.widget.LogView
         android:id="@+id/logView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/toCloudDDWebButton"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/bindButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

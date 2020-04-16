@@ -3,10 +3,7 @@ package com.tencent.ai.dobbydemo.wxapi;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
-import com.tencent.ai.tvs.LoginProxy;
-import com.tencent.ai.tvs.base.log.DMLog;
 import com.tencent.ai.tvs.dmsdk.demo.DemoConstant;
 import com.tencent.ai.tvs.tskm.TVSThirdPartyAuth;
 import com.tencent.ai.tvs.tskm.thirdpartyauth.CpAuthAgent;
@@ -48,10 +45,6 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
 
     @Override
     public void onReq(BaseReq baseReq) {
-        if (!LoginProxy.getInstance().onReq(baseReq)) {
-            // 在此处添加您的自定义实现
-            Toast.makeText(this, "DMSDK didn't handle onReq", Toast.LENGTH_SHORT).show();
-        }
     }
 
     private void onWxmpCallback(BaseResp baseResp) {
@@ -65,14 +58,9 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
 
     @Override
     public void onResp(BaseResp baseResp) {
-        if (!LoginProxy.getInstance().onResp(baseResp)) {
-            // 在此处添加您的自定义实现，如响应微信分享回调
-            if (baseResp.getType() == ConstantsAPI.COMMAND_LAUNCH_WX_MINIPROGRAM) {
-                // 如果是微信小程序的回调
-                onWxmpCallback(baseResp);
-            } else {
-                Toast.makeText(this, "DM SDK didn't handle onResp", Toast.LENGTH_SHORT).show();
-            }
+        if (baseResp.getType() == ConstantsAPI.COMMAND_LAUNCH_WX_MINIPROGRAM) {
+            // 处理QQ音乐小程序授权的逻辑
+            onWxmpCallback(baseResp);
         }
     }
 }

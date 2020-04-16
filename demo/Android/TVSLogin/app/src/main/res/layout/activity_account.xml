@@ -15,53 +15,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="微信" />
+        android:text="标准化账号方案" />
 
     <Button
-        android:id="@+id/wxLoginButton"
+        android:id="@+id/vendorSigButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="获取Sig"
+        app:layout_constraintTop_toBottomOf="@id/wxTitleTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/vendorLoginButton" />
+
+    <Button
+        android:id="@+id/vendorLoginButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="登录"
         app:layout_constraintTop_toBottomOf="@id/wxTitleTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/wxRefreshButton" />
-
-    <Button
-        android:id="@+id/wxRefreshButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="刷新Token"
-        app:layout_constraintTop_toBottomOf="@id/wxTitleTextView"
-        app:layout_constraintStart_toEndOf="@id/wxLoginButton"
+        app:layout_constraintStart_toEndOf="@id/vendorSigButton"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
-        style="@style/TextAppearance.AppCompat.Body2"
-        android:id="@+id/qqTitleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="32dp"
-        android:gravity="center_vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/wxLoginButton"
-        android:text="QQ" />
-
     <Button
-        android:id="@+id/qqLoginButton"
+        android:id="@+id/modifyAccountButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="登录"
-        app:layout_constraintTop_toBottomOf="@id/qqTitleTextView"
+        android:text="修改账号资料"
+        app:layout_constraintTop_toBottomOf="@id/vendorLoginButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/qqRefreshButton" />
+        app:layout_constraintEnd_toStartOf="@id/vendorRefreshButton" />
 
     <Button
-        android:id="@+id/qqRefreshButton"
+        android:id="@+id/vendorRefreshButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="验证Token"
-        app:layout_constraintTop_toBottomOf="@id/qqTitleTextView"
-        app:layout_constraintStart_toEndOf="@id/qqLoginButton"
+        android:text="刷票"
+        app:layout_constraintTop_toBottomOf="@id/vendorLoginButton"
+        app:layout_constraintStart_toEndOf="@id/modifyAccountButton"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
@@ -72,7 +61,7 @@
         android:gravity="center_vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/qqLoginButton"
+        app:layout_constraintTop_toBottomOf="@id/modifyAccountButton"
         android:text="通用操作" />
 
     <Button
@@ -102,20 +91,11 @@
         app:layout_constraintStart_toEndOf="@id/userInfoButton"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <CheckBox
-        android:id="@+id/logoutBeforeReloginCheckBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="登录前退出登录"
-        app:layout_constraintTop_toBottomOf="@id/accountInfoButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
     <com.tencent.ai.tvs.dmsdk.demo.widget.LogView
         android:id="@+id/logView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/logoutBeforeReloginCheckBox"
+        app:layout_constraintTop_toBottomOf="@id/logoutButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
