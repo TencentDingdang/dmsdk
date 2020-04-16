@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>DM SDK & WebView SDK文档归档 |  </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
+    <!-- fonts -->
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Ubuntu:300,400,500,600,700" rel="stylesheet">
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="/dmsdk/style/doc.css">
+
+    <!-- favicon -->
+    <link rel="icon" href="/dmsdk/favicon.ico">
+
+    
+
+  <meta name="generator" content="Hexo 4.2.0"></head>
+  <body>
+
+   <script>window.__INITIAL_STATE__ = {"page":{"path":"dmsdk-ios/2.3.1/API文档/web页面.html","title":""},"data":{"navigation":{"logo":{"text":"文档归档","type":"label"},"main":[{"text":"DM SDK Android","type":"label"},{"text":"2.2.1","type":"link","path":"dmsdk-android/2.2.1/接入指南.html","children":[{"text":"UniAccess接口","type":"link","path":"dmsdk-android/2.2.1/UniAccess接口.html"},{"text":"QQ音乐授权","type":"link","path":"dmsdk-android/2.2.1/QQ音乐授权.html"},{"text":"常见问题","type":"link","path":"dmsdk-android/2.2.1/常见问题.html"},{"text":"更新日志","type":"link","path":"dmsdk-android/2.2.1/更新日志.html"},{"text":"API文档","type":"link","path":"https://tencentdingdang.github.io/dmsdk/android/2.2.1/javadoc/index.html"}]},{"text":"2.3.0","type":"link","path":"dmsdk-android/2.3.0/接入指南.html","children":[{"text":"UniAccess接口","type":"link","path":"dmsdk-android/2.3.0/UniAccess接口.html"},{"text":"QQ音乐授权","type":"link","path":"dmsdk-android/2.3.0/QQ音乐授权.html"},{"text":"常见问题","type":"link","path":"dmsdk-android/2.3.0/常见问题.html"},{"text":"更新日志","type":"link","path":"dmsdk-android/2.3.0/更新日志.html"},{"text":"API文档","type":"link","path":"https://tencentdingdang.github.io/dmsdk/android/2.3.0/javadoc/index.html"}]},{"text":"DM SDK iOS","type":"label"},{"text":"2.3.1","type":"link","path":"dmsdk-ios/2.3.1/接入指南.html","children":[{"text":"UniAccess接口","type":"link","path":"dmsdk-ios/2.3.1/UniAccess接口.html"},{"text":"QQ音乐授权","type":"link","path":"dmsdk-ios/2.3.1/QQ音乐授权.html"},{"text":"常见问题","type":"link","path":"dmsdk-ios/2.3.1/常见问题.html"},{"text":"更新日志","type":"link","path":"dmsdk-ios/2.3.1/更新日志.html"},{"text":"API文档","type":"label","children":[{"text":"账号管理","type":"link","path":"dmsdk-ios/2.3.1/API文档/账号管理.html"},{"text":"web页面","type":"link","path":"dmsdk-ios/2.3.1/API文档/web页面.html"},{"text":"技能服务","type":"link","path":"dmsdk-ios/2.3.1/API文档/技能服务.html"},{"text":"语音设置","type":"link","path":"dmsdk-ios/2.3.1/API文档/语音设置.html"},{"text":"会员管理","type":"link","path":"dmsdk-ios/2.3.1/API文档/会员管理.html"}]}]},{"text":"2.3.0","type":"link","path":"dmsdk-ios/2.3.0/接入指南.html","children":[{"text":"UniAccess接口","type":"link","path":"dmsdk-ios/2.3.0/UniAccess接口.html"},{"text":"QQ音乐授权","type":"link","path":"dmsdk-ios/2.3.0/QQ音乐授权.html"},{"text":"常见问题","type":"link","path":"dmsdk-ios/2.3.0/常见问题.html"},{"text":"更新日志","type":"link","path":"dmsdk-ios/2.3.0/更新日志.html"},{"text":"API文档","type":"label","children":[{"text":"账号管理","type":"link","path":"dmsdk-ios/2.3.0/API文档/账号管理.html"},{"text":"web页面","type":"link","path":"dmsdk-ios/2.3.0/API文档/web页面.html"},{"text":"技能服务","type":"link","path":"dmsdk-ios/2.3.0/API文档/技能服务.html"},{"text":"语音设置","type":"link","path":"dmsdk-ios/2.3.0/API文档/语音设置.html"},{"text":"会员管理","type":"link","path":"dmsdk-ios/2.3.0/API文档/会员管理.html"}]}]},{"text":"2.2.1","type":"link","path":"dmsdk-ios/2.2.1/接入指南.html","children":[{"text":"UniAccess接口","type":"link","path":"dmsdk-ios/2.2.1/UniAccess接口.html"},{"text":"QQ音乐授权","type":"link","path":"dmsdk-ios/2.2.1/QQ音乐授权.html"},{"text":"常见问题","type":"link","path":"dmsdk-ios/2.2.1/常见问题.html"},{"text":"更新日志","type":"link","path":"dmsdk-ios/2.2.1/更新日志.html"},{"text":"API文档","type":"label","children":[{"text":"账号管理","type":"link","path":"dmsdk-ios/2.2.1/API文档/账号管理.html"},{"text":"web页面","type":"link","path":"dmsdk-ios/2.2.1/API文档/web页面.html"},{"text":"技能服务","type":"link","path":"dmsdk-ios/2.2.1/API文档/技能服务.html"},{"text":"语音设置","type":"link","path":"dmsdk-ios/2.2.1/API文档/语音设置.html"},{"text":"会员管理","type":"link","path":"dmsdk-ios/2.2.1/API文档/会员管理.html"}]}]},{"text":"WebView SDK","type":"label"},{"text":"2.2.1","type":"link","path":"webviewsdk-android/2.2.1/接入指南.html","children":[{"text":"技能授权","type":"link","path":"webviewsdk-android/2.2.1/技能授权.html"},{"text":"离线UI模版","type":"link","path":"webviewsdk-android/2.2.1/离线UI模版.html"},{"text":"常见问题","type":"link","path":"webviewsdk-android/2.2.1/常见问题.html"},{"text":"API文档","type":"link","path":"https://tencentdingdang.github.io/WebViewSDK/android/2.2.1/javadoc/index.html"}]}]}},"config":{"timezone":"","root":"/dmsdk/","time_format":"HH:mm:ss","theme":"../node_modules/hexo-theme-doc","theme_config":{"swagger_ui":{"version":2,"permalinks":true,"api_explorer":true,"download":"Download specification","show_extensions":false,"deep_linking":true,"display_operation_id":false,"doc_expansion":"none"},"search":{"skip":false,"background":false,"route":"/lunr.json"},"favicon":"/favicon.ico"}}}</script>
+
+    <div id="react-navigation-root"><div class="doc-navigation" data-reactroot=""><nav class="doc-navbar"><a href="/dmsdk/" class="doc-navbar__logo"><img src="/dmsdk/images/logo.png" class="doc-navbar__logo__img"/><span class="doc-navbar__logo__text">文档归档</span></a><i class="dc-icon dc-icon--close dc-icon--interactive doc-sidebar-close doc-navbar__sidebar-close doc-navbar__sidebar-close--desktop"></i><i class="dc-icon dc-icon--menu dc-icon--interactive doc-sidebar-toggle doc-navbar__sidebar-toggle"></i></nav><nav class="doc-sidebar"><div class="doc-sidebar__vertical-menu"><i class="dc-icon dc-icon--menu dc-icon--interactive doc-sidebar-toggle doc-sidebar-toggle--primary doc-sidebar__vertical-menu__item"></i><i class="dc-icon dc-icon--search dc-icon--interactive doc-sidebar__vertical-menu__item doc-sidebar__vertical-menu__item--primary"></i></div><div class="doc-sidebar-content"><div class="doc-sidebar__search-form"></div><ul class="doc-sidebar-list"></ul></div></nav></div></div>
+    <div class="doc-content">
+  <div class="dc-page">
+    <div class="dc-card">
+      <div id="react-search-results-root"></div>
+      <div id="page-content" class="doc-formatting">
+        <h1 id="TVSWeb"><a href="#TVSWeb" class="headerlink" title="TVSWeb"></a>TVSWeb</h1><h2 id="一、Web-页面-lt-TVSWeb-TVSWeb-h-gt"><a href="#一、Web-页面-lt-TVSWeb-TVSWeb-h-gt" class="headerlink" title="一、Web 页面 &lt;TVSWeb/TVSWeb.h&gt;"></a>一、Web 页面 &lt;TVSWeb/TVSWeb.h&gt;</h2><h3 id="1-TVSWebPageType-Web-页面类型枚举"><a href="#1-TVSWebPageType-Web-页面类型枚举" class="headerlink" title="1 TVSWebPageType Web 页面类型枚举"></a>1 TVSWebPageType Web 页面类型枚举</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TVSWebPageTypeSmartHome</td>
+<td>智能家居页面</td>
+</tr>
+<tr>
+<td>TVSWebPageTypeMusic</td>
+<td>QQ 音乐页面</td>
+</tr>
+<tr>
+<td>TVSWebPageTypeThirdPartyAuth</td>
+<td>第三方账号授权页面</td>
+</tr>
+<tr>
+<td>TVSWebPageTypeAuth</td>
+<td>授权页面</td>
+</tr>
+<tr>
+<td>TVSWebPageTypeMember</td>
+<td>会员个人中心页面</td>
+</tr>
+<tr>
+<td>TVSWebPageTypeVIP</td>
+<td>会员领取页面</td>
+</tr>
+<tr>
+<td>TVSWebPageTypeRecharge</td>
+<td>会员充值页面</td>
+</tr>
+<tr>
+<td>TVSWebPageTypePhoneAddress</td>
+<td>手机号地址页面</td>
+</tr>
+<tr>
+<td>TVSWebPageTypeFeedback</td>
+<td>用户反馈页面</td>
+</tr>
+</tbody></table>
+<h3 id="2-TVSWebUniversalDelegate-Web-页面通用回调协议"><a href="#2-TVSWebUniversalDelegate-Web-页面通用回调协议" class="headerlink" title="2 TVSWebUniversalDelegate Web 页面通用回调协议"></a>2 TVSWebUniversalDelegate Web 页面通用回调协议</h3><h5 id="void-TVSWebLoadStart"><a href="#void-TVSWebLoadStart" class="headerlink" title="-(void)TVSWebLoadStart;"></a><code>-(void)TVSWebLoadStart;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  Web 页面加载开始；</p>
+<p>  <strong>参数</strong>:</p>
+<p>  无;</p>
+<p>  <strong>返回</strong>:</p>
+<p>  无;</p>
+<h5 id="void-TVSWebLoadProgress-double-progress"><a href="#void-TVSWebLoadProgress-double-progress" class="headerlink" title="-(void)TVSWebLoadProgress:(double)progress;"></a><code>-(void)TVSWebLoadProgress:(double)progress;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  Web 页面加载进度更新；</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>progress</td>
+<td>double</td>
+<td>页面加载进度</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  无;</p>
+<h5 id="void-TVSWebLoadStop"><a href="#void-TVSWebLoadStop" class="headerlink" title="-(void)TVSWebLoadStop;"></a><code>-(void)TVSWebLoadStop;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  Web 页面加载开始；</p>
+<p>  <strong>参数</strong>:</p>
+<p>  无;</p>
+<p>  <strong>返回</strong>:</p>
+<p>  无;</p>
+<h5 id="void-TVSWebLoadError-NSError-error"><a href="#void-TVSWebLoadError-NSError-error" class="headerlink" title="-(void)TVSWebLoadError:(NSError*)error;"></a><code>-(void)TVSWebLoadError:(NSError*)error;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  Web 页面加载错误；</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>error</td>
+<td>NSError*</td>
+<td>错误</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  无;</p>
+<h5 id="void-TVSWebGotTitle-NSString-title"><a href="#void-TVSWebGotTitle-NSString-title" class="headerlink" title="-(void)TVSWebGotTitle:(NSString*)title;"></a><code>-(void)TVSWebGotTitle:(NSString*)title;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  Web 页面拉取到网页标题；</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>title</td>
+<td>NSString*</td>
+<td>网页标题</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  无;</p>
+<h5 id="BOOL-TVSWebShouldOpenScheme-NSString-scheme"><a href="#BOOL-TVSWebShouldOpenScheme-NSString-scheme" class="headerlink" title="-(BOOL)TVSWebShouldOpenScheme:(NSString*)scheme;"></a><code>-(BOOL)TVSWebShouldOpenScheme:(NSString*)scheme;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  Web 页面是否允许打开指定 scheme 的链接；<br>  默认只允许打开 http、https、wexin、wtloginm、itms、itms-apps、dingdang 等常规 scheme；</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>scheme</td>
+<td>NSString*</td>
+<td>scheme</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  是否允许打开；</p>
+<h5 id="BOOL-TVSWebShouldLoadUrl-NSString-url"><a href="#BOOL-TVSWebShouldLoadUrl-NSString-url" class="headerlink" title="-(BOOL)TVSWebShouldLoadUrl:(NSString*)url;"></a><code>-(BOOL)TVSWebShouldLoadUrl:(NSString*)url;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  Web 页面是否允许加载指定链接；<br>  默认都允许加载；</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>url</td>
+<td>NSString*</td>
+<td>网页链接</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  是否允许加载；</p>
+<h3 id="3-TVSWebBusinessDelegate-Web-页面业务回调协议"><a href="#3-TVSWebBusinessDelegate-Web-页面业务回调协议" class="headerlink" title="3 TVSWebBusinessDelegate Web 页面业务回调协议"></a>3 TVSWebBusinessDelegate Web 页面业务回调协议</h3><h5 id="void-TVSWebQQLoginResult-TVSAuthResult-result"><a href="#void-TVSWebQQLoginResult-TVSAuthResult-result" class="headerlink" title="-(void)TVSWebQQLoginResult:(TVSAuthResult)result;"></a><code>-(void)TVSWebQQLoginResult:(TVSAuthResult)result;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  Web 页面 QQ 登录回调；</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>result</td>
+<td>TVSAuthResult</td>
+<td>QQ 登录结果</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  无;</p>
+<h5 id="void-TVSWebWXLoginResult-TVSAuthResult-result"><a href="#void-TVSWebWXLoginResult-TVSAuthResult-result" class="headerlink" title="-(void)TVSWebWXLoginResult:(TVSAuthResult)result;"></a><code>-(void)TVSWebWXLoginResult:(TVSAuthResult)result;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  Web 页面微信登录回调；</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>result</td>
+<td>TVSAuthResult</td>
+<td>微信登录结果</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  无;</p>
+<h5 id="void-TVSWebVerifyQQTokenResult-TVSAuthResult-result"><a href="#void-TVSWebVerifyQQTokenResult-TVSAuthResult-result" class="headerlink" title="-(void)TVSWebVerifyQQTokenResult:(TVSAuthResult)result;"></a><code>-(void)TVSWebVerifyQQTokenResult:(TVSAuthResult)result;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  Web 页面 QQ 验票回调；</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>result</td>
+<td>TVSAuthResult</td>
+<td>QQ 验票是否成功</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  无;</p>
+<h5 id="void-TVSWebRefreshWXTokenResult-TVSAuthResult-result"><a href="#void-TVSWebRefreshWXTokenResult-TVSAuthResult-result" class="headerlink" title="-(void)TVSWebRefreshWXTokenResult:(TVSAuthResult)result;"></a><code>-(void)TVSWebRefreshWXTokenResult:(TVSAuthResult)result;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  Web 页面微信刷票回调；</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>result</td>
+<td>TVSAuthResult</td>
+<td>微信刷票是否成功</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  无;</p>
+<h5 id="void-TVSWebRequestExit"><a href="#void-TVSWebRequestExit" class="headerlink" title="-(void)TVSWebRequestExit;"></a><code>-(void)TVSWebRequestExit;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  Web 请求关闭当前页面；</p>
+<p>  <strong>参数</strong>:</p>
+<p>  无;</p>
+<p>  <strong>返回</strong>:</p>
+<p>  无;</p>
+<h5 id="void-TVSWebProxyData-NSDictionary-data"><a href="#void-TVSWebProxyData-NSDictionary-data" class="headerlink" title="-(void)TVSWebProxyData:(NSDictionary*)data;"></a><code>-(void)TVSWebProxyData:(NSDictionary*)data;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  Web 透传参数；</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>data</td>
+<td>NSDictionary*</td>
+<td>透传的参数字典</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  无;</p>
+<p>-(void)TVSWebReceivedJSMessage:(NSString*)msg data:(id)data;`</p>
+<p>  <strong>描述</strong>:</p>
+<p>  Web 页面收到 JS 消息；</p>
+<p>  <strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>msg</td>
+<td>NSDictionary*</td>
+<td>JS 消息名</td>
+</tr>
+<tr>
+<td>data</td>
+<td>id</td>
+<td>JS 消息数据</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>:</p>
+<p>  无;</p>
+<h3 id="4-TVSWebView-TVS-Web-组件"><a href="#4-TVSWebView-TVS-Web-组件" class="headerlink" title="4 TVSWebView TVS Web 组件"></a>4 TVSWebView TVS Web 组件</h3><h4 id="4-1-成员"><a href="#4-1-成员" class="headerlink" title="4.1 成员"></a>4.1 成员</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>webUniversalDelegate</td>
+<td>TVSWebUniversalDelegate</td>
+<td>Web 页面通用回调</td>
+<td></td>
+</tr>
+<tr>
+<td>webBusinessDelegate</td>
+<td>TVSWebBusinessDelegate</td>
+<td>Web 页面业务回调</td>
+<td></td>
+</tr>
+<tr>
+<td>authDelegate</td>
+<td>TVSAuthDelegate</td>
+<td>账号授权协议</td>
+<td>如果不使用 SDK 里面的 TVSAuthManager 授权，而是自己调用微信/QQ SDK，则必须实现此协议！</td>
+</tr>
+<tr>
+<td>device</td>
+<td>TVSDeviceInfo*</td>
+<td>设备信息</td>
+<td>QQ 音乐会员等页面需要此参数，其中 deviceBindType、deviceType、deviceOEM、productId、DSN 几个字段为必填!</td>
+</tr>
+<tr>
+<td>autoCheckDeviceBind</td>
+<td>BOOL</td>
+<td>是否自动检查设备绑定</td>
+<td>LinkPlay 设备打开个人中心需要检查绑定</td>
+</tr>
+<tr>
+<td>showDebugTool</td>
+<td>BOOL</td>
+<td>是否展示网页调试工具</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="4-2-方法"><a href="#4-2-方法" class="headerlink" title="4.2 方法"></a>4.2 方法</h4><h5 id="instancetype-initWithFrame-CGRect-frame"><a href="#instancetype-initWithFrame-CGRect-frame" class="headerlink" title="-(instancetype)initWithFrame:(CGRect)frame;"></a><code>-(instancetype)initWithFrame:(CGRect)frame;</code></h5><p>  <strong>描述</strong>:</p>
+<p>  实例化 web 组件；</p>
+<p>  <strong>参数</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>frame</td>
+<td>CGRect</td>
+<td>组件位置和大小</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>：</p>
+<p>  Web 组件实例；</p>
+<h5 id="void-loadPage-TVSWebPageType-pageType"><a href="#void-loadPage-TVSWebPageType-pageType" class="headerlink" title="-(void)loadPage:(TVSWebPageType)pageType;"></a><code>-(void)loadPage:(TVSWebPageType)pageType;</code></h5><p>  <strong>描述</strong>：</p>
+<p>  打开指定类型的 Web 页面；</p>
+<p>  <strong>参数</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pageType</td>
+<td>TVSWebPageType</td>
+<td>H5 页面类型</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>：</p>
+<p>  无；</p>
+<h5 id="void-loadUrl-NSString-url"><a href="#void-loadUrl-NSString-url" class="headerlink" title="-(void)loadUrl:(NSString*)url;"></a><code>-(void)loadUrl:(NSString*)url;</code></h5><p>  <strong>描述</strong>：</p>
+<p>  打开指定链接的 Web 页面；</p>
+<p>  <strong>参数</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>url</td>
+<td>NSString*</td>
+<td>Web 页面链接</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>：</p>
+<p>  无；</p>
+<h5 id="BOOL-canGoBack"><a href="#BOOL-canGoBack" class="headerlink" title="-(BOOL)canGoBack;"></a><code>-(BOOL)canGoBack;</code></h5><p>  <strong>描述</strong>：</p>
+<p>  能否回退网页；</p>
+<p>  <strong>参数</strong>：</p>
+<p>  无;</p>
+<p>  <strong>返回</strong>：</p>
+<p>  能否；</p>
+<h5 id="BOOL-canGoForward"><a href="#BOOL-canGoForward" class="headerlink" title="-(BOOL)canGoForward;"></a><code>-(BOOL)canGoForward;</code></h5><p>  <strong>描述</strong>：</p>
+<p>  能否前进网页；</p>
+<p>  <strong>参数</strong>：</p>
+<p>  无;</p>
+<p>  <strong>返回</strong>：</p>
+<p>  能否；</p>
+<h5 id="BOOL-goBack"><a href="#BOOL-goBack" class="headerlink" title="-(BOOL)goBack;"></a><code>-(BOOL)goBack;</code></h5><p>  <strong>描述</strong>：</p>
+<p>  回退网页；</p>
+<p>  <strong>参数</strong>：</p>
+<p>  无;</p>
+<p>  <strong>返回</strong>：</p>
+<p>  是否成功；</p>
+<h5 id="BOOL-goForward"><a href="#BOOL-goForward" class="headerlink" title="-(BOOL)goForward;"></a><code>-(BOOL)goForward;</code></h5><p>  <strong>描述</strong>：</p>
+<p>  前进网页；</p>
+<p>  <strong>参数</strong>：</p>
+<p>  无;</p>
+<p>  <strong>返回</strong>：</p>
+<p>  是否成功；</p>
+<h5 id="void-reload"><a href="#void-reload" class="headerlink" title="-(void)reload;"></a><code>-(void)reload;</code></h5><p>  <strong>描述</strong>：</p>
+<p>  刷新网页；</p>
+<p>  <strong>参数</strong>：</p>
+<p>  无;</p>
+<p>  <strong>返回</strong>：</p>
+<p>  无；</p>
+<h5 id="void-stopLoading"><a href="#void-stopLoading" class="headerlink" title="-(void)stopLoading;"></a><code>-(void)stopLoading;</code></h5><p>  <strong>描述</strong>：</p>
+<p>  停止加载网页；</p>
+<p>  <strong>参数</strong>：</p>
+<p>  无;</p>
+<p>  <strong>返回</strong>：</p>
+<p>  无；</p>
+<h5 id="UIScrollView-scrollView"><a href="#UIScrollView-scrollView" class="headerlink" title="-(UIScrollView*)scrollView;"></a><code>-(UIScrollView*)scrollView;</code></h5><p>  <strong>描述</strong>：</p>
+<p>  获取 UIScrollView 实例；</p>
+<p>  <strong>参数</strong>：</p>
+<p>  无;</p>
+<p>  <strong>返回</strong>：</p>
+<p>  UIScrollView 实例；</p>
+<h5 id="void-runJSCode-NSString-code-handler-void-BOOL-handler"><a href="#void-runJSCode-NSString-code-handler-void-BOOL-handler" class="headerlink" title="-(void)runJSCode:(NSString*)code handler:(void(^)(BOOL))handler;"></a><code>-(void)runJSCode:(NSString*)code handler:(void(^)(BOOL))handler;</code></h5><p>  <strong>描述</strong>：</p>
+<p>  执行 JS 代码；</p>
+<p>  <strong>参数</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>code</td>
+<td>NSString*</td>
+<td>JS 代码</td>
+<td>是</td>
+</tr>
+<tr>
+<td>handler</td>
+<td>void(^)(BOOL)</td>
+<td>回调，BOOL 表示是否执行成功</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>  <strong>返回</strong>：</p>
+<p>  无；</p>
+
+        <div id="react-support-footer-root"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+
+    
+
+    <!-- js vendors -->
+    <script src="//code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lunr.js/2.1.0/lunr.min.js"></script>
+
+    <!-- js source  -->
+    <script src="/dmsdk/script/doc.js"></script>
+
+    
+
+  </body>
+</html>
