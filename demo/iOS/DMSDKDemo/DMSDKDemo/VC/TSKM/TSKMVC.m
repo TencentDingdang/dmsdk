@@ -35,7 +35,7 @@
             weakSelf.deviceInfo.dsn = weakSelf.tfDSN.text;
             // 为了便于后面绑定设备，需要传 bindType 和 pushIdExtra 字段
             weakSelf.deviceInfo.bindType = TVSDeviceBindTypeTVSSpeaker/*TVSDeviceBindTypeSDKSpeaker*/;
-            weakSelf.deviceInfo.pushIdExtra = PUSH_ID_EXTRA_TVS_SPEAKER/*PUSH_ID_EXTRA_SDK_SPEAKER*/;
+            //weakSelf.deviceInfo.pushIdExtra = PUSH_ID_EXTRA_TVS_SPEAKER/*PUSH_ID_EXTRA_SDK_SPEAKER*/;
             [weakSelf delegate].tskmProxy = [[TVSTSKMProxy alloc] initWithDeviceInfo:weakSelf.deviceInfo];
         }
     }];
