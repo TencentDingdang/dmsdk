@@ -90,7 +90,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <!-- 请填入您在QQ音乐申请的App ID！ -->
-                <data android:scheme="qqmusictvsdemo42" />
+                <data android:scheme="qqmusictvsdemo" />
             </intent-filter>
         </activity>
     </application>

@@ -20,7 +20,7 @@ public class DemoConstant {
     /**
      * QQ音乐授权App ID，向QQ音乐申请后获得。
      */
-    public static String QQ_MUSIC_APP_ID = "42";
+    public static String QQ_MUSIC_APP_ID = "";
 
     /**
      * 拉起QQ音乐应用授权，授权完成后跳回本应用时拉起本应用所用的scheme，需要和AndroidManifest.xml中QQMusicAuthResultActivity的配置对应。
@@ -32,8 +32,7 @@ public class DemoConstant {
     /**
      * 与QQ音乐应用通信时需要用到的RSA私钥，参考QQ音乐提供的文档由您自行生成。
      */
-    public static String AppPrivateKey = "MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAMyvcjAPe4LzSjdDiLpV7JXMeS3SDopZCvHvyK6lUJGFPisMoIhkYLecVHwOiMrug98YEtJ+xOqJGCeLaaQnIPzfl2YC5OJStGWoQ8M8I7nW087u9KcTGn882Zh1DjZzwa3y3WKmDIbMu5IUvMVamw0enbOPGx3Hy8BGHjzhUhCxAgMBAAECgYB2Gc0y+dv0JNhvpqHfkfBeRoqs64TEQrhT/Fy4mF4yeMT0JecCi5hamPMOWXyISrMAKG3D0q1f/hZXytL7ijA3byTIUoq0M162+62y7vk/m7LXWbOTzjDanls4Gq6+0WlVayPM5iDBhPocqZTt0f5GhHpwKoJMjp6P6atlQw8peQJBAPWDhcvy1jHyKEOaoxx4Su0RbNA4GdjZ3Iq93kuexd24Unt3p/JXkxUm9ugXkabqIyDKU/iytX4fB2WqHHCHUIsCQQDVbYAc0el6jK/YBDfazd/+EPLU2zIoy4Xf390pzwWQr+8MekTnoopBlQ4vVDk4UHcnbXCyFJMDgMgKOqSuqq8zAkEApvetVIhvt0PyshdGeqQsgJFrKSgeG+X+ILUDqvXtpt4l6iX0J9H7C1WWcT0mJxfwj+pJtUcEOyOrCi7obHb6BQJBAJbxgJ/hXa0MfvjZ0t7up7I6LmOYOttbRW1WGEaPYbI4m2pJtx3TeNB1KLkUafuH/R1na0KnBmp90/xYCUx27r0CQQDW6ajAHuyPINNxeDQyTWHXWkJKKTEUp2rXyp4GaJqLHeXrzYoBog79RHb2waSubHpTEfVKdBGal1GFodUbzSsQ";
-
+    public static String AppPrivateKey = "";
 
     private static final String KEY_USE_CUSTOM_CONFIG = "useCustomConfig";
     private static final String KEY_QQ_MUSIC_APP_ID = "qqMusicAppId";

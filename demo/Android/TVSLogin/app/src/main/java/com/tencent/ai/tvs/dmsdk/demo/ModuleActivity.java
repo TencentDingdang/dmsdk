@@ -7,7 +7,6 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.tencent.ai.dobbydemo.R;
 import com.tencent.ai.tvs.core.common.ErrCode;
@@ -16,7 +15,7 @@ import com.tencent.ai.tvs.core.common.TVSCallback1;
 import com.tencent.ai.tvs.core.common.TVSCallback3;
 import com.tencent.ai.tvs.dmsdk.demo.widget.LogView;
 
-public abstract class ModuleActivity extends AppCompatActivity {
+public abstract class ModuleActivity extends BaseActivity {
     private LogView mLogView;
 
     @Override

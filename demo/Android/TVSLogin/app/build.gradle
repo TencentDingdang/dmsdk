@@ -53,7 +53,7 @@ dependencies {
     implementation 'androidx.preference:preference:1.1.0'
     implementation 'com.google.android.material:material:1.2.0-alpha03'
     // DMSDK
-    def tvsVer = '2.4.0'
+    def tvsVer = '3.0.0'
     // 核心模块，必须
     implementation "com.tencent.yunxiaowei.dmsdk:core:$tvsVer"
     // WebViewSDK

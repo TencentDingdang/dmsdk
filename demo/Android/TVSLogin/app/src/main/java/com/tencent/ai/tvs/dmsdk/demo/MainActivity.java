@@ -29,7 +29,7 @@ import com.tencent.ai.tvs.env.ELoginEnv;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     private ModuleListAdapter mAdapter;
     private TextInputEditText mProductIdEditText;
     private TextInputEditText mDsnEditText;

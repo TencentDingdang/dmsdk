@@ -27,7 +27,7 @@ import com.tencent.ai.tvs.dmsdk.demo.tskm.ThirdPartBindOpActivity;
 import com.tencent.ai.tvs.tskm.TVSThirdPartyAuth;
 import com.tencent.ai.tvs.tskm.thirdpartyauth.ThirdPartyCp;
 
-public class TSKMActivity extends AppCompatActivity {
+public class TSKMActivity extends BaseActivity {
     public static final String EXTRA_PRODUCT_ID = "PRODUCT_ID";
     public static final String EXTRA_DSN = "DSN";
 
